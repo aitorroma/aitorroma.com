@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aitor Roma - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 200px;
+            border-radius: 50%;
+            border: 5px solid #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-right: 30px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .contact-info a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #34495e;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+
+        .experience-item {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .experience-company {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .experience-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .skills-list {
+            list-style: none;
+            columns: 2;
+            column-gap: 40px;
+        }
+
+        .skills-list li {
+            margin-bottom: 5px;
+        }
+
+        .contact-section {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-section a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .language-switch:hover {
+            background: #2980b9;
+        }
+
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang].active {
+            display: block;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .back-button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #2980b9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                margin-right: 0;
+                width: 150px;
+            }
+
+            .contact-section {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .skills-list {
+                columns: 1;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section {
+                padding: 15px;
+            }
+
+            .profile-img {
+                width: 120px;
+            }
+
+            .contact-section a {
+                font-size: 0.9em;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer data-domain="curriculum" src="https://plausible.hiveagile.dev/js/script.js"></script>
+</head>
+<body>
+    <button class="language-switch" onclick="toggleLanguage()" data-text-es="English" data-text-en="Español">English</button>
+    
+    <div class="container">
+        <header class="header">
+            <img src="https://aitorroma.com/4df49e386becff7c8208d6579e791a1e548e3948.jpeg" alt="Foto de perfil" class="profile-img">
+            <div class="contact-info">
+                <div class="header-content">
+                    <h1>Aitor Roma</h1>
+                    <p data-lang="es" class="active">Especialista en IA Generativa y Automatización</p>
+                    <p data-lang="en">GenAI and Automation Specialist</p>
+                </div>
+                <div class="contact-section">
+                    <a href="mailto:aitor@nimbox360.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://nimbox360.com" target="_blank"><i class="fas fa-globe"></i> Web</a>
+                    <a href="https://linkedin.com/in/tuxed" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="https://t.me/aitorroma" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section">
+            <h2 data-lang="es" class="active">Perfil Profesional</h2>
+            <h2 data-lang="en">Professional Profile</h2>
+            <p data-lang="es" class="active">Apasionado del Software Libre y la automatización, con una amplia experiencia en inteligencia artificial, integración de sistemas y optimización de procesos. Mi enfoque se basa en el uso de tecnologías Open Source y NoCode para desarrollar soluciones innovadoras que potencien la eficiencia y transformación digital de empresas.</p>
+            <p data-lang="en">Passionate about Free Software and automation, with extensive experience in artificial intelligence, system integration, and process optimization. My approach is based on using Open Source and NoCode technologies to develop innovative solutions that enhance business efficiency and digital transformation.</p>
+        </section>
+
+        <section class="section">
+            <h2 data-lang="es" class="active">Experiencia Laboral</h2>
+            <h2 data-lang="en">Work Experience</h2>
+            
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">Nimbox360</div>
+                    <div class="experience-date">Enero 2024 - Presente</div>
+                </div>
+                <div>
+                    <h3>CTO & Founder</h3>
+                    <p data-lang="es" class="active">Desarrollo de soluciones de inteligencia artificial y automatización para empresas. Implementación de sistemas CRM, bots inteligentes y flujos de trabajo automatizados con tecnologías Open Source y NoCode.</p>
+                    <p data-lang="en">Development of artificial intelligence and automation solutions for businesses. Implementation of CRM systems, intelligent bots, and automated workflows using Open Source and NoCode technologies.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">The {AI}rtist</div>
+                    <div class="experience-date">Abril 2024 - Presente</div>
+                </div>
+                <div>
+                    <h3>Cofundador</h3>
+                    <p data-lang="es" class="active">Creación de una comunidad y newsletter premium enfocada en IA y automatización con acciones prácticas aplicables a negocios.</p>
+                    <p data-lang="en">Creation of a premium community and newsletter focused on AI and automation with practical business-applicable actions.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">HiveAgile</div>
+                    <div class="experience-date">Diciembre 2021 - Presente</div>
+                </div>
+                <div>
+                    <h3>Founder</h3>
+                    <p data-lang="es" class="active">Plataforma de membresía enfocada en soluciones técnicas basadas en software de código abierto, optimizando recursos y costos.</p>
+                    <p data-lang="en">Membership platform focused on technical solutions based on open-source software, optimizing resources and costs.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">n8n.io</div>
+                    <div class="experience-date">Diciembre 2020 - Presente</div>
+                </div>
+                <div>
+                    <h3>Community Manager - Comunidad en Español</h3>
+                    <p data-lang="es" class="active">Gestión de la comunidad de habla hispana de n8n, promoviendo automatización de procesos empresariales.</p>
+                    <p data-lang="en">Management of the Spanish-speaking community of n8n, promoting business process automation.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">Teradisk Consulting SL</div>
+                    <div class="experience-date">Agosto 2016 - Mayo 2023</div>
+                </div>
+                <div>
+                    <h3>Senior System Administrator</h3>
+                    <p data-lang="es" class="active">Administración de infraestructuras críticas y optimización de entornos IT.</p>
+                    <p data-lang="en">Administration of critical infrastructures and optimization of IT environments.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div>
+                    <div class="experience-company">T-Systems</div>
+                    <div class="experience-date">Mayo 2008 - Diciembre 2012</div>
+                </div>
+                <div>
+                    <h3>Administrador de Sistemas</h3>
+                    <p data-lang="es" class="active">Gestión de infraestructuras Linux para la Generalitat de Catalunya, administrando más de 1500 máquinas en centros educativos.</p>
+                    <p data-lang="en">Management of Linux infrastructures for the Generalitat de Catalunya, administering over 1500 machines in educational centers.</p>
+                </div>
+            </div>
+        </section>
+
+¡<section class="section">
+    <h2 data-lang="es" class="active">Servicios de Automatización y Tecnología</h2>
+    <h2 data-lang="en">Automation and Technology Services</h2>
+    <div class="skills-list">
+        <h3 data-lang="es" class="active">Sistemas Linux y Unix</h3>
+        <h3 data-lang="en">Linux and Unix Systems</h3>
+        <ul>
+            <li data-lang="es" class="active">Administración avanzada de sistemas Linux (20+ años)</li>
+            <li data-lang="en">Advanced Linux systems administration (20+ years)</li>
+            <li data-lang="es" class="active">Especialista en Debian, RedHat, y distribuciones enterprise</li>
+            <li data-lang="en">Specialist in Debian, RedHat, and enterprise distributions</li>
+            <li data-lang="es" class="active">Optimización de rendimiento y troubleshooting</li>
+            <li data-lang="en">Performance optimization and troubleshooting</li>
+            <li data-lang="es" class="active">Gestión de contenedores (Docker, LXC, OpenVZ)</li>
+            <li data-lang="en">Container management (Docker, LXC, OpenVZ)</li>
+            <li data-lang="es" class="active">Orquestación con Kubernetes y Docker Swarm</li>
+            <li data-lang="en">Orchestration with Kubernetes and Docker Swarm</li>
+            <li data-lang="es" class="active">Automatización con Ansible, Puppet y Chef</li>
+            <li data-lang="en">Automation with Ansible, Puppet, and Chef</li>
+            <li data-lang="es" class="active">Shell scripting avanzado (Bash, Python)</li>
+            <li data-lang="en">Advanced shell scripting (Bash, Python)</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Seguridad y Networking</h3>
+        <h3 data-lang="en">Security and Networking</h3>
+        <ul>
+            <li data-lang="es" class="active">Diseño de arquitecturas de red seguras</li>
+            <li data-lang="en">Design of secure network architectures</li>
+            <li data-lang="es" class="active">Implementación de IDS/IPS (Snort, Suricata)</li>
+            <li data-lang="en">Implementation of IDS/IPS (Snort, Suricata)</li>
+            <li data-lang="es" class="active">Gestión avanzada de firewalls (iptables, nftables)</li>
+            <li data-lang="en">Advanced firewall management (iptables, nftables)</li>
+            <li data-lang="es" class="active">VPNs (OpenVPN, WireGuard, IPSec)</li>
+            <li data-lang="en">VPNs (OpenVPN, WireGuard, IPSec)</li>
+            <li data-lang="es" class="active">Redes definidas por software (SDN)</li>
+            <li data-lang="en">Software-defined networks (SDN)</li>
+            <li data-lang="es" class="active">Monitorización y análisis de tráfico</li>
+            <li data-lang="en">Traffic monitoring and analysis</li>
+            <li data-lang="es" class="active">Seguridad en contenedores y microservicios</li>
+            <li data-lang="en">Security in containers and microservices</li>
+            <li data-lang="es" class="active">Hardening de sistemas Linux</li>
+            <li data-lang="en">Hardening of Linux systems</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Cloud y DevOps</h3>
+        <h3 data-lang="en">Cloud and DevOps</h3>
+        <ul>
+            <li data-lang="es" class="active">AWS (EC2, S3, RDS, Lambda)</li>
+            <li data-lang="en">AWS (EC2, S3, RDS, Lambda)</li>
+            <li data-lang="es" class="active">Infraestructura como código (Terraform)</li>
+            <li data-lang="en">Infrastructure as code (Terraform)</li>
+            <li data-lang="es" class="active">CI/CD (Jenkins, GitLab CI, GitHub Actions)</li>
+            <li data-lang="en">CI/CD (Jenkins, GitLab CI, GitHub Actions)</li>
+            <li data-lang="es" class="active">Monitorización (Prometheus, Grafana)</li>
+            <li data-lang="en">Monitoring (Prometheus, Grafana)</li>
+            <li data-lang="es" class="active">Gestión de logs (ELK Stack)</li>
+            <li data-lang="en">Log management (ELK Stack)</li>
+            <li data-lang="es" class="active">Alta disponibilidad y escalabilidad</li>
+            <li data-lang="en">High availability and scalability</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Bases de Datos y Almacenamiento</h3>
+        <h3 data-lang="en">Databases and Storage</h3>
+        <ul>
+            <li data-lang="es" class="active">Administración avanzada MySQL/MariaDB</li>
+            <li data-lang="en">Advanced MySQL/MariaDB administration</li>
+            <li data-lang="es" class="active">PostgreSQL y bases de datos vectoriales</li>
+            <li data-lang="en">PostgreSQL and vector databases</li>
+            <li data-lang="es" class="active">MongoDB y bases NoSQL</li>
+            <li data-lang="en">MongoDB and NoSQL databases</li>
+            <li data-lang="es" class="active">Optimización y tuning de bases de datos</li>
+            <li data-lang="en">Database optimization and tuning</li>
+            <li data-lang="es" class="active">Replicación y clustering</li>
+            <li data-lang="en">Replication and clustering</li>
+            <li data-lang="es" class="active">Sistemas de archivos distribuidos</li>
+            <li data-lang="en">Distributed file systems</li>
+            <li data-lang="es" class="active">Storage (Ceph, GlusterFS)</li>
+            <li data-lang="en">Storage (Ceph, GlusterFS)</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Inteligencia Artificial y Automatización</h3>
+        <h3 data-lang="en">Artificial Intelligence and Automation</h3>
+        <ul>
+            <li data-lang="es" class="active">Agentes y Bots Inteligentes</li>
+            <li data-lang="en">Intelligent agents and bots</li>
+            <li data-lang="es" class="active">Desarrollo de GPTs Personalizados</li>
+            <li data-lang="en">Development of custom GPTs</li>
+            <li data-lang="es" class="active">Integración de Datos Empresariales con IA</li>
+            <li data-lang="en">Integration of business data with AI</li>
+            <li data-lang="es" class="active">Retrieval-Augmented Generation (RAG)</li>
+            <li data-lang="en">Retrieval-Augmented Generation (RAG)</li>
+            <li data-lang="es" class="active">Knowledge-Augmented Generation (KAG)</li>
+            <li data-lang="en">Knowledge-Augmented Generation (KAG)</li>
+            <li data-lang="es" class="active">Automatización de procesos con n8n</li>
+            <li data-lang="en">Process automation with n8n</li>
+            <li data-lang="es" class="active">Integración de APIs y webhooks</li>
+            <li data-lang="en">API and webhook integration</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">MLOps y Desarrollo de IA</h3>
+        <h3 data-lang="en">MLOps and AI Development</h3>
+        <ul>
+            <li data-lang="es" class="active">Implementación y Despliegue de Modelos ML</li>
+            <li data-lang="en">Implementation and deployment of ML models</li>
+            <li data-lang="es" class="active">Monitorización y Optimización de Modelos</li>
+            <li data-lang="en">Model monitoring and optimization</li>
+            <li data-lang="es" class="active">Gestión de Pipelines de ML</li>
+            <li data-lang="en">ML pipeline management</li>
+            <li data-lang="es" class="active">Control de Versiones para Modelos y Datos</li>
+            <li data-lang="en">Version control for models and data</li>
+            <li data-lang="es" class="active">Optimización de inferencia en producción</li>
+            <li data-lang="en">Inference optimization in production</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Virtualización y Contenedores</h3>
+        <h3 data-lang="en">Virtualization and Containers</h3>
+        <ul>
+            <li data-lang="es" class="active">VMware vSphere y ESXi</li>
+            <li data-lang="en">VMware vSphere and ESXi</li>
+            <li data-lang="es" class="active">KVM y Proxmox</li>
+            <li data-lang="en">KVM and Proxmox</li>
+            <li data-lang="es" class="active">Gestión de clusters virtualizados</li>
+            <li data-lang="en">Virtualized cluster management</li>
+            <li data-lang="es" class="active">Migración y backup de máquinas virtuales</li>
+            <li data-lang="en">Virtual machine migration and backup</li>
+            <li data-lang="es" class="active">Optimización de recursos virtualizados</li>
+            <li data-lang="en">Virtualized resource optimization</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Servicios de Correo Electrónico</h3>
+        <h3 data-lang="en">Email Services</h3>
+        <ul>
+            <li data-lang="es" class="active">Configuración y gestión de MTAs (Postfix, Exim)</li>
+            <li data-lang="en">MTA configuration and management (Postfix, Exim)</li>
+            <li data-lang="es" class="active">Implementación de seguridad de correo (SPF, DKIM, DMARC, BIMI)</li>
+            <li data-lang="en">Email security implementation (SPF, DKIM, DMARC, BIMI)</li>
+            <li data-lang="es" class="active">Gestión de relays y smart hosts</li>
+            <li data-lang="en">Relay and smart host management</li>
+            <li data-lang="es" class="active">Sistemas antispam y antivirus (SpamAssassin, ClamAV)</li>
+            <li data-lang="en">Antispam and antivirus systems (SpamAssassin, ClamAV)</li>
+            <li data-lang="es" class="active">Monitorización de entrega y reputación</li>
+            <li data-lang="en">Delivery and reputation monitoring</li>
+            <li data-lang="es" class="active">Configuración de clientes de correo y webmail</li>
+            <li data-lang="en">Email client and webmail configuration</li>
+            <li data-lang="es" class="active">Migración de servicios de correo</li>
+            <li data-lang="en">Email service migration</li>
+            <li data-lang="es" class="active">Archivado y backup de correo</li>
+            <li data-lang="en">Email archiving and backup</li>
+        </ul>
+
+        <h3 data-lang="es" class="active">Herramientas y Metodologías</h3>
+        <h3 data-lang="en">Tools and Methodologies</h3>
+        <ul>
+            <li data-lang="es" class="active">Control de versiones (Git)</li>
+            <li data-lang="en">Version control (Git)</li>
+            <li data-lang="es" class="active">Metodologías ágiles</li>
+            <li data-lang="en">Agile methodologies</li>
+            <li data-lang="es" class="active">Documentación técnica</li>
+            <li data-lang="en">Technical documentation</li>
+            <li data-lang="es" class="active">Gestión de proyectos IT</li>
+            <li data-lang="en">IT project management</li>
+            <li data-lang="es" class="active">Troubleshooting avanzado</li>
+            <li data-lang="en">Advanced troubleshooting</li>
+            <li data-lang="es" class="active">Automatización de tareas repetitivas</li>
+            <li data-lang="en">Automation of repetitive tasks</li>
+        </ul>
+    </div>
+</section>
+
+        <section class="section">
+            <h2 data-lang="es" class="active">Contacto y Redes</h2>
+            <h2 data-lang="en">Contact and Networks</h2>
+            <div class="contact-section">
+                <a href="mailto:aitor@nimbox360.com"><i class="fas fa-envelope"></i> aitor@nimbox360.com</a>
+                <a href="https://nimbox360.com" target="_blank"><i class="fas fa-globe"></i> nimbox360.com</a>
+                <a href="https://linkedin.com/in/tuxed" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://t.me/aitorroma" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
+                <a href="https://nocodeopensource.io" target="_blank"><i class="fas fa-blog"></i> Blog</a>
+            </div>
+        </section>
+
+        <button onclick="window.history.back();" class="back-button">Ir Atrás</button>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const currentLang = document.documentElement.lang;
+            const newLang = currentLang === 'es' ? 'en' : 'es';
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = newLang;
+            
+            // Update button text
+            const button = document.querySelector('.language-switch');
+            button.textContent = button.getAttribute(`data-text-${newLang}`);
+            
+            // Toggle visibility of language-specific elements
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === newLang) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,10 +1,45 @@
----
-layout: default
-title: Blog - Aitor Roma
-description: Artículos sobre tecnología, automatización y desarrollo
----
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Aitor Roma</title>
+    <meta name="description" content="Artículos sobre tecnología, automatización y desarrollo">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Blog - Aitor Roma">
+    <meta property="og:description" content="Artículos sobre tecnología, automatización y desarrollo">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:image" content="http://localhost:4000/assets/images/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo-ios.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Analytics -->
+    <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="/" class="site-title">Aitor Roma</a>
+                <div class="nav-links">
+                    <a href="/curriculum">Currículum</a>
+                    <a href="/blog">Blog</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<div class="blog-page">
+    <main>
+        <div class="blog-page">
   <div class="container">
     <div class="blog-header">
       <h1>Blog</h1>
@@ -19,23 +54,39 @@ description: Artículos sobre tecnología, automatización y desarrollo
     </div>
 
     <div class="blog-grid">
-      {% for post in site.posts %}
-      <article class="blog-card" data-category="{{ post.category }}">
+      
+      <article class="blog-card" data-category="infrastructure">
         <div class="blog-card-image">
-          <img src="{{ post.image }}" alt="{{ post.title }}">
-          <span class="blog-category">{{ post.category | capitalize }}</span>
+          <img src="/assets/images/blog/n8n-traefik.jpg" alt="N8N con Dominio Personalizado usando Traefik">
+          <span class="blog-category">Infrastructure</span>
         </div>
         <div class="blog-card-content">
-          <h2>{{ post.title }}</h2>
-          <p class="blog-excerpt">{{ post.description }}</p>
+          <h2>N8N con Dominio Personalizado usando Traefik</h2>
+          <p class="blog-excerpt">Aprende a instalar N8N con tu propio dominio personalizado de forma sencilla, usando certificados SSL de LetsEncrypt y Traefik como proxy inverso.</p>
           <div class="blog-meta">
-            <span class="blog-date">{{ post.date | date: "%-d %b %Y" }}</span>
-            <span class="read-time">{{ post.reading_time }} min lectura</span>
+            <span class="blog-date">9 Mar 2025</span>
+            <span class="read-time">10 min lectura</span>
           </div>
-          <a href="{{ post.url }}" class="read-more">Leer más →</a>
+          <a href="/2025/03/09/n8n-traefik" class="read-more">Leer más →</a>
         </div>
       </article>
-      {% endfor %}
+      
+      <article class="blog-card" data-category="infrastructure">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/kopia-backup.jpeg" alt="Kopia: La Herramienta Moderna para Copias de Seguridad">
+          <span class="blog-category">Infrastructure</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>Kopia: La Herramienta Moderna para Copias de Seguridad</h2>
+          <p class="blog-excerpt">Descubre cómo utilizar Kopia, una herramienta libre y moderna para realizar copias de seguridad de forma eficiente y segura.</p>
+          <div class="blog-meta">
+            <span class="blog-date">9 Mar 2025</span>
+            <span class="read-time">15 min lectura</span>
+          </div>
+          <a href="/2025/03/09/kopia-backup" class="read-more">Leer más →</a>
+        </div>
+      </article>
+      
     </div>
 
     <div class="blog-pagination">
@@ -73,3 +124,13 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Aitor Roma. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
