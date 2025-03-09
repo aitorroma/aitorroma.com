@@ -62,15 +62,41 @@ nav {
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
+    align-items: center;
 
     a {
       color: var(--text-color);
       text-decoration: none;
       font-weight: 500;
+      display: flex;
+      align-items: center;
       
       &:hover {
         color: var(--primary-color);
+      }
+
+      &.telegram-link, &.rss-link {
+        background-color: #f3f4f6;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #e5e7eb;
+        }
+
+        img, svg {
+          margin-right: 0.5rem;
+        }
+      }
+
+      &.telegram-link {
+        color: #0088cc;
+      }
+
+      &.rss-link {
+        color: #ee802f;
       }
     }
   }
