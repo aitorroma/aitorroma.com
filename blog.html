@@ -1,0 +1,139 @@
+---
+layout: default
+title: Blog - Aitor Roma
+description: Artículos sobre tecnología, automatización y desarrollo
+---
+
+<div class="blog-page">
+  <div class="container">
+    <div class="blog-header">
+      <h1>Blog</h1>
+      <p class="subtitle">Artículos sobre tecnología, automatización y desarrollo</p>
+    </div>
+
+    <div class="blog-categories">
+      <button class="category-btn active" data-category="all">Todos</button>
+      <button class="category-btn" data-category="automation">Automatización</button>
+      <button class="category-btn" data-category="infrastructure">Infraestructura</button>
+      <button class="category-btn" data-category="development">Desarrollo</button>
+    </div>
+
+    <div class="blog-grid">
+      <article class="blog-card" data-category="infrastructure">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/n8n-traefik.jpg" alt="N8N con Traefik">
+          <span class="blog-category">Infraestructura</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>N8N con Dominio Personalizado usando Traefik</h2>
+          <p class="blog-excerpt">Aprende a instalar N8N con tu propio dominio personalizado de forma sencilla, usando certificados SSL de LetsEncrypt y Traefik como proxy inverso.</p>
+          <div class="blog-meta">
+            <span class="blog-date">9 Mar 2025</span>
+            <span class="read-time">10 min lectura</span>
+          </div>
+          <a href="/2025/03/09/n8n-traefik" class="read-more">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" data-category="infrastructure">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/kopia-backup.jpeg" alt="Kopia Backup">
+          <span class="blog-category">Infraestructura</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>Kopia: La Herramienta Moderna para Copias de Seguridad</h2>
+          <p class="blog-excerpt">Descubre cómo utilizar Kopia, una herramienta libre y moderna para realizar copias de seguridad de forma eficiente y segura.</p>
+          <div class="blog-meta">
+            <span class="blog-date">9 Mar 2025</span>
+            <span class="read-time">15 min lectura</span>
+          </div>
+          <a href="/2025/03/09/kopia-backup" class="read-more">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" data-category="automation">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/automation.jpg" alt="Automatización">
+          <span class="blog-category">Automatización</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>Automatización con n8n: Guía Completa</h2>
+          <p class="blog-excerpt">Descubre cómo automatizar tus flujos de trabajo usando n8n, una potente herramienta de automatización open source.</p>
+          <div class="blog-meta">
+            <span class="blog-date">9 Mar 2025</span>
+            <span class="read-time">10 min lectura</span>
+          </div>
+          <a href="/2025/03/09/automatizacion-n8n" class="read-more">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" data-category="development">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/development.jpg" alt="Desarrollo">
+          <span class="blog-category">Desarrollo</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>Mejores Prácticas en CI/CD</h2>
+          <p class="blog-excerpt">Aprende las mejores prácticas para implementar un pipeline de CI/CD efectivo en tu equipo de desarrollo.</p>
+          <div class="blog-meta">
+            <span class="blog-date">8 Mar 2025</span>
+            <span class="read-time">8 min lectura</span>
+          </div>
+          <a href="#" class="read-more">Leer más →</a>
+        </div>
+      </article>
+
+      <article class="blog-card" data-category="infrastructure">
+        <div class="blog-card-image">
+          <img src="/assets/images/blog/infrastructure.jpg" alt="Infraestructura">
+          <span class="blog-category">Infraestructura</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>Kubernetes en Producción</h2>
+          <p class="blog-excerpt">Una guía práctica sobre cómo gestionar clusters de Kubernetes en entornos de producción.</p>
+          <div class="blog-meta">
+            <span class="blog-date">7 Mar 2025</span>
+            <span class="read-time">12 min lectura</span>
+          </div>
+          <a href="#" class="read-more">Leer más →</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="blog-pagination">
+      <button class="pagination-btn" disabled>← Anterior</button>
+      <div class="pagination-numbers">
+        <span class="page-number active">1</span>
+        <span class="page-number">2</span>
+        <span class="page-number">3</span>
+      </div>
+      <button class="pagination-btn">Siguiente →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      const selectedCategory = button.dataset.category;
+      
+      blogCards.forEach(card => {
+        if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+          card.style.display = 'block';
+          setTimeout(() => card.style.opacity = '1', 10);
+        } else {
+          card.style.opacity = '0';
+          setTimeout(() => card.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+});
+</script>

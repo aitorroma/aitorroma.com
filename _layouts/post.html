@@ -1,0 +1,60 @@
+---
+layout: default
+---
+
+<article class="post">
+  <div class="post-header">
+    <div class="container">
+      <div class="post-category">{{ page.category }}</div>
+      <h1>{{ page.title }}</h1>
+      <div class="post-meta">
+        <span class="post-date">{{ page.date | date: "%-d %B %Y" }}</span>
+        <span class="post-author">{{ page.author }}</span>
+        <span class="post-reading-time">{{ page.reading_time }} min lectura</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="post-featured-image">
+    <img src="{{ page.image }}" alt="{{ page.title }}">
+  </div>
+
+  <div class="post-content">
+    <div class="container">
+      {{ content }}
+
+      <div class="post-footer">
+        <div class="post-tags">
+          {% for tag in page.tags %}
+            <span class="post-tag">#{{ tag }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="post-share">
+          <span>Compartir:</span>
+          <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ site.url }}{{ page.url }}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title | url_encode }}" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-linkedin"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="post-navigation">
+        {% if page.previous.url %}
+        <a class="prev-post" href="{{page.previous.url}}">
+          <span>← Anterior</span>
+          <h4>{{page.previous.title}}</h4>
+        </a>
+        {% endif %}
+        {% if page.next.url %}
+        <a class="next-post" href="{{page.next.url}}">
+          <span>Siguiente →</span>
+          <h4>{{page.next.title}}</h4>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</article>

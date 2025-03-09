@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="{{ page.title | default: site.title }}">
+    <meta property="og:description" content="{{ page.description | default: site.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:image" content="{{ site.url }}/assets/images/profile.jpg">
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/images/logo-ios.png">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    {% if page.stylesheets %}
+      {% for stylesheet in page.stylesheets %}
+        <link rel="stylesheet" href="{{ stylesheet }}">
+      {% endfor %}
+    {% endif %}
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Analytics -->
+    <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <a href="/" class="site-title">{{ site.title }}</a>
+                <div class="nav-links">
+                    <a href="/curriculum">Currículum</a>
+                    <a href="/blog">Blog</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

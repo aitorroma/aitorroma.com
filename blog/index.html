@@ -1,0 +1,75 @@
+---
+layout: default
+title: Blog - Aitor Roma
+description: Artículos sobre tecnología, automatización y desarrollo
+---
+
+<div class="blog-page">
+  <div class="container">
+    <div class="blog-header">
+      <h1>Blog</h1>
+      <p class="subtitle">Artículos sobre tecnología, automatización y desarrollo</p>
+    </div>
+
+    <div class="blog-categories">
+      <button class="category-btn active" data-category="all">Todos</button>
+      <button class="category-btn" data-category="automation">Automatización</button>
+      <button class="category-btn" data-category="infrastructure">Infraestructura</button>
+      <button class="category-btn" data-category="development">Desarrollo</button>
+    </div>
+
+    <div class="blog-grid">
+      {% for post in site.posts %}
+      <article class="blog-card" data-category="{{ post.category }}">
+        <div class="blog-card-image">
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+          <span class="blog-category">{{ post.category | capitalize }}</span>
+        </div>
+        <div class="blog-card-content">
+          <h2>{{ post.title }}</h2>
+          <p class="blog-excerpt">{{ post.description }}</p>
+          <div class="blog-meta">
+            <span class="blog-date">{{ post.date | date: "%-d %b %Y" }}</span>
+            <span class="read-time">{{ post.reading_time }} min lectura</span>
+          </div>
+          <a href="{{ post.url }}" class="read-more">Leer más →</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <div class="blog-pagination">
+      <button class="pagination-btn" disabled>← Anterior</button>
+      <div class="pagination-numbers">
+        <span class="page-number active">1</span>
+      </div>
+      <button class="pagination-btn" disabled>Siguiente →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryButtons = document.querySelectorAll('.category-btn');
+  const blogCards = document.querySelectorAll('.blog-card');
+
+  categoryButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      categoryButtons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      
+      const selectedCategory = button.dataset.category;
+      
+      blogCards.forEach(card => {
+        if (selectedCategory === 'all' || card.dataset.category === selectedCategory) {
+          card.style.display = 'block';
+          setTimeout(() => card.style.opacity = '1', 10);
+        } else {
+          card.style.opacity = '0';
+          setTimeout(() => card.style.display = 'none', 300);
+        }
+      });
+    });
+  });
+});
+</script>
