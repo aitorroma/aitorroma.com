@@ -146,7 +146,16 @@ description: Página personal de Aitor Roma, Apasionado del Software Libre, Clou
             <img src="/assets/images/projects/topgit-logo.jpg" alt="TOPGit">
           </div>
           <h3>🐙 TOPGit</h3>
-          <p>Automatización para descubrir repositorios Open Source usando IA. Integración con Telegram y Discord.</p>
+          <p>Plataforma que automatiza la curación y publicación de repositorios Open Source usando IA</p>
+          <span class="view-project">Ver proyecto →</span>
+        </a>
+        
+        <a href="/projects/workflows" class="project-card">
+          <div class="project-icon">
+            <img src="/assets/images/projects/workflows.jpg" alt="Workflows N8N">
+          </div>
+          <h3>🔄 Workflows N8N</h3>
+          <p>Plataforma Colaborativa para la Automatización de Flujos de Trabajo</p>
           <span class="view-project">Ver proyecto →</span>
         </a>
         
@@ -161,6 +170,14 @@ description: Página personal de Aitor Roma, Apasionado del Software Libre, Clou
       </div>
     </div>
   </div>
+
+  <div class="projects">
+    {% for project in site.projects %}
+      {% include project-card.html project=project %}
+    {% endfor %}
+  </div>
+
+  {% include github-repos.html %}
 
   <div class="blog-section">
     <div class="container">
