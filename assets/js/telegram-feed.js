@@ -11,30 +11,52 @@ async function loadTelegramFeed() {
         const items = xml.querySelectorAll('item');
         const blogGrid = document.querySelector('.blog-grid');
         
-        blogGrid.innerHTML = ''; // Limpiar el contenido existente
+        blogGrid.innerHTML = '';
         
         if (items.length === 0) {
             throw new Error('No se encontraron entradas en el feed');
         }
         
         items.forEach((item, index) => {
-            if (index >= 3) return; // Solo mostrar los 3 primeros posts
+            if (index >= 3) return;
             
-            const title = item.querySelector('title')?.textContent || 'Sin título';
-            const link = item.querySelector('link')?.textContent || '#';
             const description = item.querySelector('description')?.textContent || '';
+            const link = item.querySelector('link')?.textContent || '#';
             const pubDate = new Date(item.querySelector('pubDate')?.textContent || new Date());
             
-            // Extraer la imagen si existe
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = description;
-            const image = tempDiv.querySelector('img')?.src;
             
-            // Limpiar el texto de la descripción
-            const textDescription = description
-                .replace(/<[^>]*>/g, '') // Eliminar tags HTML
-                .replace(/\s+/g, ' ') // Normalizar espacios
-                .trim();
+            const firstParagraph = tempDiv.querySelector('p');
+            if (!firstParagraph) return;
+            
+            const paragraphContent = firstParagraph.innerHTML;
+            const parts = paragraphContent.split('<br><br>');
+            
+            const titlePart = parts[0].split('<br>')[0];
+            const title = titlePart.replace(/<[^>]*>/g, '').trim();
+            
+            let textDescription = '';
+            if (parts.length > 1) {
+                textDescription = parts.slice(1)
+                    .join(' ')
+                    .replace(/<br>/g, ' ')
+                    .replace(/<[^>]*>/g, '')
+                    .replace(/\s+/g, ' ')
+                    .trim();
+            }
+            
+            const hashtags = [];
+            const links = [];
+            tempDiv.querySelectorAll('a').forEach(a => {
+                if (a.textContent.startsWith('#')) {
+                    hashtags.push(a.outerHTML);
+                } else if (a.textContent.startsWith('@')) {
+                    links.push(a.outerHTML);
+                }
+            });
+            
+            const image = tempDiv.querySelector('blockquote img')?.src;
             
             const article = document.createElement('article');
             article.className = 'blog-card';
@@ -42,17 +64,27 @@ async function loadTelegramFeed() {
             article.innerHTML = `
                 ${image ? `
                 <div class="blog-card-image">
-                    <img src="${image}" alt="${title}">
+                    <img src="${image}" alt="${title}" loading="lazy">
                 </div>
                 ` : ''}
                 <div class="blog-card-content">
                     <h2><a href="${link}" target="_blank">${title}</a></h2>
                     <div class="post-meta">
                         <span class="post-date">${pubDate.toLocaleDateString('es-ES')}</span>
-                        <span class="category">Telegram</span>
                     </div>
-                    <p class="post-excerpt">${textDescription.slice(0, 150)}...</p>
-                    <a href="${link}" target="_blank" class="read-more">Leer más</a>
+                    <p class="post-excerpt">${textDescription}</p>
+                    ${hashtags.length > 0 || links.length > 0 ? `
+                    <div class="post-tags">
+                        ${hashtags.join(' ')}
+                        ${links.join(' ')}
+                    </div>
+                    ` : ''}
+                    <a href="${link}" target="_blank" class="read-more">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.3 12.3a.7.7 0 0 1 0 1l-1.5 1.5a.7.7 0 0 1-1 0l-1.5-1.5M3 8h13.6a2 2 0 0 1 2 2v6.7"></path>
+                        </svg>
+                        Ver en Telegram
+                    </a>
                 </div>
             `;
             
@@ -72,5 +104,4 @@ async function loadTelegramFeed() {
     }
 }
 
-// Cargar el feed cuando el documento esté listo
 document.addEventListener('DOMContentLoaded', loadTelegramFeed);
