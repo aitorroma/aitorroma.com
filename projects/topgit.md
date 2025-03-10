@@ -40,7 +40,13 @@ TOPGit opera en una arquitectura basada en **n8n, OpenAI y RabbitMQ**, permitien
 
 ## 📢 ¡Únete a la revolución Open Source!
 
-<div class="cta-buttons">
-    <a href="https://t.me/TOPGitES" class="cta-button primary" target="_blank">Unirse a Telegram</a>
-    <a href="https://topgit.nimbox360.com" class="cta-button secondary" target="_blank">Visitar Web</a>
+<div class="topgit-cta">
+  <a href="https://t.me/TOPGitES" class="cta-button primary telegram" target="_blank">
+    <span class="icon"></span>
+    Unirse a Telegram
+  </a>
+  <a href="https://topgit.nimbox360.com" class="cta-button secondary" target="_blank">
+    <span class="icon"></span>
+    Visitar Web
+  </a>
 </div>

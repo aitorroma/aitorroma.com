@@ -1,6 +1,5 @@
 ---
 ---
-@import "minima";
 
 // Variables
 $primary-color: #3b82f6;
@@ -9,7 +8,10 @@ $accent-color: #60a5fa;
 $background-color: #f8fafc;
 $text-color: #1f2937;
 
+@import "minima";
+
 :root {
+  // Variables
   --primary-color: #{$primary-color};
   --secondary-color: #{$secondary-color};
   --accent-color: #{$accent-color};
@@ -618,7 +620,6 @@ nav {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          transition: transform 0.3s ease;
         }
 
         .blog-category {
@@ -1041,10 +1042,13 @@ nav {
 
     .youtube-cta {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      gap: 1rem;
+      margin: 2rem auto;
       padding: 0 1rem;
-      margin: 2rem 0;
+      max-width: 400px;
+      width: 100%;
 
       .cta-button {
         display: inline-flex;
@@ -1056,19 +1060,17 @@ nav {
         font-weight: 600;
         text-decoration: none;
         transition: all 0.3s ease;
-        border: 2px solid transparent;
         width: 100%;
-        max-width: 300px;
-        
+
         &.youtube {
           background-color: #FF0000;
           color: white;
-          box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
-          
+          box-shadow: 0 4px 6px rgba(255,0,0,0.2);
+
           &:hover {
-            background-color: #E50000;
+            background-color: #e60000;
             transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(255, 0, 0, 0.25);
+            box-shadow: 0 6px 8px rgba(255,0,0,0.25);
           }
 
           &::before {
@@ -1079,6 +1081,91 @@ nav {
             background: url('/assets/images/icons/youtube.svg') no-repeat center;
             background-size: contain;
             flex-shrink: 0;
+          }
+        }
+      }
+    }
+
+    .topgit-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-sizing: border-box;
+
+      .cta-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+
+        .icon {
+          width: 24px;
+          height: 24px;
+          flex-shrink: 0;
+
+          &.empty {
+            background: none;
+          }
+        }
+
+        &.primary {
+          background-color: #0088cc;
+          color: white;
+          box-shadow: 0 4px 6px rgba(0, 136, 204, 0.2);
+
+          &:hover {
+            background-color: #0077b3;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 136, 204, 0.25);
+          }
+
+          &.telegram .icon {
+            background: url('/assets/images/icons/telegram.svg') no-repeat center;
+            background-size: contain;
+          }
+        }
+
+        &.youtube {
+          background-color: #FF0000;
+          color: white;
+          box-shadow: 0 4px 6px rgba(255,0,0,0.2);
+
+          .icon {
+            background: url('/assets/images/icons/youtube.svg') no-repeat center;
+            background-size: contain;
+          }
+
+          &:hover {
+            background-color: #e60000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(255,0,0,0.25);
+          }
+        }
+
+        &.secondary {
+          background-color: #f3f4f6;
+          color: #1f2937;
+          border: 1px solid #e5e7eb;
+
+          .icon {
+            background: none;
+          }
+
+          &:hover {
+            background-color: #e5e7eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
           }
         }
       }
@@ -1110,12 +1197,12 @@ nav {
         &.youtube {
           background-color: #FF0000;
           color: white;
-          box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
-          
+          box-shadow: 0 4px 6px rgba(255,0,0,0.2);
+
           &:hover {
-            background-color: #E50000;
+            background-color: #e60000;
             transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(255, 0, 0, 0.25);
+            box-shadow: 0 6px 8px rgba(255,0,0,0.25);
           }
 
           &::before {
@@ -1133,6 +1220,23 @@ nav {
   }
 }
 
+@media (max-width: 768px) {
+  .topgit-cta {
+    margin: 1.5rem auto;
+    padding: 0 1rem;
+    
+    .cta-button {
+      padding: 0.875rem 1.5rem;
+      font-size: 0.95rem;
+
+      .icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
 .cta-buttons {
   display: flex;
   justify-content: center;
@@ -1141,6 +1245,7 @@ nav {
   padding: 0 1rem;
   max-width: 400px;
   width: 100%;
+  flex-wrap: wrap;
 
   .cta-button {
     display: inline-flex;
@@ -1152,149 +1257,41 @@ nav {
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    border: 2px solid transparent;
     width: 100%;
-    
+
+    &.primary {
+      background-color: #2563eb;
+      color: white;
+      box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+
+      &:hover {
+        background-color: #1d4ed8;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(37, 99, 235, 0.25);
+      }
+    }
+
     &.youtube {
       background-color: #FF0000;
       color: white;
-      box-shadow: 0 4px 6px rgba(255, 0, 0, 0.2);
-      
+      box-shadow: 0 4px 6px rgba(255,0,0,0.2);
+
       &:hover {
-        background-color: #E50000;
+        background-color: #e60000;
         transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(255, 0, 0, 0.25);
-      }
-
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background: url('/assets/images/icons/youtube.svg') no-repeat center;
-        background-size: contain;
-        flex-shrink: 0;
-      }
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .project-page {
-    .youtube-cta {
-      margin: 1.5rem 0;
-
-      .cta-button {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-        
-        &::before {
-          width: 20px;
-          height: 20px;
-        }
+        box-shadow: 0 6px 8px rgba(255,0,0,0.25);
       }
     }
 
-    .cta-buttons {
-      padding: 0 1rem;
-      margin: 1.5rem auto;
+    &.secondary {
+      background-color: #f3f4f6;
+      color: #1f2937;
+      border: 1px solid #e5e7eb;
 
-      .cta-button {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
-        
-        &::before {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
-  }
-
-  .cta-buttons {
-    margin: 1.5rem auto;
-    padding: 0 1rem;
-
-    .cta-button {
-      padding: 0.875rem 1.5rem;
-      font-size: 0.95rem;
-      
-      &::before {
-        width: 20px;
-        height: 20px;
-      }
-    }
-  }
-}
-
-// Estilos para episodios tipo Netflix
-.seasons {
-  margin-top: 3rem;
-
-  .season {
-    margin-bottom: 3rem;
-
-    h3 {
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-color);
-      border-bottom: 2px solid var(--primary-color);
-      padding-bottom: 0.5rem;
-      display: inline-block;
-    }
-
-    .episodes {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-
-      .episode {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease;
-
-        &:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-
-          .episode-info h4 {
-            color: var(--primary-color);
-          }
-        }
-
-        .episode-thumbnail {
-          position: relative;
-          width: 100%;
-          padding-top: 56.25%; // 16:9 aspect ratio
-
-          iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-          }
-        }
-
-        .episode-info {
-          padding: 1.5rem;
-
-          h4 {
-            font-size: 1.2rem;
-            margin: 0 0 0.5rem;
-            color: var(--text-color);
-            transition: color 0.3s ease;
-          }
-
-          p {
-            font-size: 0.95rem;
-            color: #4b5563;
-            margin: 0;
-            line-height: 1.5;
-          }
-        }
+      &:hover {
+        background-color: #e5e7eb;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       }
     }
   }

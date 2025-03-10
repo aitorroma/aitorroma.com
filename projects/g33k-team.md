@@ -49,8 +49,11 @@ description: Un grupo de profesionales compartiendo experiencias y conocimientos
   </div>
 </div>
 
-<div class="youtube-cta">
+## ¡Únete a la comunidad!
+
+<div class="topgit-cta">
   <a href="https://www.youtube.com/@G33KTEAM?sub_confirmation=1" class="cta-button youtube" target="_blank">
+    <span class="icon"></span>
     Suscríbete al canal
   </a>
 </div>
