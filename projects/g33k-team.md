@@ -37,11 +37,12 @@ description: Un grupo de profesionales compartiendo experiencias y conocimientos
     });
   </script>
 
-## ¡Únete a la comunidad!
-
-<div class="topgit-cta">
-  <a href="https://www.youtube.com/@G33KTEAM?sub_confirmation=1" class="cta-button youtube" target="_blank">
-    <span class="icon"></span>
-    Suscríbete al canal
-  </a>
+  <h2>¡Únete a la comunidad!</h2>
+  
+  <div class="topgit-cta">
+    <a href="https://www.youtube.com/@G33KTEAM?sub_confirmation=1" class="cta-button youtube" target="_blank">
+      <span class="icon"></span>
+      Suscríbete al canal
+    </a>
+  </div>
 </div>
