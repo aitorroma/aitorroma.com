@@ -30,8 +30,7 @@ description: Utilidad de línea de comandos para instalar, gestionar y actualiza
   </div>
 
   <h2>Comunidad HiveAgileCTL</h2>
-  <p>Perfecto 👌<br>
-  Te lo explico ahora como si lo estuviera vendiendo —pero desde el punto de vista de una comunidad tecnológica que impulsa la autonomía digital y el ahorro real para empresas y profesionales.</p>
+
 
   <div style="text-align:center; margin: 1rem 0;">
     <img src="https://hiveagile.com/wp-content/uploads/2023/10/telefono.gif" alt="Grupo de Telegram HiveAgile" style="max-width:360px; width:100%; height:auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
