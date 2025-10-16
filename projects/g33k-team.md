@@ -21,9 +21,21 @@ description: Un grupo de profesionales compartiendo experiencias y conocimientos
 
   <h2>Episodios</h2>
 
-  <div class="playlist-player">
-    <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=lxTtwrQG3ykdZaDJ&amp;list=PLKTQO0qHrl1Vb-slf0rdptzw0gCHme-2k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css">
+  <div class="playlist-player plyr__video-embed" id="g33k-player">
+    <iframe src="https://www.youtube.com/embed/videoseries?list=PLKTQO0qHrl1Vb-slf0rdptzw0gCHme-2k&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="G33K TEAM Playlist"></iframe>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.polyfilled.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const player = new Plyr('#g33k-player', {
+        youtube: { rel: 0, modestbranding: 1 },
+        controls: [
+          'play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'
+        ]
+      });
+    });
+  </script>
 
 ## ¡Únete a la comunidad!
 
