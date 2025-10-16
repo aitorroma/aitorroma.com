@@ -21,33 +21,9 @@ description: Un grupo de profesionales compartiendo experiencias y conocimientos
 
   <h2>Episodios</h2>
 
-  <div class="seasons">
-    <div class="season">
-      <h3>Temporada 1</h3>
-      <div class="episodes">
-        <div class="episode">
-          <div class="episode-thumbnail">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/sg32ulzTsMk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="episode-info">
-            <h4>Episodio 1</h4>
-            <p>Primer episodio del G33K TEAM donde nos presentamos y hablamos sobre nuestras experiencias en el mundo tech.</p>
-          </div>
-        </div>
-        
-        <div class="episode">
-          <div class="episode-thumbnail">
-            <iframe width="100%" height="200" src="https://www.youtube.com/embed/L_i6fZx4gHU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-          <div class="episode-info">
-            <h4>Episodio 2</h4>
-            <p>Continuamos compartiendo experiencias y conocimientos técnicos desde nuestra perspectiva única.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="playlist-player">
+    <iframe width="100%" height="315" src="https://www.youtube.com/embed/videoseries?si=lxTtwrQG3ykdZaDJ&amp;list=PLKTQO0qHrl1Vb-slf0rdptzw0gCHme-2k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
-</div>
 
 ## ¡Únete a la comunidad!
 
