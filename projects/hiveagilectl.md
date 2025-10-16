@@ -22,8 +22,8 @@ description: Utilidad de línea de comandos para instalar, gestionar y actualiza
   </ul>
 
   <h2>Demo</h2>
-  <div class="video-embed">
-    <video controls preload="metadata" poster="https://hiveagilectl.sh/og-image.jpg">
+  <div class="video-fluid">
+    <video controls preload="metadata" playsinline poster="https://hiveagilectl.sh/og-image.jpg">
       <source src="https://nimbox360.com/hiveagilectl.mp4" type="video/mp4">
       Tu navegador no soporta el elemento de video.
     </video>

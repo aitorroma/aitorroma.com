@@ -1239,6 +1239,22 @@ nav {
       height: 100%;
       border: 0;
     }
+
+    // Contenedor alternativo para videos con altura automática
+    .video-fluid {
+      width: 100%;
+      margin: 1.5rem 0 0;
+    }
+
+    .video-fluid video {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 0;
+      border-radius: 12px;
+      background: #000;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
   }
 }
 
