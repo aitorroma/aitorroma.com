@@ -88,18 +88,9 @@ description: Utilidad de línea de comandos para instalar, gestionar y actualiza
 
   <h3>💎 Súmate a la comunidad</h3>
   <div class="topgit-cta">
-    <a href="https://get.hiveagilectl.sh/" class="cta-button primary" target="_blank">
+    <a href="https://hiveagilectl.sh/" class="cta-button primary" target="_blank">
       <span class="icon empty"></span>
       Unirme (Membresía de pago)
-    </a>
-  </div>
-  <p>Accedé al panel, tutoriales y a una comunidad que está cambiando la forma de trabajar con software empresarial.</p>
-
-  <h2>Enlaces</h2>
-  <div class="topgit-cta">
-    <a href="https://hiveagilectl.sh/" class="cta-button secondary" target="_blank">
-      <span class="icon empty"></span>
-      Visitar Web
     </a>
   </div>
 </div>
