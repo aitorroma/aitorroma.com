@@ -27,7 +27,8 @@ TOPGit opera en una arquitectura basada en **n8n, OpenAI y RabbitMQ**, permitien
 
 ✅ **Telegram** → Sigue los descubrimientos en tiempo real en [nuestros canales](https://t.me/TOPGitES).  
 ✅ **Discord** → Añade TOPGit a tu servidor y recibe repos filtrados automáticamente.  
-✅ **Web** → Explora más sobre el proyecto en [https://topgit.nimbox360.com](https://topgit.nimbox360.com).
+✅ **Web** → Explora más sobre el proyecto en [https://topgit.us](https://topgit.us).  
+✅ **Recursos** → Filtra y explora enlaces en [https://links.topgit.us](https://links.topgit.us) (basado en Linkding).
 
 ### 🚀 ¿Por qué usar TOPGit?
 
@@ -45,8 +46,12 @@ TOPGit opera en una arquitectura basada en **n8n, OpenAI y RabbitMQ**, permitien
     <span class="icon"></span>
     Unirse a Telegram
   </a>
-  <a href="https://topgit.nimbox360.com" class="cta-button secondary" target="_blank">
+  <a href="https://topgit.us" class="cta-button secondary" target="_blank">
     <span class="icon"></span>
     Visitar Web
+  </a>
+  <a href="https://links.topgit.us" class="cta-button secondary" target="_blank">
+    <span class="icon"></span>
+    Ver Recursos
   </a>
 </div>
