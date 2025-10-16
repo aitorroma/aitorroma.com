@@ -10,15 +10,24 @@ description: Utilidad de línea de comandos para instalar, gestionar y actualiza
 
 <div class="project-content">
   <h1>🐝 HiveAgileCTL</h1>
+  <p><strong>💳 Nota:</strong> HiveAgileCTL es una <strong>utilidad de pago</strong> y una <strong>comunidad con membresía</strong> que ofrece soporte, recursos y automatizaciones exclusivas.</p>
 
   <h3>¿Qué es HiveAgileCTL?</h3>
-  <p>HiveAgileCTL es una utilidad de línea de comandos enfocada en simplificar la instalación, gestión y actualización de servicios del ecosistema HiveAgile. Facilita despliegues reproducibles y automatizados en servidores y entornos locales.</p>
+  <p>HiveAgileCTL es una utilidad de línea de comandos <strong>open source</strong> que automatiza la instalación, actualización y gestión de aplicaciones empresariales en tu propio servidor. Con un solo comando despliegas entornos <strong>reproducibles</strong> y listos para producción, reduciendo errores manuales y tiempos de puesta en marcha.</p>
 
   <h3>Características</h3>
   <ul>
     <li>Instalación rápida de servicios compatibles HiveAgile</li>
     <li>Comandos simples para iniciar, detener y actualizar</li>
     <li>Orientado a automatización y buenas prácticas DevOps</li>
+  </ul>
+
+  <h3>Comunidad + Herramienta: autonomía y ahorro real</h3>
+  <p>HiveAgileCTL no es solo tecnología: es una <strong>comunidad activa</strong> de profesionales que comparte módulos, guías y soporte práctico para ayudarte a independizarte del software propietario.</p>
+  <ul>
+    <li>Implementa alternativas open source a CRM, almacenamiento, wikis, facturación o gestores de contraseñas en minutos.</li>
+    <li>Elimina cuotas por usuario y dependencia de terceros: <strong>tus datos permanecen bajo tu control</strong>.</li>
+    <li>Ahorro estimado del <strong>50%–80%</strong> frente a suites SaaS equivalentes, además de reducir horas de configuración gracias a la automatización.</li>
   </ul>
 
   <h2>Demo</h2>
@@ -78,7 +87,12 @@ description: Utilidad de línea de comandos para instalar, gestionar y actualiza
   <p>“La tecnología debe liberar, no atar.” Creemos que cualquiera debería tener el poder de usar herramientas profesionales sin depender de grandes corporaciones. Compartimos conocimiento, experiencia y herramientas reales para lograrlo.</p>
 
   <h3>💎 Súmate a la comunidad</h3>
-  <pre><code>/bin/bash -c "$(curl -fsSL https://get.hiveagilectl.sh/)"</code></pre>
+  <div class="topgit-cta">
+    <a href="https://get.hiveagilectl.sh/" class="cta-button primary" target="_blank">
+      <span class="icon empty"></span>
+      Unirme (Membresía de pago)
+    </a>
+  </div>
   <p>Accedé al panel, tutoriales y a una comunidad que está cambiando la forma de trabajar con software empresarial.</p>
 
   <h2>Enlaces</h2>
