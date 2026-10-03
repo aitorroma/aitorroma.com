@@ -4,6 +4,10 @@ title: NimBox SRE
 description: Plataforma SRE multi-tenant con observabilidad, análisis de causa raíz y agentes de IA para operaciones.
 ---
 
+<div class="project-header">
+  <img src="https://nimboxsre.com/assets/nimbox-sre-logo.webp" alt="NimBox SRE logo" class="project-logo">
+</div>
+
 # NimBox SRE
 
 **NimBox SRE** es una plataforma orientada a equipos de operaciones, SRE y proveedores de servicios gestionados que combina observabilidad, análisis de causa raíz y automatización asistida por agentes de IA.
