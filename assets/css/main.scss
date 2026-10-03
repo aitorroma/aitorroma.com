@@ -2009,3 +2009,114 @@ nav {
     .project-hero h1 { font-size: 2.35rem; }
   }
 }
+
+
+/* Mobile polish for project pages */
+@media (max-width: 800px) {
+  .project-page {
+    padding: 1.5rem 0 3rem;
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .project-hero {
+      margin: 0 auto 2.25rem;
+      padding: 1.5rem 1rem 1.75rem;
+      border-radius: 16px;
+
+      h1 {
+        font-size: 2rem;
+        line-height: 1.15;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+    }
+
+    .project-wordmark {
+      width: auto;
+      max-width: min(280px, 82vw);
+      max-height: 92px;
+      margin: 0 auto 1.25rem;
+    }
+
+    .project-hero-kicker {
+      max-width: 300px;
+      font-size: .68rem !important;
+      line-height: 1.45;
+      letter-spacing: .09em;
+    }
+
+    .project-hero-lead {
+      font-size: 1.2rem !important;
+      line-height: 1.4 !important;
+      margin-top: 1rem !important;
+    }
+
+    .project-actions.centered {
+      display: grid;
+      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 320px;
+      margin: 1.35rem auto 0;
+      gap: .65rem;
+
+      .primary-cta,
+      .secondary-cta {
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 48px;
+        padding: .8rem 1rem;
+        font-size: .95rem;
+        text-align: center;
+      }
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      line-height: 1.2;
+      margin-top: 2.25rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+    }
+
+    p,
+    li {
+      font-size: 1rem !important;
+      line-height: 1.65;
+    }
+
+    .feature-grid {
+      gap: .75rem;
+      margin: 1.5rem 0 2.25rem;
+    }
+
+    .feature-box {
+      padding: 1rem;
+    }
+
+    .project-cta-panel {
+      padding: 1.1rem;
+      gap: 1rem;
+
+      .primary-cta {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+      }
+    }
+  }
+
+  /* The floating donation bubble obscures project copy on phones */
+  .floating-chat-kofi-popup-iframe,
+  .floating-chat-kofi-popup-iframe-mobi,
+  .floating-chat-kofi-popup-iframe-closer,
+  #kofi-widget-overlay {
+    display: none !important;
+  }
+}
