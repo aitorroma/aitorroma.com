@@ -25,7 +25,7 @@
       gap: 8px;
       z-index: 20;
     }
-    .toolbar button {
+    .toolbar button, .toolbar a {
       border: 0;
       background: #111827;
       color: #fff;
@@ -33,6 +33,10 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: 650;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
     }
     .card {
       background: #fff;
@@ -135,6 +139,7 @@
 </head>
 <body>
   <div class="toolbar">
+    <a href="/#about">← Volver a aitorOS</a>
     <button onclick="toggleLanguage()" id="langButton">English</button>
     <button onclick="window.print()">PDF / Print</button>
   </div>
@@ -617,7 +622,7 @@
         <a href="https://github.com/aitorroma">github.com/aitorroma</a>
         <a href="https://linkedin.com/in/tuxed">linkedin.com/in/tuxed</a>
       </div>
-      <a class="back" href="/">← aitorroma.com</a>
+      <a class="back" href="/#about">← Volver a aitorOS</a>
     </section>
   </main>
 
