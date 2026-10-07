@@ -2,6 +2,8 @@
 layout: project
 title: G33K TEAM - Tecnología desde las trincheras
 description: Un grupo de profesionales compartiendo experiencias y conocimientos técnicos en formato videopodcast
+image: /assets/images/projects/g33k-team-logo.jpg
+permalink: /projects/g33k-team/
 ---
 
 <div class="project-header">

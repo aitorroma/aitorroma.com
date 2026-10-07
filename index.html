@@ -1,235 +1,751 @@
 ---
-layout: default
+layout: null
 title: Aitor Roma
-description: Forward Deployed Engineer, Cloud & SRE Architect. Construyo productos, infraestructura, automatización, agentes de IA y proyectos creativos.
+description: Forward Deployed Engineer, Cloud & SRE Architect. Infraestructura, automatización, observabilidad e IA aplicada.
 ---
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aitor Roma · aitorOS</title>
+<meta name="description" content="Aitor Roma: Forward Deployed Engineer, Cloud & SRE Architect. Infraestructura, automatización, observabilidad, IA aplicada y proyectos open source.">
+<meta property="og:title" content="Aitor Roma · aitorOS">
+<meta property="og:description" content="Infraestructura, automatización, observabilidad, IA aplicada y proyectos open source.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ site.url }}/">
+<meta property="og:image" content="{{ site.url }}/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{ site.url }}/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect x='1' y='1' width='28' height='28' rx='5' fill='%23b4440e'/%3E%3Cpath d='M8 21 L15 8 L22 21 M11 16.5 H19' stroke='white' stroke-width='2.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a live-boot of a Linux distro. Boot log -> desktop (wallpaper + icon column + top panel) -> each icon opens a window with one section of the portfolio. Phones get full-screen windows. */
+:root{
+  --bg:#eef0f3; --surface:#ffffff; --surface-2:#f5f6f8; --ink:#141a22; --muted:#566170; --line:#d4d9e0;
+  --accent:#087f6b; --accent-ink:#ffffff; --accent-soft:#d7f1eb; --ok:#247a55;
+  --wall:#10151c; --wall-2:#18202a; --wall-ink:#e6eaf0; --wall-dim:#8b96a5; --wall-acc:#24d29b;
+  --term-bg:#0d1117; --term-fg:#d7dde5; --term-dim:#7f8a98; --term-ok:#6fd39b; --term-bad:#ff6b6b; --term-acc:#24d29b;
+  --f-display:"Chakra Petch","IBM Plex Mono",ui-monospace,monospace;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --panel-h:38px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0f1318; --surface:#161c23; --surface-2:#1b222b; --ink:#e6eaf0; --muted:#97a3b1; --line:#2a333e;
+  --accent:#4ad7b3; --accent-ink:#04140f; --accent-soft:#19382f; --ok:#67d79a; color-scheme:dark; } }
+:root[data-theme="dark"]{
+  --bg:#0f1318; --surface:#161c23; --surface-2:#1b222b; --ink:#e6eaf0; --muted:#97a3b1; --line:#2a333e;
+  --accent:#4ad7b3; --accent-ink:#04140f; --accent-soft:#19382f; --ok:#67d79a; color-scheme:dark; }
 
-<div class="portfolio-home">
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--wall);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6;overflow:hidden}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--wall-acc);outline-offset:2px}
 
-  <section class="hero-section portfolio-hero">
-    <div class="container">
-      <div class="profile-card">
-        <div class="profile-header">
-          <img src="/assets/images/profile.jpg" alt="Aitor Roma" class="profile-image">
-          <p class="eyebrow">ENGINEERING · PRODUCT · OPEN SOURCE · CREATIVE TECH</p>
-          <h1>Aitor Roma</h1>
-          <p class="tagline">Forward Deployed Engineer · Cloud & SRE Architect · Builder</p>
-          <p class="description">
-            Entro en problemas reales, entiendo el contexto y construyo la solución hasta producción.
-            Trabajo entre infraestructura, software, observabilidad, automatización e IA; y también creo
-            productos, contenido y proyectos donde la tecnología se cruza con música, cultura y comunidad.
-          </p>
-        </div>
+/* ---------- boot ---------- */
+#boot{position:fixed;inset:0;z-index:100;background:#000;color:#c9d1d9;font-family:var(--f-mono);font-size:clamp(11px,1.6vw,14px);line-height:1.5;padding:max(18px,env(safe-area-inset-top)) 20px 20px;overflow:hidden;cursor:pointer}
+#boot .bootlog{white-space:pre-wrap;overflow-wrap:anywhere}
+#boot .ok{color:#3fb950} #boot .bad{color:#f85149} #boot .dim{color:#6e7681} #boot .hl{color:#f0883e}
+#boot .skip{position:absolute;right:16px;bottom:max(14px,env(safe-area-inset-bottom));color:#6e7681;font-size:12px}
+.grub{max-width:720px;margin:6vh auto 0;border:1px solid #8b949e;padding:14px 0 12px}
+.grub h2{font:inherit;text-align:center;margin:0 0 12px;color:#e6edf3}
+.grub ul{list-style:none;margin:0;padding:0}
+.grub li{padding:1px 18px}
+.grub li.sel{background:#c9d1d9;color:#000}
+.grub p{margin:14px 18px 0;color:#8b949e}
+.fadeout{transition:opacity .5s ease;opacity:0}
 
-        <div class="hero-actions">
-          <a href="/curriculum.html" class="primary-cta">Ver currículum</a>
-          <a href="#proyectos" class="secondary-cta">Explorar proyectos</a>
-        </div>
+/* ---------- desktop ---------- */
+#desktop{position:fixed;inset:0;background:
+  radial-gradient(1200px 700px at 85% 110%, rgba(240,120,58,.18), transparent 60%),
+  linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px) 0 0/44px 44px,
+  linear-gradient(160deg,var(--wall-2),var(--wall));
+  color:var(--wall-ink)}
+.panel{position:absolute;left:0;right:0;top:0;height:calc(var(--panel-h) + env(safe-area-inset-top,0px));padding-top:env(safe-area-inset-top,0px);background:rgba(8,11,15,.82);backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;padding-inline:10px;z-index:50;font-family:var(--f-mono);font-size:13px;border-bottom:1px solid rgba(255,255,255,.06)}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-weight:700;font-size:15px;background:none;border:0;cursor:pointer;padding:4px 6px;border-radius:4px;color:var(--wall-ink)}
+.brand:hover{background:rgba(255,255,255,.07)}
+.tasks{flex:1;display:flex;gap:4px;overflow-x:auto;min-width:0;scrollbar-width:none}
+.task{background:rgba(255,255,255,.05);border:1px solid transparent;border-radius:4px;padding:3px 10px;white-space:nowrap;cursor:pointer;color:var(--wall-dim);font-family:var(--f-mono);font-size:12.5px}
+.task.active{color:var(--wall-ink);border-color:rgba(240,120,58,.6);background:rgba(240,120,58,.14)}
+.clock{color:var(--wall-ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.icons{position:absolute;top:calc(var(--panel-h) + env(safe-area-inset-top,0px) + 18px);left:14px;bottom:14px;display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,104px);grid-auto-columns:96px;gap:6px 8px;align-content:start;z-index:1}
+.icon{display:flex;flex-direction:column;align-items:center;gap:6px;padding:8px 4px;border-radius:6px;background:none;border:1px solid transparent;cursor:pointer;color:var(--wall-ink);text-align:center}
+.icon:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.08)}
+.icon svg{width:48px;height:48px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4))}
+.icon span{font-family:var(--f-mono);font-size:12px;line-height:1.3;text-shadow:0 1px 3px rgba(0,0,0,.8)}
+.wallmark{position:absolute;right:28px;bottom:22px;text-align:right;pointer-events:none;color:var(--wall-dim);font-family:var(--f-mono);font-size:12px}
+.wallmark b{display:block;font-family:var(--f-display);font-size:clamp(40px,7vw,92px);line-height:1;color:rgba(230,234,240,.08);letter-spacing:-.02em}
 
-        <div class="social-grid">
-          <a href="https://github.com/aitorroma" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/icons/github.svg" alt="GitHub"><span>GitHub</span>
-          </a>
-          <a href="https://linkedin.com/in/tuxed" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/icons/linkedin.svg" alt="LinkedIn"><span>LinkedIn</span>
-          </a>
-          <a href="https://twitter.com/tuxed" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/icons/x.svg" alt="X"><span>X</span>
-          </a>
-          <a href="https://t.me/tuxed" class="social-link" target="_blank" rel="noopener">
-            <img src="/assets/images/icons/telegram.svg" alt="Telegram"><span>Telegram</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
+/* ---------- windows ---------- */
+.win{position:absolute;display:flex;flex-direction:column;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;box-shadow:0 24px 60px -20px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.25);overflow:hidden;min-width:280px;min-height:180px;animation:pop .16s ease-out}
+@keyframes pop{from{transform:scale(.97);opacity:.4}}
+.win[data-min="1"]{display:none}
+.win.max{left:0!important;top:calc(var(--panel-h) + env(safe-area-inset-top,0px))!important;width:100%!important;height:calc(100% - var(--panel-h) - env(safe-area-inset-top,0px))!important;border-radius:0}
+.titlebar{display:flex;align-items:center;gap:8px;height:36px;padding:0 6px 0 12px;background:var(--surface-2);border-bottom:1px solid var(--line);font-family:var(--f-mono);font-size:12.5px;color:var(--muted);cursor:grab;user-select:none;touch-action:none;flex:none}
+.win.focused .titlebar{color:var(--ink)}
+.titlebar .t{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wbtn{width:28px;height:24px;border:0;border-radius:4px;background:none;cursor:pointer;color:var(--muted);display:grid;place-items:center;font-family:var(--f-mono);font-size:14px;line-height:1}
+.wbtn:hover{background:var(--line);color:var(--ink)}
+.wbtn.close:hover{background:#d1453b;color:#fff}
+.wbody{flex:1;overflow:auto;padding:22px 24px 28px;min-height:0}
+.resize{position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;touch-action:none}
 
-  <section class="work-section">
-    <div class="container">
-      <p class="eyebrow center">CÓMO TRABAJO</p>
-      <h2 class="section-title">De la incidencia a un producto que funciona</h2>
-      <p class="section-description wide">
-        No separo arquitectura de ejecución: diseño, desarrollo, despliegue, observabilidad y operación forman parte del mismo problema.
-      </p>
+/* ---------- content inside windows ---------- */
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;text-wrap:balance;margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.wbody p{max-width:68ch}
+.hero-h{font-size:clamp(30px,4vw,44px);margin:6px 0 4px}
+.hero-h span{color:var(--accent)}
+.lede{font-size:17px;color:var(--muted);margin:12px 0 18px}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.profile-hero{text-align:center;max-width:700px;margin-inline:auto}
+.profile-avatar{width:112px;height:112px;object-fit:cover;border-radius:50%;display:block;margin:0 auto 16px;border:3px solid var(--surface);box-shadow:0 0 0 1px var(--line),0 10px 24px rgba(0,0,0,.18)}
+.profile-hero .eyebrow{color:var(--accent);font-weight:600}
+.profile-name{font-family:var(--f-display);font-size:clamp(34px,5vw,48px);margin:10px 0 2px}
+.profile-role{font-family:var(--f-display);font-size:clamp(22px,3.2vw,34px);line-height:1.18;color:var(--accent);margin:4px auto 16px;max-width:22ch}
+.profile-hero .lede{margin-inline:auto;max-width:64ch}
+.profile-hero .row{justify-content:center}
+.profile-socials{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:22px}
+.profile-socials a{display:inline-flex;align-items:center;gap:7px;color:var(--ink);text-decoration:none;font-family:var(--f-mono);font-size:13px}
+.profile-socials a:hover{color:var(--accent)}
+.profile-socials img{width:20px;height:20px;object-fit:contain}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .profile-socials img.mono{filter:invert(1)}}
+:root[data-theme="dark"] .profile-socials img.mono{filter:invert(1)}
+.btn{font-family:var(--f-mono);font-size:13px;font-weight:500;text-decoration:none;padding:9px 14px;border-radius:4px;border:1px solid var(--accent);display:inline-flex;align-items:center;gap:8px;cursor:pointer;background:none;color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.spec{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;border-top:1px solid var(--line);margin-top:22px;padding-top:16px}
+.spec dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.spec dd{white-space:nowrap;margin:2px 0 0;font-family:var(--f-display);font-size:18px}
+.spec{margin-bottom:0}
 
-      <div class="capability-grid">
-        <article class="capability-card">
-          <span class="capability-number">01</span>
-          <h3>Forward Deployed Engineering</h3>
-          <p>Trabajo junto al cliente y sus equipos técnicos, aterrizando necesidades ambiguas en arquitectura, código, configuración y producción.</p>
-        </article>
-        <article class="capability-card">
-          <span class="capability-number">02</span>
-          <h3>Cloud, Linux & SRE</h3>
-          <p>Linux, cloud, contenedores, despliegues, seguridad, fiabilidad, troubleshooting e incident response en sistemas reales.</p>
-        </article>
-        <article class="capability-card">
-          <span class="capability-number">03</span>
-          <h3>AI Infrastructure & Agents</h3>
-          <p>Agentes con herramientas, contexto, permisos, workflows, guardrails y aprobación humana; IA conectada a operaciones reales.</p>
-        </article>
-        <article class="capability-card">
-          <span class="capability-number">04</span>
-          <h3>Observability & RCA</h3>
-          <p>Métricas, logs, trazas, profiling, eBPF y OpenTelemetry para pasar de “hay una alerta” a entender qué ocurre y por qué.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+.files{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.files li{border-bottom:1px solid var(--line)}
+.file{display:grid;grid-template-columns:28px 1fr auto;gap:2px 12px;align-items:start;width:100%;text-align:left;background:none;border:0;padding:14px 4px;cursor:pointer}
+.file:hover h3{color:var(--accent)}
+.file svg{margin-top:2px}
+.file h3{font-family:var(--f-body);font-weight:600;font-size:16px}
+.file p{grid-column:2/4;margin:2px 0 0;color:var(--muted);font-size:14px}
+.file time{font-family:var(--f-mono);font-size:12px;color:var(--muted);white-space:nowrap}
+.pathbar{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin:-6px 0 14px}
 
-  <section class="featured-project-section" id="proyectos">
-    <div class="container">
-      <p class="eyebrow">PRODUCTO DESTACADO</p>
-      <div class="featured-project">
-        <div class="featured-project-brand">
-          <img src="https://nimboxsre.com/assets/nimbox-sre-logo.webp" alt="NimBox SRE">
-        </div>
-        <div class="featured-project-copy">
-          <h2>NimBox SRE</h2>
-          <p class="lead">La capa de operación SRE para MSPs y software houses.</p>
-          <p>
-            Convierte alertas en incidencias accionables: agente con autodescubrimiento, operación de hosts tras NAT,
-            PAM, runbooks aprobados, eBPF, trazabilidad y evidencia para SLA. El objetivo es que el mismo equipo pueda
-            resolver más, con menos dependencia del sénior y sin montar un NOC 24×7.
-          </p>
-          <div class="project-actions">
-            <a href="/projects/nimbox-sre" class="primary-cta">Ver el proyecto</a>
-            <a href="https://nimboxsre.com" class="secondary-cta" target="_blank" rel="noopener">Ir a nimboxsre.com ↗</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.proj{border:1px solid var(--line);border-radius:6px;padding:16px;background:var(--surface-2);display:flex;flex-direction:column;gap:8px;min-width:0}
+.proj-top{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.proj h3{font-size:19px}
+.proj p{margin:0;color:var(--muted);font-size:14px}
+.state{font-family:var(--f-mono);font-size:11px;padding:1px 7px;border-radius:3px;border:1px solid currentColor}
+.state.live{color:var(--ok)} .state.eol{color:var(--muted)} .state.beta{color:var(--accent)}
+.meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:auto!important}
 
-  <section class="projects-section creative-projects">
-    <div class="container">
-      <p class="eyebrow center">MÁS QUE INFRAESTRUCTURA</p>
-      <h2 class="section-title">Proyectos que también cuentan quién soy</h2>
-      <p class="section-description wide">
-        Construyo herramientas y plataformas, pero también publico, experimento y convierto ideas culturales y musicales en productos digitales.
-      </p>
+.pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.pkg{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--surface-2);min-width:0}
+.pkg h3{font-family:var(--f-mono);font-size:13px;font-weight:500;color:var(--accent);margin-bottom:8px}
+.pkg ul{list-style:none;margin:0;padding:0;font-family:var(--f-mono);font-size:13px}
+.pkg li{display:flex;justify-content:space-between;gap:10px;padding-block:3px;border-bottom:1px dashed var(--line)}
+.pkg li:last-child{border-bottom:0}
+.pkg li span:last-child{color:var(--muted);text-align:right}
+.cmd{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin:-6px 0 14px}
 
-      <div class="portfolio-grid">
-        <a href="/projects/tengo-un-pueblo" class="portfolio-card">
-          <div class="portfolio-card-top">
-            <span class="project-kicker">MÚSICA · MEMORIA LOCAL</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>TengoUnPueblo.com</h3>
-          <p>Un proyecto musical que convierte pueblos, memoria local, historias y sentimiento de pertenencia en canciones y piezas digitales.</p>
-          <span class="project-domain">tengounpueblo.com</span>
-        </a>
+.log{border-left:2px solid var(--line);margin-left:6px;display:grid;gap:22px;padding-left:24px}
+.entry{position:relative}
+.entry::before{content:"";position:absolute;left:-31px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.entry .ver{font-family:var(--f-mono);font-size:12.5px;color:var(--accent)}
+.entry h3{font-size:18px;margin:2px 0 4px}
+.entry p,.entry ul{margin:0;color:var(--muted);max-width:65ch;font-size:14.5px}
+.entry ul{padding-left:18px}
 
-        <a href="/projects/arima-x" class="portfolio-card dark-card">
-          <div class="portfolio-card-top">
-            <span class="project-kicker">MÚSICA · CONCEPTO</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>ARIMA X</h3>
-          <p>Proyecto musical nacido de la fricción entre emoción humana y sistemas que intentan simularla. Música como lenguaje para hablar de un mundo cada vez más mecánico.</p>
-          <span class="project-domain">arimaxmusic.com</span>
-        </a>
+.mirrors{display:grid;gap:0;border-top:1px solid var(--line)}
+.mirror{display:grid;grid-template-columns:120px 1fr auto;gap:4px 12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.mirror span{font-family:var(--f-mono);font-size:11.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.mirror a{font-family:var(--f-mono);font-size:14px;overflow-wrap:anywhere}
+.copy{font-size:12px;padding:4px 10px}
 
-        <a href="/projects/nocodeopensource" class="portfolio-card">
-          <div class="portfolio-card-top">
-            <span class="project-kicker">OPEN SOURCE · EDITORIAL</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>NoCodeOpenSource</h3>
-          <p>Newsletter, comunidad y laboratorio editorial sobre open source, automatización, agentes, infraestructura e IA aplicada con ejemplos reales.</p>
-          <span class="project-domain">nocodeopensource.io</span>
-        </a>
+article h1{font-size:clamp(26px,3.6vw,36px);margin:8px 0 6px}
+article .by{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);margin-bottom:18px}
+article h2{font-size:21px;margin:26px 0 8px}
+article p,article li{font-size:16px}
+article ul{max-width:66ch}
+article pre{background:var(--term-bg);color:var(--term-fg);padding:14px 16px;border-radius:5px;overflow-x:auto;font-size:12.5px;line-height:1.55}
+article p code,article li code{background:var(--accent-soft);padding:1px 5px;border-radius:3px;font-size:.9em}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin:18px 0}
+.fig{border-top:2px solid var(--accent);padding-top:6px}
+.fig b{display:block;font-family:var(--f-display);font-size:28px;font-variant-numeric:tabular-nums}
+.fig span{font-size:13px;color:var(--muted)}
+.tbl{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:7px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:500}
 
-        <a href="/projects/g33k-team" class="portfolio-card">
-          <div class="portfolio-card-top">
-            <span class="project-kicker">PODCAST · COMUNIDAD</span>
-            <span class="project-arrow">↗</span>
-          </div>
-          <h3>G33K TEAM</h3>
-          <p>Tecnología desde las trincheras: experiencias, herramientas, infraestructura, automatización, IA y conversaciones sin postureo.</p>
-          <span class="project-domain">Videopodcast</span>
-        </a>
-      </div>
-    </div>
-  </section>
+/* terminal app */
+.win.term .wbody{background:var(--term-bg);color:var(--term-fg);font-family:var(--f-mono);font-size:13px;line-height:1.55;padding:12px 14px}
+.term-out{white-space:pre-wrap;overflow-wrap:anywhere;margin:0}
+.term-out .p{color:var(--term-acc)} .term-out .ok{color:var(--term-ok)} .term-out .bad{color:var(--term-bad)} .term-out .d{color:var(--term-dim)}
+.term-out a{color:var(--term-acc)}
+.term-line{display:flex;gap:8px}
+.term-line .p{color:var(--term-acc)}
+.term-line input{flex:1;min-width:0;background:none;border:0;outline:0;color:var(--term-fg);font:inherit;caret-color:var(--term-acc)}
 
-  <section class="projects-section builder-projects">
-    <div class="container">
-      <p class="eyebrow center">BUILDING IN PUBLIC</p>
-      <h2 class="section-title">Open source, automatización y experimentos</h2>
-      <p class="section-description wide">Proyectos que nacen de resolver mis propios problemas y terminan convertidos en herramientas compartibles.</p>
+#src{display:none}
+.guide{font-size:14px;color:var(--muted);background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:16px 0 0}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer;font:inherit}
+.simplebtn{background:var(--wall-acc);color:#1a0c04;border:0;border-radius:4px;padding:4px 10px;font-family:var(--f-mono);font-size:12.5px;font-weight:500;cursor:pointer;white-space:nowrap}
+#boot .skip{background:#21262d;border:1px solid #484f58;color:#e6edf3;border-radius:4px;padding:8px 14px;font:inherit;font-size:13px;cursor:pointer}
+body.simple{overflow:auto;background:var(--bg)}
+body.simple #desktop,body.simple #boot{display:none}
+body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px;padding-block:0 64px;color:var(--ink)}
+#src > section{padding-block:28px;border-bottom:1px solid var(--line)}
+.simple-top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;justify-content:space-between;padding-block:12px;margin-inline:-20px;padding-inline:20px}
+.simple-top nav{display:flex;flex-wrap:wrap;gap:4px 14px;font-family:var(--f-mono);font-size:13px}
+.simple-top nav a{color:var(--muted);text-decoration:none}
+.simple-top nav a:hover{color:var(--accent)}
+.simple-h{font-size:28px;margin-bottom:14px}
+.simple-top .btn{padding:6px 12px;font-size:12.5px}
+.wbody > .simple-h,body.simple .guide,body.simple .pathbar,body.simple .cmd{display:none}
 
-      <div class="portfolio-grid compact">
-        <a href="/projects/topgit" class="portfolio-card">
-          <span class="project-kicker">IA · CURACIÓN OPEN SOURCE</span>
-          <h3>TOPGit</h3>
-          <p>Curación y publicación automatizada de repositorios open source con IA.</p>
-        </a>
-        <a href="/projects/workflows" class="portfolio-card">
-          <span class="project-kicker">N8N · AUTOMATIZACIÓN</span>
-          <h3>Workflows N8N</h3>
-          <p>Flujos reutilizables para integrar herramientas, datos y procesos.</p>
-        </a>
-        <a href="/projects/hiveagilectl" class="portfolio-card">
-          <span class="project-kicker">CLI · SELF-HOSTED</span>
-          <h3>HiveAgileCTL</h3>
-          <p>CLI para instalar, gestionar y actualizar servicios del ecosistema HiveAgile.</p>
-        </a>
-      </div>
-    </div>
-  </section>
+/* phones: icon grid fills the screen, windows are full-screen */
+@media (max-width:720px){
+  .icons{left:0;right:0;padding-inline:12px;grid-auto-flow:row;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));grid-template-rows:none;grid-auto-rows:104px;grid-auto-columns:auto}
+  .win{left:0!important;top:calc(var(--panel-h) + env(safe-area-inset-top,0px))!important;width:100%!important;height:calc(100% - var(--panel-h) - env(safe-area-inset-top,0px))!important;border-radius:0;border:0}
+  .titlebar{cursor:default}
+  .wbtn.max,.resize{display:none}
+  .wbody{padding:18px 16px 28px}
+  .clock .date{display:none}
+  .mirror{grid-template-columns:1fr}
+  .wallmark{left:16px;right:16px}
+}
+@media (prefers-reduced-motion:reduce){.win{animation:none}.fadeout{transition:none}}
 
-  <section class="editorial-section">
-    <div class="container">
-      <div class="editorial-panel">
-        <div>
-          <p class="eyebrow">ESCRIBO SOBRE LO QUE CONSTRUYO</p>
-          <h2>NoCodeOpenSource</h2>
-          <p>
-            Casos reales sobre agentes, Linux, automatización, infraestructura, navegadores, seguridad y modelos.
-            Menos “tendencias de IA”, más decisiones técnicas, errores, arquitectura y cosas que puedes reproducir.
-          </p>
-        </div>
-        <a href="https://nocodeopensource.io/" class="primary-cta" target="_blank" rel="noopener">Leer el blog ↗</a>
-      </div>
-    </div>
-  </section>
+/* aitorOS — refined application surfaces */
+.win{border-radius:14px;box-shadow:0 28px 80px -24px #0009,0 0 0 1px #ffffff12}
+.titlebar{height:42px;background:var(--surface);padding-inline:16px}
+.wbody{padding:28px;background:linear-gradient(145deg,var(--surface),var(--surface-2));scrollbar-width:thin;scrollbar-color:var(--line) transparent}
+.task.active{border-color:#24d29b66;background:#24d29b14}
+#desktop{background:radial-gradient(ellipse at 85% 100%,#24d29b14,transparent 60%),linear-gradient(#ffffff03 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,#ffffff03 1px,transparent 1px) 0 0/44px 44px,linear-gradient(160deg,var(--wall-2),var(--wall))}
+.section-heading{margin-bottom:24px}
+.section-heading h2{font-size:30px;letter-spacing:-.025em;margin:6px 0 8px}
+.section-heading p{color:var(--muted);margin:0;font-size:14px}
+.projects{gap:18px}
+.proj{position:relative;border-radius:12px;background:var(--surface);padding:22px;gap:12px;box-shadow:0 4px 18px #00000004;transition:transform .2s,box-shadow .2s,border-color .2s}
+.proj:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 28px #0000000d}
+.proj-top{align-items:center;gap:8px}
+.proj h3{font-family:var(--f-body);font-size:19px;line-height:1.3;letter-spacing:-.02em}
+.proj p{line-height:1.65}
+.proj .meta{padding-top:16px;border-top:1px solid var(--line)}
+.meta a{text-decoration:none;font-weight:500;display:inline-flex;align-items:center;gap:8px}
+.state{border:0;background:var(--accent-soft);padding:4px 9px;border-radius:6px;font-size:10px;white-space:nowrap}
+.project-art{height:112px;margin:-22px -22px 8px;border-radius:11px 11px 0 0;background:linear-gradient(125deg,#102a2b,#1d4944);display:flex;align-items:center;justify-content:space-between;padding:24px;overflow:hidden;color:#a6ead7}
+.project-art .symbol{font-family:var(--f-display);font-size:44px;font-weight:700;letter-spacing:-.06em}
+.project-art .art-label{font-family:var(--f-mono);font-size:10px;text-transform:uppercase;letter-spacing:.14em;max-width:110px;text-align:right}
+.proj:nth-child(3n+2) .project-art{background:linear-gradient(125deg,#1b263e,#3b5277);color:#bfd5ff}
+.proj:nth-child(3n) .project-art{background:linear-gradient(125deg,#382921,#72543c);color:#f5d3aa}
+.files{border:0;display:grid;gap:12px}
+.files li{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow:hidden}
+.file{text-decoration:none;color:var(--ink);padding:20px;gap:8px 14px;transition:background .2s}
+.file:hover{background:var(--accent-soft)}
+.file time{font-size:10px}
+.pkg{background:var(--surface);border-radius:12px;padding:22px;border-top:3px solid var(--accent)}
+.pkg h3{margin-bottom:18px}
+.pkg li{padding-block:8px}
+.entry{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.entry::before{left:-31px;top:23px}
+.entry h3{margin-block:8px}
+.mirrors{border:0;gap:10px}
+.mirror{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:16px}
+.btn{border-radius:8px;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px #00000012}
+@media(max-width:720px){.wbody{padding:20px 16px}.win{border-radius:0}.file{grid-template-columns:24px 1fr}.file time{grid-column:2}.file p{grid-column:2}.section-heading h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.proj,.btn{transition:none}.proj:hover,.btn:hover{transform:none}}
 
-  <section class="communities-section">
-    <div class="container">
-      <p class="eyebrow center">COMUNIDAD</p>
-      <h2 class="section-title">Compartir también forma parte del trabajo</h2>
-      <p class="section-description wide">Comunidades técnicas donde comparto herramientas, experiencias y soluciones con otros profesionales.</p>
 
-      <div class="communities-grid">
-        <a href="https://t.me/cloudadmins" class="community-card" target="_blank" rel="noopener">
-          <div class="community-icon"><img src="/assets/images/communities/cloudadmins.jpg" alt="CloudAdmins"></div>
-          <h3>CloudAdmins</h3><p>Linux, cloud, servidores, DevOps y operaciones.</p><span class="join-button">Entrar</span>
-        </a>
-        <a href="https://t.me/comunidadn8n" class="community-card" target="_blank" rel="noopener">
-          <div class="community-icon"><img src="/assets/images/communities/comunidadn8n.jpg" alt="ComunidadN8N"></div>
-          <h3>ComunidadN8N</h3><p>Automatización e integración de aplicaciones con n8n.</p><span class="join-button">Entrar</span>
-        </a>
-        <a href="https://t.me/NoCodeOpen" class="community-card" target="_blank" rel="noopener">
-          <div class="community-icon"><img src="/assets/images/communities/nocodeopen.jpg" alt="NoCodeOpen"></div>
-          <h3>NoCodeOpen</h3><p>Open source, automatización, agentes y herramientas prácticas.</p><span class="join-button">Entrar</span>
-        </a>
-        <a href="https://t.me/OSINTXLabs" class="community-card" target="_blank" rel="noopener">
-          <div class="community-icon"><img src="/assets/images/communities/osintxlabs.jpg" alt="OSINT X Labs"></div>
-          <h3>OSINT X Labs</h3><p>Investigación y herramientas sobre fuentes abiertas.</p><span class="join-button">Entrar</span>
-        </a>
-      </div>
-    </div>
-  </section>
+.project-cover{display:block;height:168px;margin:-22px -22px 8px;background:#edf0f3;border-radius:11px 11px 0 0;overflow:hidden}
+.project-cover img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.project-cover:hover img{transform:scale(1.04)}
+.proj:has(img[src*="logo"]) .project-cover img{object-fit:contain;padding:18px}
+.file .post-thumb{width:72px;height:64px;object-fit:cover;border-radius:8px}
+.file:has(.post-thumb){grid-template-columns:72px 1fr auto}
+@media(max-width:720px){.file:has(.post-thumb){grid-template-columns:60px 1fr}.file .post-thumb{width:60px}}
 
-  {% include github-repos.html %}
+.career-role{color:var(--accent)!important;font-weight:500;margin-bottom:12px!important}.entry li+li{margin-top:6px}.pkg p{color:var(--muted);font-size:14px;line-height:1.75;margin:0}
+</style>
+<noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
+<script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
+</head>
+<body>
 
-  <section class="blog-section">
-    <div class="container">
-      <h2 class="section-title">Últimas publicaciones</h2>
-      <div class="blog-grid"><div class="loading"><p>Cargando publicaciones...</p></div></div>
-    </div>
-  </section>
+<div id="boot" hidden aria-hidden="true"><div class="bootlog" id="bootlog"></div><button class="skip" type="button">Saltar intro →</button></div>
 
-  <script src="/assets/js/telegram-feed.js"></script>
+<div id="desktop">
+  <header class="panel">
+    <button class="brand" type="button" data-open="about" aria-label="Abrir bienvenida">
+      <svg width="20" height="20" viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="5" fill="#24d29b"/><path d="M8 21 L15 8 L22 21 M11 16.5 H19" stroke="#04140f" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      aitorOS
+    </button>
+    <nav class="tasks" id="tasks" aria-label="Ventanas abiertas"></nav>
+    <button class="simplebtn" type="button" data-simple="on">Vista simple</button>
+    <span class="clock" id="clock"></span>
+  </header>
+
+  <nav class="icons" aria-label="Escritorio">
+    <button class="icon" type="button" data-open="about">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="4" width="32" height="40" rx="3" fill="#e6eaf0"/><path d="M14 14h20M14 20h20M14 26h14M14 32h18" stroke="#8b96a5" stroke-width="2.4" stroke-linecap="round"/><circle cx="35" cy="36" r="9" fill="#24d29b"/><path d="M35 32v1M35 35.5v5" stroke="#071712" stroke-width="2.4" stroke-linecap="round"/></svg>
+      <span>Sobre mí</span>
+    </button>
+    <button class="icon" type="button" data-open="blog">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 12a3 3 0 0 1 3-3h12l4 5h18a3 3 0 0 1 3 3v22a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" fill="#c2541a"/><path d="M4 18h40v20a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" fill="#f0783a"/><path d="M15 27h18M15 33h12" stroke="#1a0c04" stroke-width="2.4" stroke-linecap="round" opacity=".55"/></svg>
+      <span>Blog</span>
+    </button>
+    <button class="icon" type="button" data-open="proyectos">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 12a3 3 0 0 1 3-3h12l4 5h18a3 3 0 0 1 3 3v22a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" fill="#3b6ea8"/><path d="M4 18h40v20a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z" fill="#5b8fd0"/><path d="M19 25l-5 5 5 5M29 25l5 5-5 5" stroke="#0b1a2c" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".7"/></svg>
+      <span>Proyectos</span>
+    </button>
+    <button class="icon" type="button" data-open="repos">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l18 9v22l-18 9-18-9V13z" fill="#b9963f"/><path d="M6 13l18 9 18-9M24 22v22" stroke="#49370b" stroke-width="2.2" fill="none" stroke-linejoin="round"/><path d="M15 8.5l18 9" stroke="#49370b" stroke-width="2.2" opacity=".6"/></svg>
+      <span>Repositorios</span>
+    </button>
+    <button class="icon" type="button" data-open="stack">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="4" fill="#7549b5"/><path d="M13 16h22M13 24h22M13 32h22" stroke="#f0e9fa" stroke-width="2.8" stroke-linecap="round"/><circle cx="17" cy="16" r="2" fill="#24d29b"/></svg>
+      <span>Stack</span>
+    </button>
+    <button class="icon" type="button" data-open="comunidades">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="18" r="8" fill="#24d29b"/><circle cx="33" cy="20" r="6" fill="#8de8ca"/><path d="M5 41c1-10 7-15 14-15s13 5 14 15" fill="#168765"/><path d="M27 40c1-7 5-11 10-11 4 0 7 3 8 11" fill="#3cb58e"/></svg>
+      <span>Comunidades</span>
+    </button>
+    <button class="icon" type="button" data-open="experiencia">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="4" fill="#2f7d4f"/><circle cx="16" cy="15" r="3.5" fill="#e6eaf0"/><circle cx="16" cy="33" r="3.5" fill="#e6eaf0"/><circle cx="32" cy="24" r="3.5" fill="#e6eaf0"/><path d="M16 18.5v11M16 22c0 2 4 2 12 2" stroke="#e6eaf0" stroke-width="2.4" fill="none"/></svg>
+      <span>Experiencia</span>
+    </button>
+    <button class="icon" type="button" data-open="terminal">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="8" width="40" height="32" rx="4" fill="#0d1117" stroke="#3a4552" stroke-width="2"/><path d="M12 19l6 5-6 5" stroke="#24d29b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 30h12" stroke="#e6eaf0" stroke-width="3" stroke-linecap="round"/></svg>
+      <span>Terminal</span>
+    </button>
+    <button class="icon" type="button" data-open="contacto">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="10" width="40" height="28" rx="4" fill="#e6eaf0"/><path d="M6 13l18 14 18-14" stroke="#8b96a5" stroke-width="2.6" fill="none" stroke-linejoin="round"/><circle cx="38" cy="12" r="6" fill="#24d29b"/></svg>
+      <span>Contacto</span>
+    </button>
+  </nav>
+
+  <div class="wallmark" aria-hidden="true"><b>aitorOS</b>15.0 LTS · aitorroma.com</div>
+  <div id="windows"></div>
 </div>
+
+<!-- Window contents. Kept in the page so search engines and no-JS readers get everything. -->
+<div id="src">
+
+<section data-win="about" data-label="Sobre mí" data-title="Sobre mí" data-w="760" data-h="680">
+  <div class="profile-hero">
+    <img class="profile-avatar" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Aitor Roma">
+    <span class="eyebrow">Engineering · Product · Open Source · Creative Tech</span>
+    <h1 class="profile-name">Aitor Roma</h1>
+    <h2 class="profile-role">Forward Deployed Engineer · Cloud &amp; SRE Architect · AI Infrastructure</h2>
+    <p class="lede">Entro en problemas reales, entiendo el contexto y construyo la solución hasta producción. Trabajo entre infraestructura, software, observabilidad, automatización e IA; y también creo productos, contenido y proyectos donde la tecnología se cruza con música, cultura y comunidad.</p>
+    <div class="row">
+      <a class="btn primary" href="{{ '/curriculum.html' | relative_url }}">Ver currículum</a>
+      <button class="btn" type="button" data-open="proyectos">Explorar proyectos</button>
+    </div>
+    <div class="profile-socials" aria-label="Redes sociales">
+      <a href="https://github.com/aitorroma" target="_blank" rel="noopener"><img class="mono" src="{{ '/assets/images/icons/github.svg' | relative_url }}" alt="">GitHub</a>
+      <a href="https://linkedin.com/in/tuxed" target="_blank" rel="noopener"><img src="{{ '/assets/images/icons/linkedin.svg' | relative_url }}" alt="">LinkedIn</a>
+      <a href="https://twitter.com/tuxed" target="_blank" rel="noopener"><img class="mono" src="{{ '/assets/images/icons/x.svg' | relative_url }}" alt="">X</a>
+      <a href="https://t.me/tuxed" target="_blank" rel="noopener"><img src="{{ '/assets/images/icons/telegram.svg' | relative_url }}" alt="">Telegram</a>
+    </div>
+  </div>
+</section>
+
+<section data-win="blog" data-label="Blog" data-title="Blog" data-w="720" data-h="580">
+  <p class="pathbar">~/blog · {{ site.posts | size }} artículos generados desde <code>_posts/*.md</code></p>
+  <ul class="files">
+    {% for post in site.posts %}
+    <li><a class="file" href="{{ post.url | relative_url }}">
+      {% if post.image %}<img class="post-thumb" src="{{ post.image | relative_url }}" alt="" loading="lazy">{% else %}<svg width="24" height="28" viewBox="0 0 24 28" aria-hidden="true"><path d="M2 2h13l7 7v17H2z" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.6"/><path d="M15 2v7h7" fill="none" stroke="var(--accent)" stroke-width="1.6"/></svg>{% endif %}
+      <h3>{{ post.title }}</h3><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%d/%m/%Y" }}</time>
+      <p>{{ post.description | default: post.excerpt | strip_html | truncate: 155 }}</p>
+    </a></li>
+    {% endfor %}
+  </ul>
+  <p style="margin-top:18px"><a class="btn" href="{{ '/blog/' | relative_url }}">Ver archivo completo</a></p>
+</section>
+
+<section data-win="proyectos" data-label="Proyectos" data-title="Proyectos" data-w="800" data-h="610">
+  <div class="section-heading"><span class="eyebrow">Ideas → productos</span><h2>Lo que construyo.</h2><p>Infraestructura, herramientas abiertas y proyectos donde tecnología y creatividad se encuentran.</p></div>
+  {% assign project_pages = site.pages | where_exp: "item", "item.path contains 'projects/'" | sort: "title" %}
+  <div class="projects">
+    {% for project in project_pages %}
+    <div class="proj">
+      <a class="project-cover" href="{{ project.url | relative_url }}"><img src="{{ project.image | relative_url }}" alt="{{ project.title | escape }}" loading="lazy"></a>
+      <div class="proj-top"><h3>{{ project.title }}</h3><span class="state live">publicado</span></div>
+      <p>{{ project.description | default: project.excerpt | strip_html | truncate: 230 }}</p>
+      <p class="meta"><a href="{{ project.url | relative_url }}">Abrir ficha →</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section data-win="repos" data-label="Repositorios" data-title="Repositorios" data-w="780" data-h="590">
+  <div class="section-heading"><span class="eyebrow">Building in public</span><h2>Código que comparto.</h2><p>Herramientas nacidas de problemas reales. Disponibles en GitHub.</p></div>
+  <div class="projects">
+    {% for repo in site.data.repositories %}
+    <div class="proj">
+      <div class="proj-top"><h3>{{ repo.name }}</h3><span class="state beta">{{ repo.stack }}</span></div>
+      <p>{{ repo.description }}</p>
+      <p class="meta"><a href="{{ repo.url }}" target="_blank" rel="noopener">Ver en GitHub ↗</a></p>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section data-win="stack" data-label="Stack" data-title="Stack &amp; capacidades" data-w="780" data-h="600">
+  <div class="section-heading"><span class="eyebrow">Tecnologías y competencias</span><h2>Herramientas para operar.</h2><p>Arquitectura, integración, fiabilidad y automatización con límites claros.</p></div>
+  <div class="pkgs">
+    {% for skill in site.data.curriculum.skills %}
+    <div class="pkg"><h3>{{ skill.title | escape }}</h3><p>{{ skill.description | escape }}</p></div>
+    {% endfor %}
+  </div>
+</section>
+
+<section data-win="comunidades" data-label="Comunidades" data-title="Comunidades" data-w="720" data-h="540">
+  <p class="pathbar">~/communities · compartir también forma parte del trabajo</p>
+  <div class="projects">
+    <div class="proj"><div class="proj-top"><h3>CloudAdmins</h3><span class="state live">Telegram</span></div><p>Linux, cloud, servidores, DevOps y operaciones.</p><p class="meta"><a href="https://t.me/cloudadmins" target="_blank" rel="noopener">Entrar ↗</a></p></div>
+    <div class="proj"><div class="proj-top"><h3>ComunidadN8N</h3><span class="state live">Telegram</span></div><p>Automatización e integración de aplicaciones con n8n.</p><p class="meta"><a href="https://t.me/comunidadn8n" target="_blank" rel="noopener">Entrar ↗</a></p></div>
+    <div class="proj"><div class="proj-top"><h3>NoCodeOpen</h3><span class="state live">Telegram</span></div><p>Open source, automatización, agentes y herramientas prácticas.</p><p class="meta"><a href="https://t.me/NoCodeOpen" target="_blank" rel="noopener">Entrar ↗</a></p></div>
+    <div class="proj"><div class="proj-top"><h3>OSINT X Labs</h3><span class="state live">Telegram</span></div><p>Investigación y herramientas sobre fuentes abiertas.</p><p class="meta"><a href="https://t.me/OSINTXLabs" target="_blank" rel="noopener">Entrar ↗</a></p></div>
+  </div>
+</section>
+
+<section data-win="experiencia" data-label="Experiencia" data-title="Experiencia" data-w="760" data-h="650">
+  <div class="section-heading"><span class="eyebrow">Infraestructura · Software · Operaciones</span><h2>De sistemas a producto.</h2><p>Más de 15 años trabajando con Linux y sistemas en producción.</p></div>
+  <div class="log">
+    {% for job in site.data.curriculum.experience %}
+    <div class="entry">
+      <span class="ver">{{ job.date | escape }}</span>
+      <h3>{{ job.company | escape }}</h3>
+      <p class="career-role">{{ job.role | escape }}</p>
+      {% if job.details.size > 0 %}<ul>{% for detail in job.details %}<li>{{ detail | escape }}</li>{% endfor %}</ul>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <p style="margin-top:24px"><a class="btn" href="{{ '/curriculum.html' | relative_url }}">Currículum completo · Idiomas y formación →</a></p>
+</section>
+
+<section data-win="contacto" data-label="Contacto" data-title="Contacto" data-w="590" data-h="480">
+  <p class="cmd">$ cat ~/.config/contacto</p>
+  <div class="mirrors">
+    <div class="mirror"><span>Correo</span><a class="mail" href="mailto:aitor@nimbox360.com">aitor@nimbox360.com</a><button class="btn copy" type="button" data-copy="aitor@nimbox360.com">Copiar</button></div>
+    <div class="mirror"><span>GitHub</span><a href="https://github.com/aitorroma" target="_blank" rel="noopener">github.com/aitorroma</a></div>
+    <div class="mirror"><span>LinkedIn</span><a href="https://linkedin.com/in/tuxed" target="_blank" rel="noopener">linkedin.com/in/tuxed</a></div>
+    <div class="mirror"><span>Telegram</span><a href="https://t.me/tuxed" target="_blank" rel="noopener">@tuxed</a></div>
+    <div class="mirror"><span>Canal</span><a href="https://t.me/aitorroma" target="_blank" rel="noopener">@aitorroma</a></div>
+    <div class="mirror"><span>Editorial</span><a href="https://nocodeopensource.io" target="_blank" rel="noopener">nocodeopensource.io</a></div>
+  </div>
+</section>
+
+</div>
+
+<script>
+(function(){
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var winsEl = $('#windows'), tasksEl = $('#tasks');
+  var wins = {}, z = 10, cascade = 0;
+  var mobile = function(){ return window.matchMedia('(max-width:720px)').matches; };
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function src(id){ return document.querySelector('#src [data-win="'+id+'"]'); }
+  function store(get, val){ try{ if(get) return sessionStorage.getItem('aitoros-booted'); sessionStorage.setItem('aitoros-booted','1'); }catch(e){ return null; } }
+
+  /* ---------- window manager ---------- */
+  function focusWin(id){
+    var w = wins[id]; if(!w) return;
+    w.el.dataset.min = '0';
+    w.el.style.zIndex = ++z;
+    Object.keys(wins).forEach(function(k){ wins[k].el.classList.toggle('focused', k===id); wins[k].task.classList.toggle('active', k===id); });
+    try{ history.replaceState(null,'','#'+id); }catch(e){}
+  }
+  function topWin(){
+    var best=null, bz=-1;
+    Object.keys(wins).forEach(function(k){ var w=wins[k]; if(w.el.dataset.min!=='1' && +w.el.style.zIndex>bz){ bz=+w.el.style.zIndex; best=k; } });
+    return best;
+  }
+  function closeWin(id){
+    var w = wins[id]; if(!w) return;
+    w.el.remove(); w.task.remove(); delete wins[id];
+    var t = topWin();
+    if(t) focusWin(t); else { try{ history.replaceState(null,'',location.pathname); }catch(e){} }
+  }
+  function minWin(id){
+    var w = wins[id]; if(!w) return;
+    w.el.dataset.min='1'; w.el.classList.remove('focused'); w.task.classList.remove('active');
+    var t = topWin(); if(t) focusWin(t);
+  }
+  function openWin(id){
+    if(wins[id]){ focusWin(id); return; }
+    var isTerm = id==='terminal';
+    var s = isTerm ? null : src(id);
+    if(!isTerm && !s) return;
+    var title = isTerm ? 'aitor@aitoros: ~' : s.dataset.title;
+    var W = isTerm ? 640 : +s.dataset.w || 640, H = isTerm ? 420 : +s.dataset.h || 520;
+    var el = document.createElement('div');
+    el.className = 'win' + (isTerm ? ' term' : '');
+    el.setAttribute('role','dialog'); el.setAttribute('aria-label', title);
+    el.innerHTML = '<div class="titlebar"><span class="t"></span>'+
+      '<button class="wbtn" type="button" data-act="min" aria-label="Minimizar">–</button>'+
+      '<button class="wbtn max" type="button" data-act="max" aria-label="Maximizar">□</button>'+
+      '<button class="wbtn close" type="button" data-act="close" aria-label="Cerrar">×</button></div>'+
+      '<div class="wbody"></div><div class="resize" aria-hidden="true"></div>';
+    $('.t', el).textContent = title;
+    var body = $('.wbody', el);
+    if(isTerm) buildTerminal(body); else body.innerHTML = s.innerHTML;
+    var vw = window.innerWidth, vh = window.innerHeight, top0 = 52;
+    W = Math.min(W, vw - 140); H = Math.min(H, vh - top0 - 30);
+    var x = Math.min(130 + cascade*30, Math.max(120, vw - W - 20));
+    var y = Math.min(top0 + 10 + cascade*26, Math.max(top0, vh - H - 20));
+    cascade = (cascade+1) % 6;
+    el.style.left = x+'px'; el.style.top = y+'px'; el.style.width = W+'px'; el.style.height = H+'px';
+    winsEl.appendChild(el);
+
+    var task = document.createElement('button');
+    task.type='button'; task.className='task'; task.textContent = title.split(' — ')[0];
+    task.addEventListener('click', function(){
+      var w = wins[id];
+      if(w.el.dataset.min==='1' || !w.el.classList.contains('focused')) focusWin(id); else minWin(id);
+    });
+    tasksEl.appendChild(task);
+    wins[id] = {el:el, task:task};
+
+    el.addEventListener('pointerdown', function(){ if(!el.classList.contains('focused')) focusWin(id); });
+    $('.titlebar', el).addEventListener('click', function(e){
+      var act = e.target.closest('[data-act]'); if(!act) return;
+      if(act.dataset.act==='close') closeWin(id);
+      else if(act.dataset.act==='min') minWin(id);
+      else el.classList.toggle('max');
+    });
+    $('.titlebar', el).addEventListener('dblclick', function(e){ if(!e.target.closest('[data-act]') && !mobile()) el.classList.toggle('max'); });
+    drag($('.titlebar', el), el, false);
+    drag($('.resize', el), el, true);
+    focusWin(id);
+    body.scrollTop = 0;
+    if(isTerm) setTimeout(function(){ var i=$('input', el); if(i && !mobile()) i.focus(); }, 30);
+    else setTimeout(function(){ $('.wbtn.close', el).focus({preventScroll:true}); }, 30);
+  }
+  function drag(handle, el, resize){
+    handle.addEventListener('pointerdown', function(e){
+      if(mobile() || el.classList.contains('max') || e.target.closest('[data-act]') || e.button!==0) return;
+      e.preventDefault();
+      var sx=e.clientX, sy=e.clientY, ox=el.offsetLeft, oy=el.offsetTop, ow=el.offsetWidth, oh=el.offsetHeight;
+      handle.setPointerCapture(e.pointerId);
+      function mv(ev){
+        var dx=ev.clientX-sx, dy=ev.clientY-sy;
+        if(resize){ el.style.width=Math.max(280,ow+dx)+'px'; el.style.height=Math.max(180,oh+dy)+'px'; }
+        else {
+          el.style.left=Math.min(window.innerWidth-80, Math.max(-ow+120, ox+dx))+'px';
+          el.style.top=Math.min(window.innerHeight-40, Math.max(40, oy+dy))+'px';
+        }
+      }
+      function up(){ handle.removeEventListener('pointermove',mv); handle.removeEventListener('pointerup',up); handle.removeEventListener('pointercancel',up); }
+      handle.addEventListener('pointermove',mv); handle.addEventListener('pointerup',up); handle.addEventListener('pointercancel',up);
+    });
+  }
+
+  /* ---------- simple view ---------- */
+  var srcEl = $('#src');
+  (function(){
+    var top = document.createElement('div'); top.className='simple-top';
+    var links = Array.prototype.map.call(srcEl.querySelectorAll('section[data-label]'), function(sec){
+      var h = document.createElement('h2'); h.className='simple-h'; h.id='s-'+sec.dataset.win; h.textContent=sec.dataset.label;
+      sec.insertBefore(h, sec.firstChild);
+      return '<a href="#s-'+sec.dataset.win+'" data-jump="'+sec.dataset.win+'">'+sec.dataset.label+'</a>';
+    }).join('');
+    top.innerHTML='<strong style="font-family:var(--f-display)">Aitor Roma</strong><nav aria-label="Secciones">'+links+'</nav><button class="btn" type="button" data-simple="off">Ver como escritorio</button>';
+    srcEl.insertBefore(top, srcEl.firstChild);
+  })();
+  function setSimple(on){
+    if(on){ window.location.assign({{ '/simple/' | relative_url | jsonify }}); return; }
+    document.body.classList.toggle('simple', on);
+    try{ history.replaceState(null,'', on ? '#simple' : location.pathname); }catch(e){}
+    window.scrollTo(0,0);
+    if(!on && !Object.keys(wins).length) openWin('about');
+  }
+  function jump(id){
+    var sec = srcEl.querySelector('[data-win="'+id+'"]');
+    if(sec){ var y = sec.getBoundingClientRect().top + window.scrollY - ($('.simple-top').offsetHeight + 8); window.scrollTo(0, y); }
+  }
+
+  document.addEventListener('click', function(e){
+    var sm = e.target.closest('[data-simple]');
+    if(sm){ e.preventDefault(); setSimple(sm.dataset.simple==='on'); return; }
+    var jp = e.target.closest('[data-jump]');
+    if(jp){ e.preventDefault(); jump(jp.dataset.jump); return; }
+    var o = e.target.closest('[data-open]');
+    if(o && document.body.classList.contains('simple')){
+      e.preventDefault();
+      if(o.dataset.open==='terminal'){ setSimple(false); openWin('terminal'); } else jump(o.dataset.open);
+      return;
+    }
+    if(o){ e.preventDefault(); openWin(o.dataset.open); return; }
+    var c = e.target.closest('[data-copy]');
+    if(c){
+      var text = c.dataset.copy;
+      var done = function(){ c.textContent='Copiado'; setTimeout(function(){ c.textContent='Copiar'; },1600); };
+      try{ navigator.clipboard.writeText(text).then(done, function(){ c.textContent=text; }); }catch(err){ c.textContent=text; }
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && $('#boot').hidden){ var t=topWin(); if(t) closeWin(t); }
+  });
+
+  /* ---------- clock ---------- */
+  function tick(){
+    var d=new Date();
+    var date=d.toLocaleDateString('es-ES',{weekday:'short',day:'numeric',month:'short'});
+    var time=d.toLocaleTimeString('es-ES',{hour:'2-digit',minute:'2-digit'});
+    $('#clock').innerHTML='<span class="date">'+date+' · </span>'+time;
+  }
+  tick(); setInterval(tick, 15000);
+
+  /* ---------- terminal ---------- */
+  var APPS = ['about','blog','proyectos','repos','stack','comunidades','experiencia','contacto','terminal'];
+  function esc(s){ return s.replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
+  var NEOFETCH =
+'<span class="p">      /\\       </span>  <span class="p">aitor</span>@<span class="p">aitoros</span>\n'+
+'<span class="p">     /  \\      </span>  ---------------\n'+
+'<span class="p">    / /\\ \\     </span>  <span class="p">OS:</span> aitorOS 15.0 LTS x86_64\n'+
+'<span class="p">   / ____ \\    </span>  <span class="p">Role:</span> Forward Deployed Engineer\n'+
+'<span class="p">  /_/    \\_\\   </span>  <span class="p">Uptime:</span> 15+ años en sistemas Linux\n'+
+'                  <span class="p">Kernel:</span> Cloud / SRE / Observability\n'+
+'                  <span class="p">Shell:</span> Go, Python, Bash\n'+
+'                  <span class="p">Stack:</span> Docker, Kubernetes, Terraform, n8n\n'+
+'                  <span class="p">AI:</span> agents, RAG, tools, guardrails\n'+
+'                  <span class="p">Product:</span> NimBox SRE\n';
+  function run(cmd){
+    var parts = cmd.trim().split(/\s+/), c = (parts[0]||'').toLowerCase(), a = (parts[1]||'').toLowerCase();
+    if(!c) return '';
+    switch(c){
+      case 'help': return 'Comandos disponibles:\n'+
+        '  <span class="p">whoami</span>          quién soy\n'+
+        '  <span class="p">neofetch</span>        resumen del sistema\n'+
+        '  <span class="p">ls</span>              listar secciones\n'+
+        '  <span class="p">open</span> &lt;app&gt;      abrir una ventana ('+APPS.join(', ')+')\n'+
+        '  <span class="p">systemctl status nimboxsre</span>\n'+
+        '  <span class="p">contacto</span>        cómo escribirme\n'+
+        '  <span class="p">clear</span>           limpiar pantalla';
+      case 'whoami': return 'Aitor Roma. Forward Deployed Engineer, Cloud & SRE Architect · AI Infrastructure.\nConvierto problemas ambiguos en productos y sistemas que funcionan en producción.';
+      case 'neofetch': return NEOFETCH;
+      case 'uname': return 'aitorOS 15.0-lts x86_64 GNU/Linux';
+      case 'pwd': return '/home/aitor';
+      case 'date': return new Date().toString();
+      case 'ls': return '<span class="p">blog/</span>  <span class="p">proyectos/</span>  <span class="p">repos/</span>  stack.list  EXPERIENCIA.md  comunidades  contacto';
+      case 'cat': case 'less': case 'vim': case 'nano':
+        if(a==='experiencia.md'){ openWin('experiencia'); return '<span class="d">abriendo EXPERIENCIA.md…</span>'; }
+        if(a==='readme.md' || a==='leeme.txt'){ openWin('about'); return '<span class="d">abriendo README.md…</span>'; }
+        return c+': '+esc(a||'')+': No existe el archivo. Prueba <span class="p">ls</span>.';
+      case 'open': case 'xdg-open':
+        var m = {readme:'about',leeme:'about',projects:'proyectos',skills:'stack',community:'comunidades'}[a] || a;
+        if(APPS.indexOf(m)>-1){ openWin(m); return '<span class="d">abriendo '+esc(a)+'…</span>'; }
+        return 'open: '+esc(a)+': aplicación desconocida. Opciones: '+APPS.join(', ');
+      case 'cd': return a ? 'cd: el escritorio ya monta todo. Prueba <span class="p">open '+esc(a.replace(/\/$/,''))+'</span>.' : '';
+      case 'systemctl':
+        if(/nimboxsre/.test(cmd)) return '<span class="ok">●</span> nimboxsre.service - SRE operations layer\n'+
+          '   Loaded: loaded (/etc/systemd/system/nimboxsre.service; enabled)\n'+
+          '   Active: <span class="ok">active (running)</span>\n'+
+          '   Scope:  discovery, incidents, PAM, runbooks, eBPF, SLA evidence';
+        return '<span class="ok">●</span> aitor.service - Forward deployed engineering\n   Active: <span class="ok">active (running)</span>';
+      case 'sudo': return 'No necesitas sudo para explorar este escritorio.';
+      case 'rm': return 'rm: operación no permitida. Primero un backup; luego un postmortem.';
+      case 'contacto': case 'mail': return 'Correo:   <a href="mailto:aitor@nimbox360.com">aitor@nimbox360.com</a>\nLinkedIn: <a href="https://linkedin.com/in/tuxed" target="_blank" rel="noopener">in/tuxed</a>\nGitHub:   <a href="https://github.com/aitorroma" target="_blank" rel="noopener">aitorroma</a>\nTelegram: <a href="https://t.me/tuxed" target="_blank" rel="noopener">@tuxed</a>';
+      case 'exit': setTimeout(function(){ closeWin('terminal'); }, 120); return 'logout';
+      case 'clear': return null;
+      default: return esc(c)+': orden no encontrada. Escribe <span class="p">help</span>.';
+    }
+  }
+  function buildTerminal(body){
+    body.innerHTML = '<pre class="term-out"></pre><form class="term-line" autocomplete="off"><span class="p">aitor@aitoros:~$</span><input type="text" id="term-input" aria-label="Comando" spellcheck="false" autocapitalize="off"></form>';
+    var out = $('.term-out', body), form = $('form', body), input = $('input', body), hist = [], hi = 0;
+    out.innerHTML = 'aitorOS 15.0 LTS · tty1\nEscribe <span class="p">help</span> para ver los comandos, o <span class="p">neofetch</span> para empezar.\n\n';
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var cmd = input.value; input.value='';
+      if(cmd.trim()){ hist.push(cmd); hi = hist.length; }
+      var r = run(cmd);
+      if(r===null){ out.innerHTML=''; }
+      else out.innerHTML += '<span class="p">aitor@aitoros:~$</span> '+esc(cmd)+'\n'+(r ? r+'\n' : '');
+      body.scrollTop = body.scrollHeight;
+    });
+    input.addEventListener('keydown', function(e){
+      if(e.key==='ArrowUp' && hi>0){ hi--; input.value=hist[hi]; e.preventDefault(); }
+      else if(e.key==='ArrowDown'){ hi=Math.min(hist.length,hi+1); input.value=hist[hi]||''; e.preventDefault(); }
+    });
+    body.addEventListener('click', function(e){ if(!e.target.closest('a') && !window.getSelection().toString()) input.focus(); });
+  }
+
+  /* ---------- boot ---------- */
+  var BOOT = [
+    [0,  '<span class="dim">[    0.000000]</span> Linux version 6.12.0-aitoros (aitor@production) #2026 SMP'],
+    [60, '<span class="dim">[    0.000000]</span> Command line: BOOT_IMAGE=/vmlinuz-aitoros root=/dev/experience ro'],
+    [60, '<span class="dim">[    0.004211]</span> DMI: Open source builder, BIOS rolling'],
+    [60, '<span class="dim">[    0.118034]</span> CPU: 15+ años de sistemas Linux detectados'],
+    [90, '<span class="dim">[    0.402117]</span> Memory: incidentes, productos y comunidades cargados'],
+    [120,'<span class="dim">[    1.207551]</span> systemd[1]: Detected architecture x86-64.'],
+    [80, '[  <span class="ok">OK</span>  ] Mounted <b>/srv/linux</b> — infraestructura y cloud.'],
+    [90, '[  <span class="ok">OK</span>  ] Started <b>sre.service</b> — observabilidad, RCA e incident response.'],
+    [90, '[  <span class="ok">OK</span>  ] Started <b>automation.service</b> — n8n, APIs y workflows.'],
+    [90, '[  <span class="ok">OK</span>  ] Started <b>agents.service</b> — tools, context, permissions and guardrails.'],
+    [90, '[  <span class="ok">OK</span>  ] Started <b>nimboxsre.service</b> — resolve more with the same team.'],
+    [90, '[  <span class="ok">OK</span>  ] Indexed <b>_posts/*.md</b> — blog disponible.'],
+    [90, '[  <span class="ok">OK</span>  ] Indexed <b>projects/*.md</b> — portfolio disponible.'],
+    [110,'[  <span class="ok">OK</span>  ] Reached target <b>Production</b>.'],
+    [240,''],
+    [0,  'aitorOS 15.0 LTS aitorroma.com tty1'],
+    [0,  ''],
+    [120,'aitor login: <span class="hl">invitado</span>'],
+    [280,'Last login: hoy desde la web. Iniciando escritorio…']
+  ];
+  var timers = [], booting = false;
+  function endBoot(){
+    if(!booting) return; booting = false;
+    timers.forEach(clearTimeout);
+    store(false);
+    var b = $('#boot');
+    b.classList.add('fadeout');
+    setTimeout(function(){ b.hidden = true; b.classList.remove('fadeout'); }, reduced ? 0 : 500);
+    document.removeEventListener('keydown', endBoot, true);
+    openWin('about');
+  }
+  function boot(){
+    booting = true;
+    var b = $('#boot'), log = $('#bootlog');
+    b.hidden = false;
+    log.innerHTML = '<div class="grub"><h2>GNU GRUB  version 2.12</h2><ul>'+
+      '<li class="sel">*aitorOS 15.0 LTS (aitorroma.com)</li><li> aitorOS 15.0 LTS (modo recuperación)</li>'+
+      '<li> Opciones avanzadas para aitorOS</li><li> Memtest86+</li></ul>'+
+      '<p>La entrada seleccionada arrancará automáticamente en <span id="grubs">1</span>s.</p></div>';
+    var t = 0;
+        t = 750;
+    timers.push(setTimeout(function(){ log.innerHTML=''; }, t));
+    BOOT.forEach(function(l){
+      t += Math.round(l[0]*0.65);
+      timers.push(setTimeout(function(){ log.insertAdjacentHTML('beforeend', l[1]+'\n'); }, t));
+    });
+    timers.push(setTimeout(endBoot, t + 500));
+    b.addEventListener('click', endBoot);
+    document.addEventListener('keydown', endBoot, true);
+  }
+
+  /* ---------- start ---------- */
+  var h = (location.hash||'').slice(1);
+  var target = APPS.indexOf(h)>-1 ? h : null;
+  if(h==='simple'){ setSimple(true); }
+  else if(target){ openWin(target); }
+  else if(reduced || store(true)){ openWin('about'); }
+  else boot();
+})();
+</script>
+</body>
+</html>

@@ -7,7 +7,7 @@ twitter_username: tuxed
 github_username: aitorroma
 
 markdown: kramdown
-permalink: /:year/:month/:day/:title
+permalink: /:year/:month/:day/:title/
 theme: minima
 plugins:
   - jekyll-feed
@@ -38,6 +38,8 @@ defaults:
       layout: "default"
 
 exclude:
+  - scripts
+  - ernestoariasdiaz.github.io
   - vendor
   - Gemfile
   - Gemfile.lock

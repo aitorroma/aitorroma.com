@@ -2,6 +2,8 @@
 layout: project
 title: ARIMA X
 description: Proyecto musical conceptual sobre la fricción entre emoción humana y sistemas que intentan simularla.
+image: /assets/images/projects/arima-x.jpg
+permalink: /projects/arima-x/
 ---
 
 <div class="project-hero arima-project-hero">

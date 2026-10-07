@@ -2,6 +2,8 @@
 layout: project
 title: TOPGit - Automatización para descubrir Open Source
 description: Plataforma que automatiza la curación y publicación de repositorios Open Source usando IA
+image: /assets/images/projects/topgit-logo.jpg
+permalink: /projects/topgit/
 ---
 
 <div class="project-header">

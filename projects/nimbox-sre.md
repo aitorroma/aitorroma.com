@@ -1,7 +1,9 @@
 ---
 layout: project
 title: NimBox SRE
-description: Capa de operación SRE para MSPs y software houses: autodescubrimiento, PAM, runbooks, eBPF, RCA y evidencia para SLA.
+description: "Capa de operación SRE para MSPs y software houses: autodescubrimiento, PAM, runbooks, eBPF, RCA y evidencia para SLA."
+image: /assets/images/projects/nimbox-dashboard.webp
+permalink: /projects/nimbox-sre/
 ---
 
 <div class="project-hero nimbox-project-hero">

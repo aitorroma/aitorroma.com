@@ -2,6 +2,8 @@
 layout: project
 title: TengoUnPueblo.com
 description: Proyecto musical y cultural que convierte pueblos, memoria local e historias en canciones.
+image: /assets/images/projects/tengo-un-pueblo.png
+permalink: /projects/tengo-un-pueblo/
 ---
 
 <div class="project-hero">

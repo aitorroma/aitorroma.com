@@ -2,6 +2,8 @@
 layout: project
 title: HiveAgileCTL - CLI para gestionar servicios HiveAgile
 description: Utilidad de línea de comandos para instalar, gestionar y actualizar servicios del ecosistema HiveAgile
+image: /assets/images/projects/hiveagilectl.jpg
+permalink: /projects/hiveagilectl/
 ---
 
 <div class="project-header">

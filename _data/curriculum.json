@@ -1,0 +1,134 @@
+{
+  "experience": [
+    {
+      "company": "NimBox SRE",
+      "date": "Agosto 2026 — Presente",
+      "role": "Founder & CTO · Forward Deployed / SRE Engineering",
+      "details": [
+        "Diseño y desarrollo de una plataforma SRE multi-tenant para observabilidad, RCA y automatización operativa con agentes de IA.",
+        "Agente ligero y multiplataforma con descubrimiento automático de hosts, servicios, contenedores e infraestructura.",
+        "Arquitectura de agentes especializados, runbooks con aprobación humana, guardrails, control de acceso y operación segura.",
+        "Observabilidad basada en eBPF para procesos, red, I/O y eventos de sistema, integrada con OpenTelemetry y el ecosistema Grafana.",
+        "Soporte de Docker, Kubernetes, cloud y bare metal, orientado a reducir MTTR y convertir telemetría en diagnóstico accionable."
+      ]
+    },
+    {
+      "company": "Nimbox360",
+      "date": "Enero 2024 — Presente",
+      "role": "CTO & Founder · Forward Deployed Engineering",
+      "details": [
+        "Consultoría y ejecución técnica para transformación digital, automatización, infraestructura, integraciones e IA aplicada.",
+        "Trabajo directo con clientes desde discovery hasta producción: arquitectura, implementación, despliegue, troubleshooting y soporte.",
+        "Integración de APIs, sistemas empresariales, automatizaciones, CRMs, backend y herramientas open source.",
+        "Diseño de soluciones a medida cuando producto, infraestructura y operación tienen que resolverse conjuntamente."
+      ]
+    },
+    {
+      "company": "Teradisk Consulting SL",
+      "date": "Agosto 2016 — Mayo 2023",
+      "role": "Senior Systems Engineer / Cloud & Infrastructure Consultant",
+      "details": [
+        "Administración y evolución de infraestructuras Linux críticas para múltiples clientes y servicios en producción.",
+        "Resolución de incidencias complejas de rendimiento, seguridad, correo, redes, bases de datos, hosting y aplicaciones web.",
+        "Migraciones, despliegues, hardening, automatización, monitorización, alta disponibilidad y recuperación ante incidentes.",
+        "Interlocución técnica con clientes, proveedores y equipos de desarrollo para convertir necesidades operativas en cambios ejecutables."
+      ]
+    },
+    {
+      "company": "HiveAgile",
+      "date": "2021 — Presente",
+      "role": "Founder · Open Source Engineering",
+      "details": [
+        "Experimentación, documentación y despliegue de soluciones open source para infraestructura, automatización y servicios autoalojados."
+      ]
+    },
+    {
+      "company": "n8n",
+      "date": "2020 — Presente",
+      "role": "Spanish-speaking Community",
+      "details": [
+        "Impulso de comunidad, casos de uso e integraciones alrededor de automatización de procesos y herramientas open source."
+      ]
+    },
+    {
+      "company": "G33K TEAM",
+      "date": "Marzo 2025 — Presente",
+      "role": "Coanfitrión · Especialista en Automatización",
+      "details": [
+        "Divulgación técnica sobre infraestructura, automatización, inteligencia artificial, programación, hardware y experiencias reales de producción."
+      ]
+    },
+    {
+      "company": "The { AI } rtist",
+      "date": "Abril 2024 — Presente",
+      "role": "Cofundador",
+      "details": [
+        "Comunidad y newsletter centradas en IA y automatización open source con aplicación práctica en negocio."
+      ]
+    },
+    {
+      "company": "Q Sensation's",
+      "date": "Agosto 2013 — Presente",
+      "role": "CTO",
+      "details": [
+        "Consultoría tecnológica, gestión de sistemas de correo, mantenimiento de sistemas y backend web."
+      ]
+    },
+    {
+      "company": "Nefertalia",
+      "date": "Octubre 2019 — Julio 2021",
+      "role": "Chief Technology Officer",
+      "details": []
+    },
+    {
+      "company": "RedAven",
+      "date": "Septiembre 2012 — Agosto 2016",
+      "role": "CEO",
+      "details": [
+        "Gestión de proyectos, administración de sistemas, I+D y operación de sistemas propios y de clientes."
+      ]
+    },
+    {
+      "company": "T-Systems",
+      "date": "2008 — 2012",
+      "role": "Administrador de Sistemas Linux",
+      "details": [
+        "Administración de infraestructura Linux para la Generalitat de Catalunya, trabajando sobre un parque de más de 1.500 sistemas en centros educativos."
+      ]
+    },
+    {
+      "company": "Experiencia inicial",
+      "date": "2006 — 2009",
+      "role": "Sistemas, hosting y soporte técnico",
+      "details": [
+        "NUDBOX S.L.U, Serveis Informàtic Alfarràs, Nudbox Networks Services y JOSE VIOLA RIBA, S.L: administración de sistemas, hosting, servidores web/streaming, backend y soporte técnico."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "title": "Linux / Systems",
+      "description": "Linux, Debian/Ubuntu, RHEL-family, systemd, Bash, networking, storage, performance tuning, troubleshooting, virtualization, KVM, Proxmox."
+    },
+    {
+      "title": "Cloud / Containers",
+      "description": "AWS, Kubernetes, Docker, Podman, Terraform, GitHub Actions, CI/CD, Nginx, reverse proxies, distributed systems."
+    },
+    {
+      "title": "SRE / Observability",
+      "description": "OpenTelemetry, Prometheus, Grafana, Grafana Alloy, Loki, Pyroscope, Beyla, eBPF, alerting, incident response, RCA."
+    },
+    {
+      "title": "Software / Integration",
+      "description": "Go, Python, Bash, APIs, webhooks, NATS, PostgreSQL, MySQL/MariaDB, ClickHouse, Redis, multitenant architectures, RBAC."
+    },
+    {
+      "title": "AI / Automation",
+      "description": "LLMs, AI agents, tool use, RAG, local inference, workflows, n8n, prompt/tool orchestration, human approval and automation guardrails."
+    },
+    {
+      "title": "Security / Email",
+      "description": "Linux hardening, firewalls, VPN, SPF, DKIM, DMARC, mail deliverability, incident analysis, access control and secrets hygiene."
+    }
+  ]
+}

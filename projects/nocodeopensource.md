@@ -2,6 +2,8 @@
 layout: project
 title: NoCodeOpenSource
 description: Newsletter, comunidad y laboratorio editorial sobre open source, automatización, agentes, infraestructura e IA aplicada.
+image: /assets/images/projects/nocodeopensource.png
+permalink: /projects/nocodeopensource/
 ---
 
 <div class="project-hero">

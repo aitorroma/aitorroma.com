@@ -14,8 +14,8 @@
     <meta property="og:image" content="{{ site.url }}/assets/images/profile.jpg">
     
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/images/logo-ios.png">
+    <link rel="shortcut icon" href="/assets/images/profile.jpg" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/assets/images/profile.jpg">
     
     <!-- CSS -->
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ site.time | date: '%s' }}">
@@ -33,14 +33,15 @@
     <header>
         <nav>
             <div class="container">
-                <a href="/" class="site-title">{{ site.title }}</a>
+                <a href="{% if page.simple_view %}{{ '/simple/' | relative_url }}{% else %}{{ '/' | relative_url }}{% endif %}" class="site-title">{{ site.title }}</a>
                 <button class="menu-toggle" aria-label="Menú">
                     <span></span>
                     <span></span>
                     <span></span>
                 </button>
                 <div class="nav-links">
-                    <a href="/curriculum">Currículum</a>
+                    {% if page.simple_view %}<a href="{{ '/' | relative_url }}">aitorOS</a>{% endif %}
+                    <a href="/curriculum.html">Currículum</a>
                     <a href="/blog">Blog</a>
                     <a href="https://t.me/aitorroma" target="_blank" class="telegram-link">
                         <img src="/assets/images/icons/telegram.svg" alt="Telegram" style="width: 16px; height: 16px; vertical-align: middle; margin-right: 4px;">

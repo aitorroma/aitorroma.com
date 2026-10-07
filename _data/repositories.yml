@@ -1,0 +1,54 @@
+- name: n8n Webhook CF
+  stack: Cloudflare Workers
+  url: https://github.com/aitorroma/n8n-webhook-cf
+  description: Proxy para proteger webhooks de n8n con rate limiting, deduplicación, colas, reintentos y ocultación de la instancia de origen.
+
+- name: Skills 2 Factory
+  stack: Agents / Automation
+  url: https://github.com/aitorroma/skills-2-factory
+  description: Fábrica multiagente para investigar, crear, validar y publicar Skills 2.0 con Agent Teams y subagentes.
+
+- name: codex-paperclip
+  stack: Node.js
+  url: https://github.com/aitorroma/codex-paperclip
+  description: Gateway standalone para Codex compatible con Paperclip, con CLI, servicio systemd y gestión de tokens.
+
+- name: Cloudflare LaLiga Monitor
+  stack: Python / n8n
+  url: https://github.com/aitorroma/cloudflare-laliga-bypass
+  description: Automatización para detectar bloqueos que afectan a sitios legítimos y gestionar su activación temporal.
+
+- name: Obsidian LiveSync Agent
+  stack: Rust
+  url: https://github.com/aitorroma/obsidian-livesync-agent
+  description: Agente headless para sincronización bidireccional de vaults de Obsidian mediante CouchDB.
+
+- name: Devbox AI Cockpit
+  stack: Nix / Shell
+  url: https://github.com/aitorroma/devbox-ai
+  description: Cockpit portable para VPS con perfiles reproducibles y un stack de agentes, CLIs de IA, DevOps y MCPs.
+
+- name: AgentBrowser
+  stack: Go / Docker
+  url: https://github.com/aitorroma/agentbrowser
+  description: Appliance de navegador con escritorio visible, control por CDP/MCP, streaming remoto y login seguro.
+
+- name: nimdeploy
+  stack: Go
+  url: https://github.com/aitorroma/nimdeploy
+  description: Servicio de despliegue por webhooks con cola, logs, estados de commit y notificaciones.
+
+- name: n8n-traefik
+  stack: Docker
+  url: https://github.com/aitorroma/n8n-traefik
+  description: Despliegue de n8n con Traefik o Caddy, dominio personalizado y certificados Let's Encrypt.
+
+- name: docker-traefik
+  stack: Docker
+  url: https://github.com/aitorroma/docker-traefik
+  description: Configuración de Traefik como proxy inverso para entornos Docker.
+
+- name: hestiacp-ddns
+  stack: Shell
+  url: https://github.com/aitorroma/hestiacp-ddns
+  description: Script para actualizar DNS dinámico en HestiaCP.

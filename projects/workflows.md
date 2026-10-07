@@ -3,7 +3,8 @@ layout: project
 title: "Workflows N8N"
 description: "Plataforma Colaborativa para la Automatización de Flujos de Trabajo"
 image: "/assets/images/projects/workflows.jpg"
-url: "https://workflows.comunidad-n8n.com/workflows"
+external_url: "https://workflows.comunidad-n8n.com/workflows"
+permalink: /projects/workflows/
 ---
 
 **Workflows** es una plataforma que desarrollé para la **Comunidad N8N**, diseñada para facilitar la creación, compartición y utilización de **workflows** (flujos de trabajo automatizados) en un entorno colaborativo. N8N es una herramienta de automatización de procesos que permite integrar diversas aplicaciones y servicios de forma visual, sin necesidad de escribir código complejo.
