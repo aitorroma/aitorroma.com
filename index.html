@@ -280,6 +280,15 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 .nimbox-shortcut img{width:72px;height:48px;object-fit:contain;filter:drop-shadow(0 4px 8px #0006)}
 .desktop-contact{position:absolute;right:28px;bottom:calc(58px + clamp(40px,7vw,92px));width:96px;z-index:2}
 @media(max-width:720px){.desktop-contact{right:16px;bottom:110px}}
+
+.contact-window .wbody{padding:0;overflow:hidden}
+.contact-bot{height:100%;display:flex;flex-direction:column;min-height:0;background:var(--surface)}
+.contact-bot-header{padding:20px 24px 16px;border-bottom:1px solid var(--line)}
+.contact-bot-header h2{font-size:23px;margin:6px 0}
+.contact-bot-header p{margin:0;color:var(--muted);font-size:14px}
+.contact-bot-frame{display:block;width:100%;flex:1;min-height:0;border:0;background:white}
+.contact-bot-footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:12px 20px;border-top:1px solid var(--line);font-size:12px}
+@media(max-width:720px){.contact-bot-header{padding:14px 16px}.contact-bot-header h2{font-size:20px}}
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -446,15 +455,11 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   <p style="margin-top:24px"><a class="btn" href="{{ '/curriculum/' | relative_url }}">Currículum completo · Idiomas y formación →</a></p>
 </section>
 
-<section data-win="contacto" data-label="Contacto" data-title="Contacto" data-w="590" data-h="480">
-  <p class="cmd">$ cat ~/.config/contacto</p>
-  <div class="mirrors">
-    <div class="mirror"><span>Correo</span><a class="mail" href="mailto:aitor@nimbox360.com">aitor@nimbox360.com</a><button class="btn copy" type="button" data-copy="aitor@nimbox360.com">Copiar</button></div>
-    <div class="mirror"><span>GitHub</span><a href="https://github.com/aitorroma" target="_blank" rel="noopener">github.com/aitorroma</a></div>
-    <div class="mirror"><span>LinkedIn</span><a href="https://linkedin.com/in/tuxed" target="_blank" rel="noopener">linkedin.com/in/tuxed</a></div>
-    <div class="mirror"><span>Telegram</span><a href="https://t.me/tuxed" target="_blank" rel="noopener">@tuxed</a></div>
-    <div class="mirror"><span>Canal</span><a href="https://t.me/aitorroma" target="_blank" rel="noopener">@aitorroma</a></div>
-    <div class="mirror"><span>Editorial</span><a href="https://nocodeopensource.io" target="_blank" rel="noopener">nocodeopensource.io</a></div>
+<section data-win="contacto" data-label="Contacto" data-title="Contacto · Preparación para IA" data-w="760" data-h="680">
+  <div class="contact-bot">
+    <div class="contact-bot-header"><span class="eyebrow">Hablemos de tu proyecto</span><h2>¿Tu empresa está preparada para la IA?</h2><p>Completa el cuestionario para evaluar tu punto de partida.</p></div>
+    <iframe class="contact-bot-frame" data-src="https://n1mbot.cloud/cuestionario-evaluacion-preparacion-ia" title="Cuestionario de evaluación de preparación para IA" loading="lazy" allow="clipboard-write"></iframe>
+    <div class="contact-bot-footer"><a href="https://n1mbot.cloud/cuestionario-evaluacion-preparacion-ia" target="_blank" rel="noopener">Abrir cuestionario en otra pestaña ↗</a><a href="mailto:aitor@nimbox360.com">Prefiero escribir por correo →</a></div>
   </div>
 </section>
 
@@ -513,6 +518,11 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     $('.t', el).textContent = title;
     var body = $('.wbody', el);
     if(isTerm) buildTerminal(body); else body.innerHTML = s.innerHTML;
+    if(id==='contacto'){
+      el.classList.add('contact-window');
+      var frame=body.querySelector('iframe[data-src]');
+      if(frame) frame.src=frame.dataset.src;
+    }
     var vw = window.innerWidth, vh = window.innerHeight, top0 = 52;
     W = Math.min(W, vw - 140); H = Math.min(H, vh - top0 - 30);
     var x = Math.min(130 + cascade*30, Math.max(120, vw - W - 20));
