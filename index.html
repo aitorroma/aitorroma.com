@@ -691,7 +691,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
         '  <span class="p">whoami</span>          quién soy\n'+
         '  <span class="p">neofetch</span>        resumen del sistema\n'+
         '  <span class="p">ls</span>              listar secciones\n'+
-        '  <span class="p">open</span> &lt;app&gt;      abrir una ventana ('+APPS.join(', ')+')\n'+
+        '  <span class="p">cat</span> &lt;sección&gt;   abrir una ventana ('+APPS.join(', ')+')\n'+
         '  <span class="p">ps aux</span> / <span class="p">top</span>  procesos simulados\n'+
         '  <span class="p">pgrep -a nim</span>     buscar procesos\n'+
         '  <span class="p">uptime</span>           tiempo en el escritorio\n'+
@@ -713,6 +713,9 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
         return PROCESS_LIST.filter(function(p){return p.command.indexOf(query)>-1;}).map(function(p){return String(p.pid)+(parts.indexOf('-a')>-1?' '+esc(p.command):'');}).join('\n');
       case 'ls': return '<span class="p">blog/</span>  <span class="p">proyectos/</span>  <span class="p">repos/</span>  stack.list  EXPERIENCIA.md  comunidades  contacto';
       case 'cat': case 'less': case 'vim': case 'nano':
+        var section=a.replace(/^~\//,'').replace(/\/$/,'').replace(/\.(md|txt|list)$/,'');
+        section={readme:'about',leeme:'about',projects:'proyectos',skills:'stack',community:'comunidades'}[section]||section;
+        if(APPS.indexOf(section)>-1){openWin(section);return '<span class="d">abriendo '+esc(a)+'…</span>';}
         if(a==='experiencia.md'){ openWin('experiencia'); return '<span class="d">abriendo EXPERIENCIA.md…</span>'; }
         if(a==='readme.md' || a==='leeme.txt'){ openWin('about'); return '<span class="d">abriendo README.md…</span>'; }
         return c+': '+esc(a||'')+': No existe el archivo. Prueba <span class="p">ls</span>.';
@@ -720,7 +723,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
         var m = {readme:'about',leeme:'about',projects:'proyectos',skills:'stack',community:'comunidades'}[a] || a;
         if(APPS.indexOf(m)>-1){ openWin(m); return '<span class="d">abriendo '+esc(a)+'…</span>'; }
         return 'open: '+esc(a)+': aplicación desconocida. Opciones: '+APPS.join(', ');
-      case 'cd': return a ? 'cd: el escritorio ya monta todo. Prueba <span class="p">open '+esc(a.replace(/\/$/,''))+'</span>.' : '';
+      case 'cd': return a ? 'cd: el escritorio ya monta todo. Prueba <span class="p">cat '+esc(a.replace(/\/$/,''))+'</span>.' : '';
       case 'systemctl':
         if(a==='list-units') return '<span class="d">Servicios simulados</span>\n'+['nimdeploy.service','nimboxsre-agent.service','aitoros-desktop.service'].map(function(n){return n+'  loaded active running';}).join('\n');
         if(a!=='status') return 'Solo consulta: systemctl status <servicio> o systemctl list-units';
