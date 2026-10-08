@@ -142,6 +142,45 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4000';
       assert.ok(box.x >= 0 && box.x+box.width <= 320);
       if(process.env.SCREENSHOT_DIR) await page.screenshot({path:process.env.SCREENSHOT_DIR+'/dark-narrow.png'});
     },{viewport:{width:320,height:700},colorScheme:'dark'});
+    await test('Welcome is available before the delayed reminder and reduced-motion skips nudges', async page => {
+      await page.goto(base);
+      assert.equal(await page.locator('.mail-notice').isVisible(),false);
+      assert.equal(await page.locator('.mail-shortcut').evaluate(el=>el.classList.contains('mail-pending')),true);
+      assert.equal(await page.locator('.mail-shortcut svg').evaluate(el=>getComputedStyle(el).animationName),'none');
+      await page.locator('.panel-contact').click();
+      assert.equal(await page.locator('.mail-window .mail-letter>h2').textContent(),'Hola, soy Aitor 👋');
+      assert.ok((await page.locator('.mail-window .mail-letter').innerText()).includes('desarrollo'));
+      assert.ok((await page.locator('.mail-window .mail-letter').innerText()).trim().split(/\s+/).length<100);
+      assert.equal(await page.locator('.mail-shortcut').evaluate(el=>el.classList.contains('mail-pending')),false);
+      await page.clock.fastForward(15000);
+      assert.equal(await page.locator('.mail-notice').isVisible(),false);
+    });
+    await test('Short presentation foregrounds development and direct contact',async page=>{
+      await page.goto(base+'/#about');
+      const hero=page.locator('.win.focused .profile-hero');
+      const lede=await hero.locator('.lede').textContent();
+      assert.ok(lede.trim().split(/\s+/).length<=20);
+      assert.ok(lede.includes('Desarrollo aplicaciones'));
+      assert.ok(lede.includes('infraestructura'));
+      assert.ok(lede.includes('automatizo'));
+      assert.equal(await hero.locator('.btn.primary').getAttribute('data-open'),'correo');
+      assert.equal(await hero.locator('.profile-cv a').getAttribute('href'),'/curriculum/');
+      assert.equal(await hero.locator('[data-open="servicios"]').count(),1);
+      if(process.env.SCREENSHOT_DIR) await page.screenshot({path:process.env.SCREENSHOT_DIR+'/short-hero.png'});
+      await hero.locator('[data-open="correo"]').click();
+      if(process.env.SCREENSHOT_DIR) await page.screenshot({path:process.env.SCREENSHOT_DIR+'/short-mail.png'});
+    });
+    await test('Unread icon nudges once per ten seconds and stops after reading',async page=>{
+      await page.addInitScript(()=>sessionStorage.setItem('aitoros-booted','1'));
+      await page.goto(base);
+      const icon=page.locator('.mail-shortcut svg');
+      assert.equal(await icon.evaluate(el=>getComputedStyle(el).animationName),'mail-nudge');
+      assert.equal(await icon.evaluate(el=>getComputedStyle(el).animationDuration),'10s');
+      await page.locator('.panel-contact').click();
+      assert.equal(await icon.evaluate(el=>getComputedStyle(el).animationName),'none');
+      await page.goto(base+'/#about');
+      assert.equal(await page.locator('.mail-shortcut').evaluate(el=>el.classList.contains('mail-pending')),false);
+    },{reducedMotion:'no-preference'});
     await test('Normal boot finishes before notification', async page => {
       await page.goto(base);
       assert.equal(await page.locator('#boot').isVisible(), true);

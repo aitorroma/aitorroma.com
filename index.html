@@ -403,6 +403,14 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 .mail-sound-toggle.sound-off{color:var(--wall-dim)}
 .mail-sound-toggle.sound-off .mail-sound-waves{display:none}
 .mail-sound-toggle.sound-off .mail-sound-muted{display:block}
+
+.profile-hero .profile-cv{margin:12px 0 0;font-size:12px;max-width:none}
+.profile-cv a{color:var(--muted);text-underline-offset:3px}
+.profile-hero .profile-socials{margin-top:18px}
+/* One soft nudge during the last second of each 10-second cycle, until read. */
+.mail-shortcut.mail-pending svg{animation:mail-nudge 10s ease-in-out infinite}
+@keyframes mail-nudge{0%,90%,100%{transform:scale(1);filter:drop-shadow(0 4px 8px #0006)}94%,97%{transform:scale(1.05);filter:drop-shadow(0 0 7px #24d29b88)}}
+@media(prefers-reduced-motion:reduce){.mail-shortcut.mail-pending svg{animation:none}}
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -516,15 +524,15 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 <section data-win="about" data-label="Sobre mí" data-title="Sobre mí" data-w="760" data-h="680">
   <div class="profile-hero">
     <img class="profile-avatar" src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="Aitor Roma">
-    <span class="eyebrow">Engineering · Product · Open Source · Creative Tech</span>
+    <span class="eyebrow">Desarrollo · Infraestructura · Automatización</span>
     <h1 class="profile-name">Aitor Roma</h1>
-    <h2 class="profile-role">Forward Deployed Engineer · Cloud &amp; SRE Architect · AI Infrastructure</h2>
-    <p class="lede">Entro en problemas reales, entiendo el contexto y construyo la solución hasta producción. Trabajo entre infraestructura, software, observabilidad, automatización e IA; y también creo productos, contenido y proyectos donde la tecnología se cruza con música, cultura y comunidad.</p>
+    <h2 class="profile-role">Software y sistemas que funcionan.</h2>
+    <p class="lede">Desarrollo aplicaciones, resuelvo problemas de infraestructura y automatizo procesos. IA cuando aporta valor.</p>
     <div class="row">
-      <a class="btn primary" href="{{ '/curriculum/' | relative_url }}">Ver currículum</a>
-      <button class="btn" type="button" data-open="proyectos">Explorar proyectos</button>
-      <button class="btn" type="button" data-open="correo">Hablemos</button>
+      <button class="btn primary" type="button" data-open="correo">Hablemos</button>
+      <button class="btn" type="button" data-open="servicios">Ver servicios</button>
     </div>
+    <p class="profile-cv"><a href="{{ '/curriculum/' | relative_url }}">Ver currículum</a></p>
     <div class="profile-socials" aria-label="Redes sociales">
       <a href="https://github.com/aitorroma" target="_blank" rel="noopener"><img class="mono" src="{{ '/assets/images/icons/github.svg' | relative_url }}" alt="">GitHub</a>
       <a href="https://linkedin.com/in/tuxed" target="_blank" rel="noopener"><img src="{{ '/assets/images/icons/linkedin.svg' | relative_url }}" alt="">LinkedIn</a>
@@ -630,43 +638,38 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     <aside class="mail-sidebar" aria-label="Buzón de bienvenida">
       <span class="eyebrow">aitorOS Mail</span>
       <div class="mail-folder">Recibidos <span>1</span></div>
-      <p>Una bienvenida.<br>Tres caminos.<br>Tú decides.</p>
     </aside>
     <article class="mail-letter">
       <header class="mail-envelope">
         <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="" width="44" height="44">
-        <div><strong>Aitor Roma</strong><small>Para: quien acaba de llegar</small><small>Mensaje de bienvenida · guía automática</small></div>
+        <div><strong>Aitor Roma</strong><small>Para: ti</small><small>Mensaje de bienvenida · guía automática</small></div>
       </header>
-      <h2>Hola, qué bueno verte por aquí 👋</h2>
-      <p>Soy Aitor. Ayudo a llevar problemas de infraestructura, automatización e IA hasta una solución que funciona en producción.</p>
-      <p>Este escritorio tiene bastante que explorar. <strong>¿Qué te trae por aquí?</strong></p>
+      <h2>Hola, soy Aitor 👋</h2>
+      <p>¿Buscas desarrollo, infraestructura o automatización? Elige un camino o escríbeme directamente.</p>
       <div class="mail-routes" role="group" aria-label="Elige qué quieres encontrar">
-        <button class="mail-route" type="button" data-mail-route="proyecto" aria-pressed="false"><span>Necesito ayuda con un proyecto<small>Qué puedo resolver y cómo hablamos.</small></span><b aria-hidden="true">→</b></button>
-        <button class="mail-route" type="button" data-mail-route="experiencia" aria-pressed="false"><span>Quiero conocer tu experiencia<small>Trayectoria, capacidades y currículum.</small></span><b aria-hidden="true">→</b></button>
-        <button class="mail-route" type="button" data-mail-route="explorar" aria-pressed="false"><span>Solo estoy explorando<small>Productos, código y un poco de terminal.</small></span><b aria-hidden="true">→</b></button>
+        <button class="mail-route" type="button" data-mail-route="proyecto" aria-pressed="false"><span>Necesito ayuda con un proyecto</span><b aria-hidden="true">→</b></button>
+        <button class="mail-route" type="button" data-mail-route="experiencia" aria-pressed="false"><span>Quiero conocer tu experiencia</span><b aria-hidden="true">→</b></button>
+        <button class="mail-route" type="button" data-mail-route="explorar" aria-pressed="false"><span>Solo estoy explorando</span><b aria-hidden="true">→</b></button>
       </div>
       <section class="mail-response" data-mail-response="proyecto" hidden>
         <h3 tabindex="-1">Del problema a producción.</h3>
-        <p>Puedo ayudarte con infraestructura cloud, fiabilidad y observabilidad, automatización de procesos e IA aplicada. Primero entendemos tu contexto; después construimos la solución.</p>
-        <p>Explora lo que construyo o cuéntame directamente qué necesitas. No hace falta completar un cuestionario para hablar conmigo.</p>
-        <div class="row"><button class="btn" type="button" data-open="servicios">Ver servicios</button><button class="btn" type="button" data-open="proyectos">Ver proyectos</button><a class="btn primary" href="mailto:aitor@nimbox360.com?subject=Hablemos%20de%20mi%20proyecto">Contarme tu proyecto →</a></div>
-        <p><button class="linkbtn" type="button" data-open="contacto">Opcional: evaluar la preparación para IA de tu empresa</button></p>
+        <p>Desarrollo de software, infraestructura y automatización. Consulta mis servicios o cuéntame qué necesitas.</p>
+        <div class="row"><button class="btn" type="button" data-open="servicios">Ver servicios</button><a class="btn primary" href="mailto:aitor@nimbox360.com?subject=Hablemos%20de%20mi%20proyecto">Contarme tu proyecto →</a></div>
+        <p><button class="linkbtn" type="button" data-open="contacto">Cuestionario IA (opcional)</button></p>
       </section>
       <section class="mail-response" data-mail-response="experiencia" hidden>
         <h3 tabindex="-1">Mi trayectoria, sin rodeos.</h3>
-        <p>Más de 15 años trabajando con Linux y sistemas en producción. Mi perfil combina ingeniería, cloud, SRE y desarrollo de producto.</p>
-        <p>Consulta mi experiencia o abre el currículum completo, con idiomas y formación. Si ves un encaje, podemos hablar directamente.</p>
+        <p>Más de 15 años con sistemas Linux en producción. Aquí tienes mi trayectoria y el currículum completo.</p>
         <div class="row"><button class="btn" type="button" data-open="experiencia">Ver experiencia</button><a class="btn primary" href="{{ '/curriculum/' | relative_url }}">Abrir currículum →</a></div>
       </section>
       <section class="mail-response" data-mail-response="explorar" hidden>
         <h3 tabindex="-1">Pasa, estás en tu casa.</h3>
-        <p>Hay productos, proyectos creativos y herramientas abiertas. Puedes empezar por los proyectos, mirar el código o probar <code>help</code> en la terminal del escritorio.</p>
+        <p>Productos, herramientas abiertas y proyectos creativos. En la terminal puedes empezar con <code>help</code>.</p>
         <div class="row"><button class="btn primary" type="button" data-open="proyectos">Explorar proyectos</button><button class="btn" type="button" data-open="repos">Ver repositorios</button><button class="btn" type="button" data-open="terminal">Abrir terminal</button></div>
       </section>
       <footer class="mail-signature">
-        <strong>¿Prefieres hablar directamente?</strong>
-        <div class="row" style="margin-top:10px"><a href="mailto:aitor@nimbox360.com">Escríbeme por correo ↗</a><a href="https://t.me/tuxed" target="_blank" rel="noopener">Telegram ↗</a></div>
-        <p class="mail-disclosure">Esta es una bienvenida preparada, no un chat en directo. Las opciones solo te orientan por la web; aquí no se envía ningún mensaje ni se piden datos.</p>
+        <div class="row"><a class="btn primary" href="mailto:aitor@nimbox360.com">Escríbeme →</a><a class="btn" href="https://t.me/tuxed" target="_blank" rel="noopener">Telegram ↗</a></div>
+        <p class="mail-disclosure">Bienvenida automática. No es un chat en directo.</p>
       </footer>
     </article>
   </div>
@@ -779,6 +782,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     hideMailNotice();
     mailSession('read','1');
     $('[data-mail-unread]').hidden=true;
+    $('.mail-shortcut').classList.remove('mail-pending');
   }
   function scheduleWelcome(){
     if(mailHandled || mailSession('noticed') || mailSession('read') || document.hidden || booting) return;
@@ -807,6 +811,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     }
   }
   $('[data-mail-unread]').hidden=!!mailSession('read');
+  $('.mail-shortcut').classList.toggle('mail-pending',!mailSession('read'));
   document.addEventListener('visibilitychange',function(){
     if(document.hidden){clearTimeout(mailTimer);mailTimer=null;stopMailChime();} else scheduleWelcome();
   });
