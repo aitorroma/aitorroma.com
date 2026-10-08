@@ -1,12 +1,14 @@
 # Servicios
 
-**Desarrollo, comercio electrónico y tecnología para tu empresa.**
+**Software, sistemas e infraestructura para resolver problemas reales. IA cuando aporta valor.**
 
-Desarrollo a medida, microservicios en Go y tiendas online con WooCommerce y PrestaShop. También automatización, IA, datos e infraestructura para conectar y mejorar tus procesos.
+Trabajo de extremo a extremo: puedo entrar en un problema, entender el contexto y construir la solución hasta producción. Desarrollo software a medida, comercio electrónico, automatización, IA e infraestructura, eligiendo la tecnología en función de lo que haya que resolver.
 
 ## Desarrollo de Software y Aplicaciones
 
-- **Desarrollo a Medida**: Aplicaciones web, herramientas internas e integraciones adaptadas a los procesos de tu negocio.
+Desarrollo software a medida para necesidades concretas: aplicaciones y plataformas web, comercio electrónico, APIs, herramientas internas, integraciones y automatizaciones. **Si la solución no existe, la construyo.**
+
+- **Desarrollo a Medida**: Diseño y desarrollo de aplicaciones, plataformas web, herramientas internas e integraciones adaptadas a los procesos y necesidades de cada proyecto.
 
 - **Microservicios en Go (Golang)**: Desarrollo de servicios backend y APIs para conectar aplicaciones y construir sistemas modulares.
 
