@@ -171,6 +171,37 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4000';
       await page.clock.fastForward(15000);
       assert.equal(await page.locator('.mail-notice').isVisible(),false);
     });
+    await test('Mail client exposes three panes and real compose/reply actions',async page=>{
+      await page.goto(base+'/#correo');
+      const app=page.locator('.mail-window .mail-app');
+      assert.equal(await app.evaluate(el=>getComputedStyle(el).gridTemplateColumns.split(' ').length),3);
+      assert.equal(await app.locator('.mail-list').isVisible(),true);
+      assert.equal(await app.locator('.mail-reader').isVisible(),true);
+      assert.equal(await app.locator('[data-mail-message]').count(),1);
+      assert.equal(await app.locator('.mail-compose').getAttribute('href'),'mailto:aitor@nimbox360.com');
+      assert.ok((await app.locator('.mail-toolbar a').getAttribute('href')).startsWith('mailto:aitor@nimbox360.com?subject='));
+      assert.equal(await app.locator('.mail-letter .mail-disclosure').textContent(),'Bienvenida automática. No es un chat en directo.');
+      await app.locator('.mail-folder').click();
+      await app.locator('[data-mail-message]').click();
+      assert.equal(await app.locator('.mail-letter>h2').evaluate(el=>el===document.activeElement),true);
+      if(process.env.SCREENSHOT_DIR)await page.screenshot({path:process.env.SCREENSHOT_DIR+'/mail-client.png'});
+    });
+    await test('Mobile mail switches between inbox and message without losing the journey',async page=>{
+      await page.goto(base+'/#correo');
+      const app=page.locator('.mail-window .mail-app');
+      await app.locator('[data-mail-route="proyecto"]').click();
+      await app.locator('.mail-back').click();
+      assert.equal(await app.locator('.mail-list').isVisible(),true);
+      assert.equal(await app.locator('.mail-reader').isVisible(),false);
+      assert.equal(await app.locator('[data-mail-message]').evaluate(el=>el===document.activeElement),true);
+      if(process.env.SCREENSHOT_DIR)await page.screenshot({path:process.env.SCREENSHOT_DIR+'/mail-inbox-mobile.png'});
+      await app.locator('[data-mail-message]').click();
+      assert.equal(await app.locator('.mail-list').isVisible(),false);
+      assert.equal(await app.locator('.mail-reader').isVisible(),true);
+      assert.equal(await app.locator('[data-mail-response="proyecto"]').isVisible(),true);
+      assert.equal(await app.locator('.mail-letter>h2').evaluate(el=>el===document.activeElement),true);
+      assert.equal(await app.evaluate(el=>el.scrollWidth<=el.clientWidth),true);
+    },{viewport:{width:390,height:844},isMobile:true,hasTouch:true});
     await test('Short presentation foregrounds development and direct contact',async page=>{
       await page.goto(base+'/#about');
       const hero=page.locator('.win.focused .profile-hero');

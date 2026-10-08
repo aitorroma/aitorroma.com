@@ -36,6 +36,12 @@ Desarrollo a medida, microservicios en Go y tiendas online con WooCommerce y Pre
 
 ## Inteligencia Artificial y Bots
 
+- **Creación de MCPs (Model Context Protocol)**: Desarrollo de servidores MCP para conectar asistentes de IA con herramientas, datos y sistemas de tu empresa.
+
+- **MLOps**: Automatización del ciclo de vida de modelos de machine learning: versionado, evaluación, despliegue y monitorización en producción.
+
+- **Sistemas Agénticos**: Diseño y desarrollo de sistemas de agentes de IA, con orquestación de herramientas, flujos de trabajo y supervisión humana.
+
 - **Agentes y Bots Inteligentes**: Implementación de agentes automatizados que interactúan con CRM y otras plataformas para mejorar la productividad.
 
 - **Desarrollo de GPTs Personalizados**: Configuración de GPTs y asistentes ajustados a las necesidades específicas de las empresas.

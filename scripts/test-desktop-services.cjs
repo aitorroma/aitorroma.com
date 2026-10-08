@@ -19,11 +19,11 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       await page.locator('.desktop-services').click();
       const doc=page.locator('.document-window');
       assert.equal(await doc.getAttribute('aria-label'),'Servicios.rtf · Documento');
-      assert.equal(await doc.locator('.services-content li').count(),50);
+      assert.equal(await doc.locator('.services-content li').count(),53);
       assert.equal(await doc.locator('.services-content h2').count(),12);
       assert.equal(await doc.locator('[data-document-heading]').count(),12);
-      assert.equal(await doc.locator('[data-document-status]').textContent(),'50 servicios · 12 áreas · Catálogo actualizado');
-      for(const label of ['Desarrollo a Medida','Microservicios en Go (Golang)','Tiendas Online con WooCommerce','Tiendas Online con PrestaShop']){
+      assert.equal(await doc.locator('[data-document-status]').textContent(),'53 servicios · 12 áreas · Catálogo actualizado');
+      for(const label of ['Desarrollo a Medida','Microservicios en Go (Golang)','Tiendas Online con WooCommerce','Tiendas Online con PrestaShop','Creación de MCPs (Model Context Protocol)','MLOps','Sistemas Agénticos']){
         assert.equal(await doc.locator('.services-content strong').filter({hasText:label}).count(),1);
       }
       const markdown=fs.readFileSync(path.join(__dirname,'../_includes/servicios.md'),'utf8');
@@ -47,7 +47,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
     });
     await test('Services are searchable and cat SERVICIOS.rtf opens the document',async page=>{
       await page.locator('[data-apps-toggle]').click();
-      for(const term of ['Golang','WooCommerce','PrestaShop','desarrollo medida']){
+      for(const term of ['Golang','WooCommerce','PrestaShop','desarrollo medida','MCPs','MLOps','sistemas agenticos']){
         await page.locator('[data-apps-search]').fill(term);
         assert.equal(await page.locator('.app-grid [data-open="servicios"]').isVisible(),true);
       }
@@ -63,7 +63,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
     await test('Mobile document is readable and reachable from the mail journey',async page=>{
       await page.goto(base+'/#correo');
       await page.locator('.mail-window [data-mail-route="proyecto"]').click();
-      await page.locator('.mail-window [data-open="servicios"]').click();
+      await page.locator('.mail-window .mail-response [data-open="servicios"]').click();
       const doc=page.locator('.document-window');
       assert.equal(await doc.isVisible(),true);
       assert.equal(await doc.locator('.document-outline').isVisible(),false);
@@ -76,7 +76,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       // The existing shared layout loads Ko-fi; isolate this external widget in this content test.
       await page.route('https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',r=>r.fulfill({contentType:'text/javascript',body:'window.kofiWidgetOverlay={draw(){}};'}));
       await page.goto(base+'/servicios/');
-      assert.equal(await page.locator('.services-content li').count(),50);
+      assert.equal(await page.locator('.services-content li').count(),53);
       assert.equal(await page.locator('.services-content h2').count(),12);
       assert.equal(await page.locator('.services-page-links a').first().getAttribute('href'),'/#servicios');
       await page.locator('.services-page-links a').first().click();
