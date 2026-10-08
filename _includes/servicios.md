@@ -1,8 +1,30 @@
 # Servicios
 
-**Automatización y tecnología para tu empresa.**
+**Desarrollo, comercio electrónico y tecnología para tu empresa.**
 
-Soluciones de automatización, IA, datos e infraestructura para optimizar procesos empresariales. El catálogo también incluye desarrollo de aplicaciones, hosting, streaming, herramientas colaborativas y generación de contenido multimedia.
+Desarrollo a medida, microservicios en Go y tiendas online con WooCommerce y PrestaShop. También automatización, IA, datos e infraestructura para conectar y mejorar tus procesos.
+
+## Desarrollo de Software y Aplicaciones
+
+- **Desarrollo a Medida**: Aplicaciones web, herramientas internas e integraciones adaptadas a los procesos de tu negocio.
+
+- **Microservicios en Go (Golang)**: Desarrollo de servicios backend y APIs para conectar aplicaciones y construir sistemas modulares.
+
+- **Paquetización de Software para Linux (deb, rpm)**: Creación de paquetes de software compatibles con las principales distribuciones de Linux, facilitando el despliegue y la instalación de aplicaciones.
+
+- **Dockerización de Aplicaciones**: Contenerización de aplicaciones para su portabilidad, escalabilidad y fácil despliegue en entornos de producción.
+
+- **Configuración de Pipelines de Despliegue con Git y GitHub Actions**: Automatiza el flujo de desarrollo, pruebas y despliegue con integración continua y pipelines personalizados.
+
+- **Despliegue de Aplicaciones**: Instalación y configuración de aplicaciones empresariales en diferentes entornos, asegurando su rendimiento y disponibilidad.
+
+- **Sistemas de Aprendizaje (LMS) con Moodle y Soluciones Propias**: Implementación de plataformas de aprendizaje online para educación o formación corporativa.
+
+## Comercio Electrónico
+
+- **Tiendas Online con WooCommerce**: Desarrollo y personalización de tiendas en WordPress con WooCommerce, con configuración de catálogo, pagos y envíos e integración con otros sistemas.
+
+- **Tiendas Online con PrestaShop**: Desarrollo y personalización de tiendas con PrestaShop, adaptación de módulos e integraciones para gestionar pedidos y operaciones de comercio electrónico.
 
 ## Automatización de Procesos
 
@@ -41,18 +63,6 @@ Soluciones de automatización, IA, datos e infraestructura para optimizar proces
 - **Virtualización y Sistemas VDI**: Implementación de entornos virtuales para optimizar el uso de recursos y facilitar el teletrabajo.
 
 - **Implementación de VPN y Sistemas de Comunicación para Teletrabajo**: Conexión segura entre sedes y soluciones de teletrabajo para empresas distribuidas.
-
-## Desarrollo de Software y Aplicaciones
-
-- **Paquetización de Software para Linux (deb, rpm)**: Creación de paquetes de software compatibles con las principales distribuciones de Linux, facilitando el despliegue y la instalación de aplicaciones.
-
-- **Dockerización de Aplicaciones**: Contenerización de aplicaciones para su portabilidad, escalabilidad y fácil despliegue en entornos de producción.
-
-- **Configuración de Pipelines de Despliegue con Git y GitHub Actions**: Automatiza el flujo de desarrollo, pruebas y despliegue con integración continua y pipelines personalizados.
-
-- **Despliegue de Aplicaciones**: Instalación y configuración de aplicaciones empresariales en diferentes entornos, asegurando su rendimiento y disponibilidad.
-
-- **Sistemas de Aprendizaje (LMS) con Moodle y Soluciones Propias**: Implementación de plataformas de aprendizaje online para educación o formación corporativa.
 
 ## Hosting y Streaming
 

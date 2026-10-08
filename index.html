@@ -850,7 +850,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       copy.setAttribute('aria-label','Cuestionario de preparación para IA');
       copy.title='Cuestionario de preparación para IA';
     }
-    var aliases={servicios:'services consultoria catalogo word documento automatizacion infraestructura software hosting streaming datos',about:'perfil aitor sobre mi bienvenida',correo:'contacto email mail ayuda hablemos',blog:'articulos posts markdown',proyectos:'projects productos portfolio automatizacion infraestructura',repos:'repositorios github codigo open source',stack:'tecnologias herramientas habilidades skills',comunidades:'community comunidad podcast',experiencia:'trayectoria carrera trabajo curriculum cv',terminal:'consola shell bash linux',contacto:'cuestionario ia typebot evaluacion empresa'};
+    var aliases={servicios:'services consultoria catalogo word documento automatizacion infraestructura software desarrollo medida microservicios go golang ecommerce comercio electronico woocommerce prestashop hosting streaming datos',about:'perfil aitor sobre mi bienvenida',correo:'contacto email mail ayuda hablemos',blog:'articulos posts markdown',proyectos:'projects productos portfolio automatizacion infraestructura',repos:'repositorios github codigo open source',stack:'tecnologias herramientas habilidades skills',comunidades:'community comunidad podcast',experiencia:'trayectoria carrera trabajo curriculum cv',terminal:'consola shell bash linux',contacto:'cuestionario ia typebot evaluacion empresa'};
     copy.dataset.appSearch=normalizeAppName($('span',copy).textContent+' '+(aliases[copy.dataset.open]||'nimbox sre observabilidad'));
     $('.app-grid').appendChild(copy);
   });
@@ -896,7 +896,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       var button=document.createElement('button');button.type='button';button.dataset.documentHeading=String(index);button.textContent=heading.textContent;outline.appendChild(button);
     });
     var count=body.querySelectorAll('.services-content li').length;
-    $('[data-document-status]',body).textContent=count+' servicios · '+headings.length+' áreas · Fuente: catálogo original';
+    $('[data-document-status]',body).textContent=count+' servicios · '+headings.length+' áreas · Catálogo actualizado';
   }
 
   /* ---------- window manager ---------- */

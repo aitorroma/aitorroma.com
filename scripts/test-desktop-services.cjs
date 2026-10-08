@@ -19,10 +19,13 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       await page.locator('.desktop-services').click();
       const doc=page.locator('.document-window');
       assert.equal(await doc.getAttribute('aria-label'),'Servicios.rtf · Documento');
-      assert.equal(await doc.locator('.services-content li').count(),46);
-      assert.equal(await doc.locator('.services-content h2').count(),11);
-      assert.equal(await doc.locator('[data-document-heading]').count(),11);
-      assert.equal(await doc.locator('[data-document-status]').textContent(),'46 servicios · 11 áreas · Fuente: catálogo original');
+      assert.equal(await doc.locator('.services-content li').count(),50);
+      assert.equal(await doc.locator('.services-content h2').count(),12);
+      assert.equal(await doc.locator('[data-document-heading]').count(),12);
+      assert.equal(await doc.locator('[data-document-status]').textContent(),'50 servicios · 12 áreas · Catálogo actualizado');
+      for(const label of ['Desarrollo a Medida','Microservicios en Go (Golang)','Tiendas Online con WooCommerce','Tiendas Online con PrestaShop']){
+        assert.equal(await doc.locator('.services-content strong').filter({hasText:label}).count(),1);
+      }
       const markdown=fs.readFileSync(path.join(__dirname,'../_includes/servicios.md'),'utf8');
       const categories=[...markdown.matchAll(/^## (.+)$/gm)].map(x=>x[1]);
       assert.deepEqual(await doc.locator('.services-content h2').allTextContents(),categories);
@@ -44,6 +47,10 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
     });
     await test('Services are searchable and cat SERVICIOS.rtf opens the document',async page=>{
       await page.locator('[data-apps-toggle]').click();
+      for(const term of ['Golang','WooCommerce','PrestaShop','desarrollo medida']){
+        await page.locator('[data-apps-search]').fill(term);
+        assert.equal(await page.locator('.app-grid [data-open="servicios"]').isVisible(),true);
+      }
       await page.locator('[data-apps-search]').fill('servicios');
       assert.equal(await page.locator('.app-grid .icon:not([hidden])').count(),1);
       await page.locator('.app-grid [data-open="servicios"]').click();
@@ -69,8 +76,8 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       // The existing shared layout loads Ko-fi; isolate this external widget in this content test.
       await page.route('https://storage.ko-fi.com/cdn/scripts/overlay-widget.js',r=>r.fulfill({contentType:'text/javascript',body:'window.kofiWidgetOverlay={draw(){}};'}));
       await page.goto(base+'/servicios/');
-      assert.equal(await page.locator('.services-content li').count(),46);
-      assert.equal(await page.locator('.services-content h2').count(),11);
+      assert.equal(await page.locator('.services-content li').count(),50);
+      assert.equal(await page.locator('.services-content h2').count(),12);
       assert.equal(await page.locator('.services-page-links a').first().getAttribute('href'),'/#servicios');
       await page.locator('.services-page-links a').first().click();
       assert.equal(await page.locator('.document-window').isVisible(),true);
