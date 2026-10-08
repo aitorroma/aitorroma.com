@@ -33,7 +33,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       await toggle.click();
       assert.equal(await toggle.getAttribute('aria-expanded'),'true');
       assert.equal(await page.locator('#windows').evaluate(el=>el.inert),true);
-      assert.equal(await page.locator('.app-grid .icon').count(),12);
+      assert.equal(await page.locator('.app-grid .icon').count(),14);
       await page.keyboard.press('Shift+Tab');
       assert.equal(await page.locator('.app-grid .icon').last().evaluate(el=>el===document.activeElement),true);
       await page.keyboard.press('Tab');
@@ -71,7 +71,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       await page.keyboard.press('Escape');
       await page.locator('[data-apps-toggle]').click();
       assert.equal(await search.inputValue(),'');
-      assert.equal(await page.locator('.app-grid .icon:not([hidden])').count(),12);
+      assert.equal(await page.locator('.app-grid .icon:not([hidden])').count(),14);
       await search.fill('proyectos');await search.press('Enter');
       assert.equal(await page.locator('.apps-overlay').isVisible(),false);
       assert.equal(await page.locator('.win.focused').getAttribute('aria-label'),'Proyectos');
@@ -112,6 +112,31 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
       if(process.env.SCREENSHOT_DIR) await page.screenshot({path:process.env.SCREENSHOT_DIR+'/dock-mobile.png'});
     },{viewport:{width:320,height:700},isMobile:true,hasTouch:true,colorScheme:'dark'});
+    await test('WhatsApp and Telegram prepare direct contact and open a new tab',async page=>{
+      await page.locator('[data-apps-toggle]').click();
+      const message='Hola Aitor, he visto tu web y me gustaría hablar contigo sobre un proyecto.';
+      for(const [app,host,path] of [['whatsapp','wa.me','/34652360223'],['telegram','t.me','/tuxed']]){
+        const search=page.locator('[data-apps-search]');
+        await search.fill(app);
+        const link=page.locator('.app-grid [data-contact-app="'+app+'"]');
+        assert.equal(await page.locator('.app-grid .icon:not([hidden])').count(),1);
+        const url=new URL(await link.getAttribute('href'));
+        assert.equal(url.hostname,host);assert.equal(url.pathname,path);
+        assert.equal(url.searchParams.get('text'),message);
+        assert.equal(await link.getAttribute('target'),'_blank');
+        assert.ok((await link.getAttribute('rel')).includes('noopener'));
+        const popupPromise=page.waitForEvent('popup');
+        await search.press('Enter');
+        const popup=await popupPromise;
+        await popup.waitForLoadState('domcontentloaded').catch(()=>{});
+        assert.equal(await page.locator('.apps-overlay').isVisible(),false);
+        await popup.close();
+        await page.locator('[data-apps-toggle]').click();
+      }
+      await page.locator('[data-apps-search]').fill('contacto');
+      assert.equal(await page.locator('[data-contact-app="whatsapp"]').isVisible(),true);
+      assert.equal(await page.locator('[data-contact-app="telegram"]').isVisible(),true);
+    });
     await test('External shortcut keeps correct URL and new-tab behavior',async page=>{
       const link=page.locator('.dock-apps a');
       assert.equal(await link.getAttribute('href'),'https://nimboxsre.com');
@@ -120,7 +145,7 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       assert.equal(await page.locator('.desktop-contact').getAttribute('data-open'),'contacto');
       assert.equal(await page.locator('.panel-contact').getAttribute('data-open'),'correo');
       await page.locator('[data-apps-toggle]').click();
-      assert.equal(await page.locator('.app-grid a').getAttribute('href'),'https://nimboxsre.com');
+      assert.equal(await page.locator('.app-grid a[href="https://nimboxsre.com"]').getAttribute('href'),'https://nimboxsre.com');
       if(process.env.SCREENSHOT_DIR){await page.locator('[data-apps-close]').click();await page.screenshot({path:process.env.SCREENSHOT_DIR+'/dock-desktop.png'});}
     });
     console.log(passed+' dock checks passed');
