@@ -24,14 +24,14 @@ permalink: /projects/g33k-team/
   <h2>Episodios</h2>
 
   <div class="playlist-player">
-    <iframe src="https://www.youtube.com/embed/videoseries?list=PLKTQO0qHrl1Vb-slf0rdptzw0gCHme-2k&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3" title="G33K TEAM Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/videoseries?list={{ site.data.g33k-team.playlist_id }}&amp;rel=0&amp;modestbranding=1&amp;iv_load_policy=3" title="G33K TEAM Playlist" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
   </div>
 
   <h2>¡Únete a la comunidad!</h2>
   <p>Si te gusta el contenido, suscríbete para no perderte nuevos episodios, directos y novedades del proyecto. ¡Nos ayuda muchísimo tu apoyo!</p>
   
   <div class="topgit-cta">
-    <a href="https://www.youtube.com/@G33KTEAM?sub_confirmation=1" class="cta-button youtube" target="_blank">
+    <a href="{{ site.data.g33k-team.channel_url }}?sub_confirmation=1" class="cta-button youtube" target="_blank">
       <span class="icon"></span>
       Suscríbete al canal
     </a>

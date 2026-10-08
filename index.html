@@ -411,6 +411,39 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 .mail-shortcut.mail-pending svg{animation:mail-nudge 10s ease-in-out infinite}
 @keyframes mail-nudge{0%,90%,100%{transform:scale(1);filter:drop-shadow(0 4px 8px #0006)}94%,97%{transform:scale(1.05);filter:drop-shadow(0 0 7px #24d29b88)}}
 @media(prefers-reduced-motion:reduce){.mail-shortcut.mail-pending svg{animation:none}}
+
+/* G33K TEAM: a quiet video room with the team's own artwork. */
+.g33k-window .wbody{padding:0;background:#0b1120;color:#edf2f9}
+.g33k-app{padding:24px;min-height:100%;background:radial-gradient(ellipse at 90% 0%,#14425466,transparent 60%),#0b1120}
+.g33k-heading{display:flex;align-items:center;gap:16px;margin-bottom:22px}
+.g33k-heading img{width:64px;height:64px;border-radius:16px;object-fit:cover}
+.g33k-heading h2{margin:0;color:#fff;font-size:26px}
+.g33k-heading p{margin:4px 0 0;color:#abb9cd;font-size:14px}
+.g33k-player{position:relative;aspect-ratio:16/9;min-height:200px;overflow:hidden;border-radius:16px;border:1px solid #ffffff18;background:#050811;box-shadow:0 16px 40px #0004}
+.g33k-player iframe{display:block;width:100%;height:100%;position:absolute;inset:0;border:0}
+.g33k-note{color:#abb9cd;font-size:12px;margin:16px 0 0;line-height:1.6}
+.desktop-g33k{position:absolute;right:28px;top:calc(var(--panel-h) + env(safe-area-inset-top,0px) + 144px);width:104px;z-index:2}
+.desktop-g33k img{width:48px;height:48px;border-radius:12px;object-fit:cover}
+.g33k-shortcut img{border-radius:10px;object-fit:cover}
+@media(max-width:720px){.desktop-g33k{right:16px;top:170px}.g33k-app{padding:16px}.g33k-heading h2{font-size:22px}.g33k-heading img{width:52px;height:52px}}
+
+.g33k-player[hidden],.g33k-now[hidden]{display:none}
+.g33k-now,.g33k-feed-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:20px 0}
+.g33k-back{flex:none;border:1px solid #93d7c83d;background:none;color:#8de8ca;border-radius:8px;padding:8px 10px;cursor:pointer;font:12px var(--f-body)}
+.g33k-now{flex-wrap:wrap}
+.g33k-now h3{flex:1}
+.g33k-now h3,.g33k-feed-heading h3{margin:0;color:#edf2f9;font-size:16px}
+.g33k-now a,.g33k-feed-heading a{flex:none;color:#8de8ca;font-size:12px;text-decoration:none}
+.g33k-feed-heading{border-top:1px solid #ffffff12;padding-top:24px}
+.g33k-feed{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px 16px}
+.g33k-video{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:0;background:none;border:0;border-radius:12px;color:#edf2f9;text-align:left;cursor:pointer;font:14px var(--f-body)}
+.g33k-thumb{position:relative;width:100%;aspect-ratio:16/9;background:#182536;border-radius:10px;overflow:hidden;border:2px solid transparent}
+.g33k-thumb img{width:100%;height:100%;object-fit:cover}
+.g33k-thumb span{position:absolute;right:10px;bottom:10px;display:grid;place-items:center;width:30px;height:30px;background:#07101ccc;border-radius:50%;font-size:12px}
+.g33k-video strong{font-weight:600;line-height:1.4}.g33k-video time{font-size:11px;color:#abb9cd}
+.g33k-video:hover .g33k-thumb,.g33k-video[aria-pressed="true"] .g33k-thumb{border-color:#8de8ca}
+@media(max-width:720px){.g33k-feed{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 12px}.g33k-now{align-items:flex-start;flex-direction:column;gap:8px}.g33k-video{font-size:12px}}
+
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -460,6 +493,10 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="4" fill="#7549b5"/><path d="M13 16h22M13 24h22M13 32h22" stroke="#f0e9fa" stroke-width="2.8" stroke-linecap="round"/><circle cx="17" cy="16" r="2" fill="#24d29b"/></svg>
       <span>Stack</span>
     </button>
+    <button class="icon g33k-shortcut" type="button" data-open="g33k" aria-label="Abrir vídeos de G33K TEAM">
+      <img src="{{ site.data.g33k-team.logo | relative_url }}" alt="" width="48" height="48">
+      <span>G33K TEAM</span>
+    </button>
     <button class="icon" type="button" data-open="comunidades">
       <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="18" r="8" fill="#24d29b"/><circle cx="33" cy="20" r="6" fill="#8de8ca"/><path d="M5 41c1-10 7-15 14-15s13 5 14 15" fill="#168765"/><path d="M27 40c1-7 5-11 10-11 4 0 7 3 8 11" fill="#3cb58e"/></svg>
       <span>Comunidades</span>
@@ -481,6 +518,11 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       <svg viewBox="0 0 30 30" aria-hidden="true" fill="currentColor"><circle cx="5" cy="5" r="2.5"/><circle cx="15" cy="5" r="2.5"/><circle cx="25" cy="5" r="2.5"/><circle cx="5" cy="15" r="2.5"/><circle cx="15" cy="15" r="2.5"/><circle cx="25" cy="15" r="2.5"/><circle cx="5" cy="25" r="2.5"/><circle cx="15" cy="25" r="2.5"/><circle cx="25" cy="25" r="2.5"/></svg>
     </button>
   </nav>
+
+  <button class="icon desktop-g33k" type="button" data-open="g33k" aria-label="Abrir aplicación G33K TEAM">
+    <img src="{{ site.data.g33k-team.logo | relative_url }}" alt="" width="48" height="48">
+    <span>G33K TEAM</span>
+  </button>
 
   <button class="icon desktop-services" type="button" data-open="servicios" aria-label="Abrir documento Servicios">
     <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 3h19l9 9v30a3 3 0 0 1-3 3H14z" fill="#edf4ff"/><path d="M33 3v9h9" fill="#a9c8ed"/><path d="M24 19h11M24 25h11M24 31h11M24 37h8" stroke="#82a8d5" stroke-width="2" stroke-linecap="round"/><rect x="3" y="13" width="24" height="25" rx="3" fill="#185abd"/><path d="M8 20l2.5 12 4.5-9 4.5 9L22 20" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
@@ -609,6 +651,25 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     <div class="proj"><div class="proj-top"><h3>ComunidadN8N</h3><span class="state live">Telegram</span></div><p>Automatización e integración de aplicaciones con n8n.</p><p class="meta"><a href="https://t.me/comunidadn8n" target="_blank" rel="noopener">Entrar ↗</a></p></div>
     <div class="proj"><div class="proj-top"><h3>NoCodeOpen</h3><span class="state live">Telegram</span></div><p>Open source, automatización, agentes y herramientas prácticas.</p><p class="meta"><a href="https://t.me/NoCodeOpen" target="_blank" rel="noopener">Entrar ↗</a></p></div>
     <div class="proj"><div class="proj-top"><h3>OSINT X Labs</h3><span class="state live">Telegram</span></div><p>Investigación y herramientas sobre fuentes abiertas.</p><p class="meta"><a href="https://t.me/OSINTXLabs" target="_blank" rel="noopener">Entrar ↗</a></p></div>
+  </div>
+</section>
+
+<section data-win="g33k" data-label="G33K TEAM" data-title="G33K TEAM · Vídeos" data-w="960" data-h="760">
+  {% assign latest_video = site.data.g33k-videos.videos | first %}
+  <div class="g33k-app">
+    <header class="g33k-heading"><img src="{{ site.data.g33k-team.logo | relative_url }}" alt="" width="64" height="64"><div><h2>G33K TEAM</h2><p>Los últimos vídeos del canal.</p></div></header>
+    <div class="g33k-player" data-g33k-player hidden></div>
+    <div class="g33k-now" hidden><h3 data-g33k-title>{{ latest_video.title | escape }}</h3><button class="g33k-back" type="button" data-g33k-stop>← Volver a los vídeos</button><a data-g33k-external href="{{ latest_video.url }}" target="_blank" rel="noopener noreferrer">Ver en YouTube ↗</a></div>
+    <div class="g33k-feed-heading"><h3>Últimas publicaciones</h3><a href="{{ site.data.g33k-team.channel_url }}/videos" target="_blank" rel="noopener noreferrer">Todo el canal ↗</a></div>
+    <div class="g33k-feed" aria-label="Vídeos del canal G33K TEAM">
+      {% for video in site.data.g33k-videos.videos %}
+      <button class="g33k-video" type="button" data-g33k-play data-video-id="{{ video.id }}" data-video-title="{{ video.title | escape }}" aria-pressed="false">
+        <div class="g33k-thumb"><img data-video-thumb="{{ video.thumbnail }}" alt="" loading="lazy" width="480" height="360"><span aria-hidden="true">▶</span></div>
+        <strong>{{ video.title | escape }}</strong><time datetime="{{ video.published }}">{{ video.published | date: "%d/%m/%Y" }}</time>
+      </button>
+      {% endfor %}
+    </div>
+    <p class="g33k-note">Vídeos recientes del feed de YouTube · Actualización cada 6 horas. Selecciona un vídeo para cargar el reproductor; si no funciona, usa «Ver en YouTube».</p>
   </div>
 </section>
 
@@ -837,7 +898,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   var appsOverlay=$('#apps-overview'), appsButton=$('[data-apps-toggle]');
   var appsSearch=$('[data-apps-search]');
   var dockButtons=document.querySelectorAll('.dock-apps [data-open]');
-  var overviewBackground=document.querySelectorAll('.panel,.icons,.desktop-services,.desktop-contact,.wallmark,#windows,.mail-notice');
+  var overviewBackground=document.querySelectorAll('.panel,.icons,.desktop-services,.desktop-g33k,.desktop-contact,.wallmark,#windows,.mail-notice');
   document.querySelectorAll('.dock-apps .icon,.desktop-services,.desktop-contact').forEach(function(icon){
     var name=$('span',icon).textContent.trim();
     icon.title=name;
@@ -850,7 +911,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       copy.setAttribute('aria-label','Cuestionario de preparación para IA');
       copy.title='Cuestionario de preparación para IA';
     }
-    var aliases={servicios:'services consultoria catalogo word documento automatizacion infraestructura software desarrollo medida microservicios go golang ecommerce comercio electronico woocommerce prestashop hosting streaming datos',about:'perfil aitor sobre mi bienvenida',correo:'contacto email mail ayuda hablemos',blog:'articulos posts markdown',proyectos:'projects productos portfolio automatizacion infraestructura',repos:'repositorios github codigo open source',stack:'tecnologias herramientas habilidades skills',comunidades:'community comunidad podcast',experiencia:'trayectoria carrera trabajo curriculum cv',terminal:'consola shell bash linux',contacto:'cuestionario ia typebot evaluacion empresa'};
+    var aliases={servicios:'services consultoria catalogo word documento automatizacion infraestructura software desarrollo medida microservicios go golang ecommerce comercio electronico woocommerce prestashop hosting streaming datos',about:'perfil aitor sobre mi bienvenida',correo:'contacto email mail ayuda hablemos',blog:'articulos posts markdown',proyectos:'projects productos portfolio automatizacion infraestructura',repos:'repositorios github codigo open source',stack:'tecnologias herramientas habilidades skills',g33k:'g33k team geek videos episodios videopodcast youtube tecnologia',comunidades:'community comunidad podcast',experiencia:'trayectoria carrera trabajo curriculum cv',terminal:'consola shell bash linux',contacto:'cuestionario ia typebot evaluacion empresa'};
     copy.dataset.appSearch=normalizeAppName($('span',copy).textContent+' '+(aliases[copy.dataset.open]||'nimbox sre observabilidad'));
     $('.app-grid').appendChild(copy);
   });
@@ -889,6 +950,16 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     else if(restoreFocus!==false) appsButton.focus({preventScroll:true});
   }
 
+  function stopG33kPlayback(root){
+    var frame=$('[data-g33k-frame]',root);if(frame) frame.remove();
+    var player=$('[data-g33k-player]',root);if(player) player.hidden=true;
+    var now=$('.g33k-now',root);if(now) now.hidden=true;
+    root.querySelectorAll('.g33k-video').forEach(function(card){card.setAttribute('aria-pressed','false');});
+  }
+  document.addEventListener('visibilitychange',function(){
+    if(document.hidden && wins.g33k) stopG33kPlayback(wins.g33k.el);
+  });
+
   function initServicesDocument(body){
     var headings=body.querySelectorAll('.services-content h2'),outline=$('[data-document-outline]',body);
     headings.forEach(function(heading,index){
@@ -923,6 +994,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   }
   function minWin(id){
     var w = wins[id]; if(!w) return;
+    if(id==='g33k') stopG33kPlayback(w.el);
     w.el.dataset.min='1'; w.el.classList.remove('focused'); w.task.classList.remove('active');
     updateDock();
     var t = topWin(); if(t) focusWin(t);
@@ -947,6 +1019,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     $('.t', el).textContent = title;
     var body = $('.wbody', el);
     if(isTerm) buildTerminal(body); else body.innerHTML = s.innerHTML;
+    if(id==='g33k'){el.classList.add('g33k-window');body.querySelectorAll('[data-video-thumb]').forEach(function(img){img.src=img.dataset.videoThumb;});}
     if(id==='servicios'){el.classList.add('document-window');initServicesDocument(body);}
     if(id==='correo'){
       el.classList.add('mail-window');
@@ -1047,6 +1120,22 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       if(heading){heading.focus({preventScroll:true});scroll.scrollTo({top:heading.getBoundingClientRect().top-scroll.getBoundingClientRect().top+scroll.scrollTop-24,behavior:reduced?'instant':'smooth'});}
       return;
     }
+    var back=e.target.closest('[data-g33k-stop]');
+    if(back){var videoApp=back.closest('.g33k-app'),selected=$('.g33k-video[aria-pressed="true"]',videoApp);stopG33kPlayback(videoApp);if(selected) selected.focus();return;}
+    var play=e.target.closest('[data-g33k-play]');
+    if(play && play.closest('.g33k-window')){
+      var app=play.closest('.g33k-app'),player=$('[data-g33k-player]',app);
+      var oldFrame=$('iframe',player);if(oldFrame) oldFrame.remove();
+      $('[data-g33k-title]',app).textContent=play.dataset.videoTitle;
+      $('[data-g33k-external]',app).href='https://www.youtube.com/watch?v='+encodeURIComponent(play.dataset.videoId);
+      app.querySelectorAll('.g33k-video').forEach(function(card){card.setAttribute('aria-pressed',String(card.dataset.videoId===play.dataset.videoId));});
+      var frame=document.createElement('iframe');
+      frame.dataset.g33kFrame='';frame.title=play.dataset.videoTitle;
+      frame.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(play.dataset.videoId)+'?rel=0&playsinline=1';
+      frame.allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share';
+      frame.allowFullscreen=true;frame.referrerPolicy='strict-origin-when-cross-origin';
+      player.hidden=false;$('.g33k-now',app).hidden=false;player.appendChild(frame);frame.focus();player.scrollIntoView({block:'nearest',behavior:reduced?'instant':'smooth'});return;
+    }
     var dismiss=e.target.closest('[data-mail-dismiss]');
     if(dismiss){hideMailNotice();$('.panel-contact').focus({preventScroll:true});return;}
     var route=e.target.closest('[data-mail-route]');
@@ -1105,7 +1194,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   tick(); setInterval(tick, 15000);
 
   /* ---------- terminal ---------- */
-  var APPS = ['about','blog','proyectos','repos','stack','comunidades','experiencia','contacto','correo','servicios','terminal'];
+  var APPS = ['about','blog','proyectos','repos','stack','comunidades','experiencia','contacto','correo','servicios','g33k','terminal'];
   function esc(s){ return s.replace(/[&<>]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]; }); }
   var NEOFETCH =
 '<span class="p">      /\\       </span>  <span class="p">aitor</span>@<span class="p">aitoros</span>\n'+
