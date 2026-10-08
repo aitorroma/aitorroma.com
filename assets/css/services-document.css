@@ -1,0 +1,41 @@
+/* A readable document, not a pretend editor: all toolbar actions are real. */
+.desktop-services{position:absolute;right:28px;top:calc(var(--panel-h) + env(safe-area-inset-top,0px) + 24px);width:104px;z-index:2}
+.document-window .wbody{padding:0;overflow:hidden;background:#e8edf2}
+.document-app{height:100%;display:flex;flex-direction:column;min-height:0}
+.document-toolbar{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px 18px;padding:13px 20px;background:#185abd;color:#fff;font-size:12px;flex:none}
+.document-toolbar strong{font-weight:600}
+.document-toolbar small{opacity:.85;display:block;font-size:11px}
+.document-toolbar nav{display:flex;gap:8px 16px;flex-wrap:wrap}
+.document-toolbar a{color:#fff;text-decoration:none;border-bottom:1px solid #ffffff70;padding-block:3px}
+.document-toolbar a:hover{border-color:#fff}
+.document-workspace{display:flex;flex:1;min-height:0}
+.document-outline{flex:0 0 180px;min-width:0;padding:22px 12px;background:var(--surface-2);color:var(--ink);border-right:1px solid var(--line);overflow:auto;scrollbar-width:thin}
+.document-outline p{font:10px var(--f-mono);text-transform:uppercase;letter-spacing:.08em;padding-inline:8px;margin:0 0 14px;color:var(--muted)}
+.document-outline button{display:block;width:100%;text-align:left;border:0;border-radius:4px;padding:8px;background:none;color:inherit;font:12px/1.4 var(--f-body);cursor:pointer}
+.document-outline button:hover,.document-outline button:focus-visible{background:var(--accent-soft);color:var(--accent)}
+.document-scroll{flex:1;min-width:0;overflow:auto;padding:28px 24px;scrollbar-width:thin;scrollbar-color:#9ba9bb #e8edf2}
+.document-paper{max-width:800px;margin:0 auto;padding:40px 46px;background:#fff;color:#263342;box-shadow:0 3px 16px #22344d18;border:1px solid #dce2e9;font:15px/1.8 "IBM Plex Sans",sans-serif;overflow-wrap:anywhere}
+.document-letterhead{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding-bottom:14px;border-bottom:2px solid #185abd;color:#185abd;font:600 10px/1.5 "IBM Plex Mono",monospace;letter-spacing:.1em}
+.document-letterhead span{color:#677487;font-weight:400;letter-spacing:0}
+.document-paper h1,.document-paper h2,.document-paper h3{font-family:"IBM Plex Sans",sans-serif;line-height:1.25;letter-spacing:-.025em;color:#18375d}
+.document-paper h1{font-size:40px;margin:28px 0 14px}
+.document-paper h2{font-size:23px;margin:36px 0 18px;padding-bottom:10px;border-bottom:1px solid #dce2e9;scroll-margin-top:24px}
+.document-paper p{max-width:none;margin:14px 0}
+.document-paper ul{padding-left:20px;margin:16px 0}
+.document-paper li{padding-left:4px;margin:0 0 14px;line-height:1.75}
+.document-paper li::marker{color:#185abd}
+.document-paper strong{font-weight:600}
+.document-paper a{color:#185abd}
+.document-paper .services-content>p:first-of-type{font-size:19px;color:#4b6380}
+.document-status{padding:6px 16px;background:var(--surface-2);color:var(--muted);border-top:1px solid var(--line);font:10px var(--f-mono);flex:none}
+.services-contact{margin-top:36px;padding-top:8px;border-top:2px solid #185abd}
+.services-contact h2{border:0;margin-top:20px}
+.services-contact .eyebrow{font-size:10px;color:#64748b}
+.services-contact .row{display:flex;flex-wrap:wrap;gap:8px 12px}
+.services-contact .btn{display:inline-block;padding:8px 12px;border:1px solid #185abd;border-radius:5px;color:#185abd;font:500 12px/1.5 "IBM Plex Mono",monospace;text-decoration:none}
+.services-contact .btn.primary{color:white;background:#185abd}
+.document-paper .services-signature{font-size:11px;color:#677487;margin-top:20px}
+.services-page{max-width:900px;margin:40px auto;padding:0 20px 40px}
+.services-page-links{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin:0 0 22px;font-size:14px}
+@media(max-width:720px){.desktop-services{right:16px;top:58px}.document-outline{display:none}.document-toolbar{padding:12px 16px}.document-scroll{padding:16px 12px}.document-paper{padding:28px 22px;font-size:14px}.document-paper h1{font-size:34px}.document-paper h2{font-size:21px}.document-letterhead{display:block}.document-letterhead span{display:block;margin-top:5px}.document-status{font-size:9px}.services-page{padding:0 12px 24px;margin-top:24px}}
+@media print{.services-page-links,.services-contact .row{display:none}.services-page{max-width:none;margin:0;padding:0}.document-paper{max-width:none;border:0;box-shadow:none;padding:0}.document-paper li{break-inside:avoid}.document-paper h2{break-after:avoid}}
