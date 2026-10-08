@@ -395,6 +395,14 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   .apps-dialog{padding:calc(18px + env(safe-area-inset-top,0px)) 16px max(18px,env(safe-area-inset-bottom,0px))}.apps-header{padding-bottom:12px}.apps-search{width:calc(100% - 52px);margin-right:52px}.apps-close{top:calc(19px + env(safe-area-inset-top,0px));right:16px}.apps-scroll{padding:12px 0}.app-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 6px}.app-grid .icon{padding:14px 4px 10px;min-height:115px;gap:10px}.app-grid .icon svg{width:48px;height:48px}.app-grid .icon img{width:54px;height:48px}.app-grid .icon span{font-size:12px}.apps-footer{font-size:11px;margin-top:10px}
 }
 @media(prefers-reduced-motion:reduce){.dock-apps .icon,.dock-launcher,.app-grid .icon{transition:none}.apps-overlay{animation:none}.app-grid .icon:active{transform:none}}
+
+.mail-sound-toggle{display:grid;place-items:center;flex:none;width:28px;height:28px;border:0;border-radius:5px;padding:5px;background:none;color:var(--wall-acc);cursor:pointer}
+.mail-sound-toggle:hover{background:#ffffff14}
+.mail-sound-toggle svg{width:18px;height:18px}
+.mail-sound-muted{display:none}
+.mail-sound-toggle.sound-off{color:var(--wall-dim)}
+.mail-sound-toggle.sound-off .mail-sound-waves{display:none}
+.mail-sound-toggle.sound-off .mail-sound-muted{display:block}
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -410,6 +418,9 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       aitorOS
     </button>
     <nav class="tasks" id="tasks" aria-label="Ventanas abiertas"></nav>
+    <button class="mail-sound-toggle" type="button" data-mail-sound aria-label="Silenciar sonido del correo" aria-pressed="true" title="Sonido del correo activado · Pulsar para silenciar">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><g class="mail-sound-waves" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 0 8M19 5a10 10 0 0 1 0 14"/></g><path class="mail-sound-muted" d="M17 9l5 6m0-6l-5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
     <button class="panel-contact" type="button" data-open="correo">Contacto</button>
     <button class="simplebtn" type="button" data-simple="on">Vista simple</button>
     <span class="clock" id="clock"></span>
@@ -708,6 +719,52 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 
   /* ---------- optional welcome mail ---------- */
   var mailNotice = $('.mail-notice'), mailTimer = null, mailHandled = false, mailRoute = null;
+  /* A tiny local chime; Web Audio is unlocked only by a real user gesture. */
+  var mailAudio=null,mailSoundEnabled=true,mailTones=[];
+  try{mailSoundEnabled=localStorage.getItem('aitoros-mail-sound')!=='off';}catch(e){}
+  function updateMailSoundButton(){
+    var button=$('[data-mail-sound]');
+    button.classList.toggle('sound-off',!mailSoundEnabled);
+    button.setAttribute('aria-pressed',String(mailSoundEnabled));
+    button.setAttribute('aria-label',mailSoundEnabled?'Silenciar sonido del correo':'Activar sonido del correo');
+    button.title=mailSoundEnabled?'Sonido del correo activado · Pulsar para silenciar':'Sonido del correo desactivado · Pulsar para activar';
+  }
+  function unlockMailAudio(event){
+    if(!mailSoundEnabled || !event.isTrusted) return;
+    var Audio=window.AudioContext || window.webkitAudioContext;
+    if(!Audio) return;
+    try{
+      if(!mailAudio) mailAudio=new Audio();
+      if(mailAudio.state==='suspended') mailAudio.resume().catch(function(){});
+    }catch(e){ /* Audio is an enhancement; the visual notification always works. */ }
+  }
+  function stopMailChime(){
+    mailTones.slice().forEach(function(tone){
+      try{tone.gain.gain.cancelScheduledValues(mailAudio.currentTime);tone.gain.gain.setValueAtTime(0,mailAudio.currentTime);tone.osc.stop();}catch(e){}
+    });
+  }
+  function playMailChime(){
+    if(!mailSoundEnabled || document.hidden || !mailAudio || mailAudio.state!=='running') return;
+    try{
+      var now=mailAudio.currentTime;
+      [660,880].forEach(function(frequency,index){
+        var start=now+.015+index*.14,end=start+.18;
+        var osc=mailAudio.createOscillator(),gain=mailAudio.createGain(),tone={osc:osc,gain:gain};
+        osc.type='sine';osc.frequency.setValueAtTime(frequency,start);
+        gain.gain.setValueAtTime(0,start);
+        gain.gain.linearRampToValueAtTime(.035,start+.012);
+        gain.gain.exponentialRampToValueAtTime(.0001,end);
+        osc.connect(gain);gain.connect(mailAudio.destination);
+        mailTones.push(tone);
+        osc.onended=function(){osc.disconnect();gain.disconnect();mailTones=mailTones.filter(function(item){return item!==tone;});};
+        osc.start(start);osc.stop(end+.02);
+      });
+    }catch(e){stopMailChime();}
+  }
+  updateMailSoundButton();
+  document.addEventListener('pointerdown',unlockMailAudio,{capture:true,passive:true});
+  document.addEventListener('keydown',unlockMailAudio,true);
+
   function mailSession(key, value){
     try{ if(value===undefined) return sessionStorage.getItem('aitoros-mail-'+key); sessionStorage.setItem('aitoros-mail-'+key,value); }catch(e){}
     return null;
@@ -734,6 +791,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       mailHandled=true;
       mailSession('noticed','1');
       mailNotice.hidden=false;
+      playMailChime();
       $('[data-mail-announcement]').textContent='Hay un mensaje de bienvenida de Aitor. Puedes abrirlo desde Correo o descartar el aviso.';
     },12000);
   }
@@ -750,7 +808,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   }
   $('[data-mail-unread]').hidden=!!mailSession('read');
   document.addEventListener('visibilitychange',function(){
-    if(document.hidden){clearTimeout(mailTimer);mailTimer=null;} else scheduleWelcome();
+    if(document.hidden){clearTimeout(mailTimer);mailTimer=null;stopMailChime();} else scheduleWelcome();
   });
 
   /* ---------- dock and application overview ---------- */
@@ -952,6 +1010,12 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   }
 
   document.addEventListener('click', function(e){
+    if(e.target.closest('[data-mail-sound]')){
+      mailSoundEnabled=!mailSoundEnabled;
+      try{localStorage.setItem('aitoros-mail-sound',mailSoundEnabled?'on':'off');}catch(err){}
+      if(mailSoundEnabled) unlockMailAudio(e);else stopMailChime();
+      updateMailSoundButton();return;
+    }
     if(e.target.closest('[data-apps-toggle]')){setAppsOverview(appsOverlay.hidden);return;}
     if(e.target===appsOverlay || e.target.closest('[data-apps-close]')){setAppsOverview(false);return;}
     if(e.target.closest('.app-grid .icon')) setAppsOverview(false,false);

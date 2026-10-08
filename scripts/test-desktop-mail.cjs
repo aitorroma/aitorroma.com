@@ -22,7 +22,7 @@ const base = process.env.SITE_URL || 'http://127.0.0.1:4000';
     } finally { await context.close(); }
   }
   try {
-    await test('Delayed welcome is optional, silent and does not steal focus', async page => {
+    await test('Delayed welcome is optional and does not steal focus', async page => {
       await page.goto(base);
       await page.clock.fastForward(100);
       const focused = await page.evaluate(() => document.activeElement.outerHTML);
