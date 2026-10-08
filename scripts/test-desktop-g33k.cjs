@@ -89,8 +89,21 @@ const videos=require('../_data/g33k-videos.json').videos;
       assert.equal(await app.evaluate(el=>el.scrollWidth<=el.clientWidth),true);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
       assert.equal(await app.locator('.g33k-player').isVisible(),false);
-      await app.locator('.g33k-video').first().click();assert.equal(await app.locator('iframe').count(),1);
-      const player=await app.locator('.g33k-player').boundingBox();assert.ok(player.width>=200&&player.height>=200);
+      for(const width of [320,360,390,430]){
+        await page.setViewportSize({width,height:700});
+        await app.locator('.g33k-video').first().click();assert.equal(await app.locator('iframe').count(),1);
+        const player=await app.locator('.g33k-player').boundingBox(),frame=await app.locator('iframe').boundingBox();
+        assert.ok(player.width>=200&&player.height>=200);
+        assert.ok(player.x>=16&&player.x+player.width<=width-16+1);
+        assert.ok(frame.x>=player.x&&frame.x+frame.width<=player.x+player.width+1);
+        for(const selector of ['.wbody','.g33k-app']){
+          assert.equal(await app.locator(selector).evaluate(el=>el.scrollWidth<=el.clientWidth),true);
+          assert.equal(await app.locator(selector).evaluate(el=>el.scrollLeft),0);
+        }
+        await app.locator('[data-g33k-stop]').click();
+      }
+      await page.setViewportSize({width:360,height:700});
+      await app.locator('.g33k-video').first().click();
       if(process.env.SCREENSHOT_DIR)await page.screenshot({path:process.env.SCREENSHOT_DIR+'/g33k-mobile.png'});
     },{viewport:{width:320,height:700},isMobile:true,hasTouch:true});
     console.log(passed+' G33K TEAM checks passed');
