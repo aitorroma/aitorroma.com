@@ -2,136 +2,82 @@
 
 **Software, sistemas e infraestructura para resolver problemas reales. IA cuando aporta valor.**
 
-Trabajo de extremo a extremo: puedo entrar en un problema, entender el contexto y construir la solución hasta producción. Desarrollo software a medida, comercio electrónico, automatización, IA e infraestructura, eligiendo la tecnología en función de lo que haya que resolver.
+Trabajo de extremo a extremo: entro en un problema, entiendo el contexto y construyo la solución hasta producción. Puedo ocuparme del software, la infraestructura, la automatización y la IA como partes de un mismo sistema. **Si la solución no existe, la construyo.**
 
-## Desarrollo de Software y Aplicaciones
+## Desarrollo de software y aplicaciones
 
-Desarrollo software a medida para necesidades concretas: aplicaciones y plataformas web, comercio electrónico, APIs, herramientas internas, integraciones y automatizaciones. **Si la solución no existe, la construyo.**
+Creo software a medida cuando una herramienta estándar no encaja: aplicaciones y plataformas web, herramientas internas, APIs, integraciones, comercio electrónico y servicios backend. La tecnología es una herramienta; la elijo en función del problema, el entorno y lo que haya que mantener después.
 
-- **Desarrollo a Medida**: Diseño y desarrollo de aplicaciones, plataformas web, herramientas internas e integraciones adaptadas a los procesos y necesidades de cada proyecto.
+Trabajo con desarrollo a medida, microservicios y APIs en **Go**, aplicaciones de datos en **Python**, paquetización Linux **deb/rpm**, Docker, despliegues, **GitHub Actions**, LMS con Moodle y soluciones propias.
 
-- **Microservicios en Go (Golang)**: Desarrollo de servicios backend y APIs para conectar aplicaciones y construir sistemas modulares.
+## Comercio electrónico
 
-- **Paquetización de Software para Linux (deb, rpm)**: Creación de paquetes de software compatibles con las principales distribuciones de Linux, facilitando el despliegue y la instalación de aplicaciones.
+Desarrollo y evoluciono plataformas de comercio electrónico, no solo la parte visible de una tienda. Puedo adaptar el software al negocio, integrar sistemas existentes y automatizar procesos alrededor de catálogo, pedidos, pagos, inventario y operaciones.
 
-- **Dockerización de Aplicaciones**: Contenerización de aplicaciones para su portabilidad, escalabilidad y fácil despliegue en entornos de producción.
+Trabajo con **WooCommerce** y **PrestaShop**, desarrollo y adaptación de módulos, pasarelas de pago, integraciones con ERP/CRM y APIs, automatización de pedidos y procesos de ecommerce.
 
-- **Configuración de Pipelines de Despliegue con Git y GitHub Actions**: Automatiza el flujo de desarrollo, pruebas y despliegue con integración continua y pipelines personalizados.
+## Automatización de procesos
 
-- **Despliegue de Aplicaciones**: Instalación y configuración de aplicaciones empresariales en diferentes entornos, asegurando su rendimiento y disponibilidad.
+Conecto sistemas y elimino trabajo manual cuando una tarea se puede convertir en un flujo fiable y repetible. La automatización puede ser una integración sencilla o formar parte de un proceso completo de negocio.
 
-- **Sistemas de Aprendizaje (LMS) con Moodle y Soluciones Propias**: Implementación de plataformas de aprendizaje online para educación o formación corporativa.
+Incluye automatización con **n8n**, DPA, generación y gestión de presupuestos, integraciones entre plataformas y marketing automation para ecommerce: campañas, upselling, inventario y recuperación de carritos, entre otros.
 
-## Comercio Electrónico
+## Inteligencia artificial aplicada
 
-- **Tiendas Online con WooCommerce**: Desarrollo y personalización de tiendas en WordPress con WooCommerce, con configuración de catálogo, pagos y envíos e integración con otros sistemas.
+Integro IA cuando aporta una mejora real al producto o al proceso. Puede servir para asistir a un equipo, consultar información privada, automatizar tareas o construir agentes capaces de trabajar con herramientas y sistemas existentes.
 
-- **Tiendas Online con PrestaShop**: Desarrollo y personalización de tiendas con PrestaShop, adaptación de módulos e integraciones para gestionar pedidos y operaciones de comercio electrónico.
+Trabajo con **LLMs, RAG, MCP, agentes y sistemas agénticos**, GPTs y asistentes personalizados, integración de datos empresariales y **MLOps** para versionado, evaluación, despliegue y monitorización de modelos.
 
-## Automatización de Procesos
+## Datos y bases de datos
 
-- **Automatización de Procesos y Flujos con N8N**: Optimiza tareas repetitivas y conecta diferentes sistemas para mejorar la eficiencia mediante DPA
+Diseño e integro la capa de datos necesaria para que aplicaciones, automatizaciones y sistemas de IA puedan trabajar con información fiable y accesible.
 
-- **Automatización de Presupuestos**: Crea y gestiona presupuestos automáticamente a partir de reglas predefinidas.
+Trabajo con ETL y extracción de datos, bases vectoriales, **MySQL, PostgreSQL, MongoDB, CouchDB y ClickHouse**, además de soluciones OLAP y aplicaciones de análisis de datos.
 
-- **Marketing Automation para Ecommerce**: Soluciones avanzadas para la automatización de campañas de marketing, flujos de upsell y gestión de inventario, carritos abandonados, entre otros.
+## Infraestructura, sistemas y Cloud
 
-## Inteligencia Artificial y Bots
+Diseño, despliego, migro y mantengo infraestructura para que los sistemas sean fiables, seguros y fáciles de operar. Puedo trabajar desde la capa física hasta cloud y entornos híbridos.
 
-- **Creación de MCPs (Model Context Protocol)**: Desarrollo de servidores MCP para conectar asistentes de IA con herramientas, datos y sistemas de tu empresa.
+Incluye servidores Linux, **Cloud**, migraciones, virtualización, VDI, redes, VPN, conectividad para teletrabajo, contenedores, racks e infraestructura física, seguridad, rendimiento, backups y recuperación ante desastres.
 
-- **MLOps**: Automatización del ciclo de vida de modelos de machine learning: versionado, evaluación, despliegue y monitorización en producción.
+## SRE, observabilidad y fiabilidad
 
-- **Sistemas Agénticos**: Diseño y desarrollo de sistemas de agentes de IA, con orquestación de herramientas, flujos de trabajo y supervisión humana.
+Ayudo a entender qué ocurre realmente dentro de una infraestructura y a reducir el tiempo dedicado a perseguir incidencias. El objetivo no es generar más alertas, sino detectar antes los problemas, encontrar su causa y hacer los sistemas más resistentes.
 
-- **Agentes y Bots Inteligentes**: Implementación de agentes automatizados que interactúan con CRM y otras plataformas para mejorar la productividad.
+Trabajo con monitorización, métricas, logs y trazas, observabilidad, análisis de causa raíz, alertas, automatización de respuesta, alta disponibilidad, redundancia y optimización de rendimiento.
 
-- **Desarrollo de GPTs Personalizados**: Configuración de GPTs y asistentes ajustados a las necesidades específicas de las empresas.
+## DevOps y plataformas
 
-- **Integración de Datos Empresariales con IA**: Consultas de información empresarial mediante inteligencia artificial para optimizar la toma de decisiones.
+Creo entornos donde desarrollar, desplegar y operar software sea más rápido, repetible y seguro, reduciendo pasos manuales y diferencias entre entornos.
 
-- **Retrieval-Augmented Generation (RAG)**: Ofrecemos soluciones **RAG**, combinando capacidades de búsqueda y generación de texto mediante inteligencia artificial, mejorando la precisión y relevancia de las respuestas basadas en grandes volúmenes de datos.
+Incluye **CI/CD, Infrastructure as Code, Docker, Kubernetes**, pipelines, automatización de despliegues, gestión de entornos y plataformas internas para equipos de desarrollo.
 
-## Bases de Datos y Análisis de Datos
+## Alta disponibilidad y componentes críticos
 
-- **Extracción de Datos desde Bases de Datos**: Recupera y procesa datos de manera automatizada para análisis o integraciones (ETL).
+Diseño y configuro componentes para aplicaciones que necesitan continuidad de servicio, rendimiento y capacidad de crecer sin convertir cada cambio en una intervención delicada.
 
-- **Bases de Datos Vectoriales**: Inserción y extracción de datos en tiempo real para búsquedas rápidas y precisas.
+Trabajo con **Percona Cluster, Redis Cluster, Varnish, Elasticsearch, ProxySQL y HAProxy**, además de Nginx, Apache, Tomcat y Caucho Resin para aplicaciones críticas y entornos de alto tráfico.
 
-- **Desarrollo de Aplicaciones de Datos en Python**: Soluciones personalizadas para la gestión y análisis de grandes volúmenes de datos.
+## Hosting, streaming y sistemas especializados
 
-- **Instalación y Configuración de Bases de Datos Relacionales y NoSQL, OLAP**: Especializado en la instalación y configuración de bases de datos como MySQL, PostgreSQL, MongoDB, CouchDB y ClickHouse.
+También desarrollo y opero infraestructura menos convencional cuando el proyecto lo necesita: desde negocios de hosting automatizados hasta distribución de audio y vídeo o servidores dedicados para aplicaciones interactivas.
 
-## Infraestructura IT y Virtualización
+Incluye **FOSSBilling, WHMCS, Icecast, Kaltura, Nginx MP4/HLS, RTMP, Red5** y servidores de juegos **Unity3D headless**.
 
-- **Gestión de Infraestructura**: Servicios gestionados para mantener la infraestructura IT de forma eficiente y segura.
+## Identidad, colaboración y sistemas internos
 
-- **Migración de Infraestructura**: Planificación y ejecución de migraciones tecnológicas para reducir interrupciones.
+Centralizo servicios que una organización necesita para trabajar de forma segura: identidad, documentación, comunicación, archivos y credenciales. La idea es reducir herramientas aisladas y dar al equipo una base coherente.
 
-- **Virtualización y Sistemas VDI**: Implementación de entornos virtuales para optimizar el uso de recursos y facilitar el teletrabajo.
+Trabajo con **LDAP, FreeIPA y Keycloak** para identidad y SSO; **Nextcloud, Mattermost y Rocket.Chat** para colaboración; wikis, firma documental, archivado de correo con **Piler**, gestión documental con **PaperlessNG** y sistemas centralizados de credenciales.
 
-- **Implementación de VPN y Sistemas de Comunicación para Teletrabajo**: Conexión segura entre sedes y soluciones de teletrabajo para empresas distribuidas.
+## Correo, marketing y contenido
 
-## Hosting y Streaming
+Puedo ocuparme tanto de la infraestructura que hace llegar un correo como de automatizaciones y sistemas que generan o distribuyen contenido.
 
-- **Negocios de Hosting Automatizados**: Configuración de herramientas como Fossbilling y WHMCS para gestionar, automatizar y optimizar servicios de hosting.
+Incluye entregabilidad y administración avanzada de correo —**SPF, DKIM, DMARC y BIMI**, antispam y gestión de bounces—, automatización de redes sociales con **Nimbox.social** y generación automatizada de imágenes, vídeo, audio, doblajes y transcripciones.
 
-- **Streaming de Audio con Icecast**: Soluciones para radios online mediante la tecnología Icecast, permitiendo la transmisión de audio en directo para audiencias globales.
+## Proyectos complejos y Forward Deployed Engineering
 
-- **Sistemas de Publicidad en Video para Periódicos Online**: Implementación de plataformas como Kaltura para la gestión y distribución de anuncios en video.
+También trabajo en proyectos donde el problema todavía no está perfectamente definido. Entro en el equipo, entiendo cómo funciona el negocio y su tecnología, detecto qué está bloqueando el proyecto y construyo la solución junto a ellos.
 
-- **Configuración de Módulos MP4 y HLS en Nginx**: Optimización del servidor Nginx para la entrega eficiente de contenido en video, incluyendo MP4 y HLS (HTTP Live Streaming), asegurando una reproducción fluida y de alta calidad en diferentes dispositivos.
-
-- **Servicios RTMP con Nginx y Red5**: Configuración de servidores para la transmisión en vivo de eventos y contenidos mediante RTMP, permitiendo la distribución de video en tiempo real.
-
-- **Implementación de Servidores de Juegos con Unity3D Headless**: Configuración y gestión de servidores dedicados para videojuegos multijugador con Unity3D en modo headless, optimizando el rendimiento y la estabilidad.
-
-## Marketing y Redes Sociales
-
-- **Nimbox.social para Empresas de Marketing**: Herramienta especializada para agencias que permite gestionar redes sociales, automatizar publicaciones y analizar resultados.
-
-- **Administración Avanzada de Sistemas de Correo Electrónico**: Configuración de sistemas de entregabilidad, reglas DKIM, DMARC, SPF, BIMI y optimización de sistemas antispam. Gestión de bounces y análisis de entregabilidad para campañas de marketing.
-
-## Generación de Contenido Multimedia
-
-- **Generación de Contenido Multimedia**: Automatización en la creación de fotos, videos, audios, doblajes y transcripciones.
-
-## Instalación y Configuración de Componentes de Alta Disponibilidad
-
-- **Percona Cluster:** Instalación y configuración de clústeres de bases de datos Percona para garantizar la redundancia y alta disponibilidad de tus datos.
-
-- **Cluster de Redis:** Implementación de clústeres de Redis para optimizar el rendimiento y garantizar la disponibilidad en la gestión de caché y sesiones distribuidas.
-
-- **Varnish:** Instalación y configuración de Varnish para optimizar la entrega de contenido web mediante caching avanzado, mejorando la velocidad de carga y la respuesta del servidor.
-
-- **ElasticSearch:** Configuración de ElasticSearch tanto en modo standalone como en clúster para ofrecer búsqueda y análisis de datos en tiempo real de manera escalable.
-
-- **ProxySQL:** Instalación de ProxySQL para mejorar el rendimiento en la lectura y escritura de bases de datos, permitiendo una distribución eficiente de la carga.
-
-- **HAProxy:** Instalación y configuración de HAProxy para balanceo de carga, asegurando la distribución eficiente del tráfico y la alta disponibilidad de servicios.
-
-- **Gestión de Servidores Web:** Instalación y gestión avanzada de servidores como Nginx, Apache, Tomcat y Caucho Resin, optimizados para alto tráfico y aplicaciones críticas.
-
-## Centralización de Información y Documentación de Procesos
-
-- **Centralización de Información mediante Nextcloud**: Ofrecemos la implementación y configuración de Nextcloud para centralizar la gestión de archivos, documentos y datos empresariales en un entorno seguro y accesible desde cualquier lugar.
-
-- **Wikis Colaborativas** : Configuración de wikis colaborativas para la estandarización y documentación de procesos. Estas wikis permiten a los equipos documentar procedimientos, guías y manuales de forma colaborativa, mejorando la coherencia y accesibilidad de la información dentro de la organización.
-
-- **Soluciones de Chat Empresarial**: Implementamos soluciones de chat empresarial con Mattermost o RocketChat, para mejorar la comunicación interna y reducir el uso excesivo de correos electrónicos.
-
-- **Soluciones de Firma de Documentos en la Nube**: Implementamos soluciones para la firma digital de documentos en la nube, simplificando la gestión y aprobación de contratos y documentos oficiales.
-
-- **Sistema de Archivado de Correos Electrónicos**: Usamos Piler que es un sistema open source para el archivado de correos electrónicos. Está diseñado para capturar, almacenar y gestionar grandes volúmenes de correos, facilitando la aplicación de políticas de retención y la recuperación de emails archivados para auditorías o investigaciones.
-
-- **Soluciones de Gestión de Documental**: Implementamos PaperlessNG para digitalizar, organizar y gestionar documentos de manera eficiente, eliminando la dependencia de archivos físicos.
-
-- **Sistema de Gestión de Credenciales**: Soluciones para la administración centralizada y segura de las credenciales de acceso de la organización.
-
-## Integración y Gestión de Identidades
-
-- **LDAP (Lightweight Directory Access Protocol)**: Implementación y gestión de LDAP para autenticar, autorizar y gestionar usuarios en entornos corporativos, asegurando un control centralizado de accesos.
-
-- **FreeIPA**: Configuración e implementación de **FreeIPA** como solución integrada para la gestión de identidades, políticas y autenticación en redes empresariales.
-
-- **Keycloak**: Implementación de **Keycloak**, una solución de código abierto para la gestión de identidad y acceso, que proporciona autenticación y autorización para aplicaciones modernas, incluyendo Single Sign-On (SSO).
+Eso puede significar programar una herramienta, modificar una arquitectura, automatizar un proceso, investigar una incidencia, integrar IA o conectar varios sistemas. **No vendo una tecnología concreta: resuelvo problemas tecnológicos utilizando la herramienta adecuada para cada caso.**
