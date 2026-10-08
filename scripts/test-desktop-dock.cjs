@@ -116,6 +116,9 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       const link=page.locator('.dock-apps a');
       assert.equal(await link.getAttribute('href'),'https://nimboxsre.com');
       assert.equal(await link.getAttribute('target'),'_blank');
+      assert.equal(await page.locator('.desktop-contact span').textContent(),'Cuestionario IA');
+      assert.equal(await page.locator('.desktop-contact').getAttribute('data-open'),'contacto');
+      assert.equal(await page.locator('.panel-contact').getAttribute('data-open'),'correo');
       await page.locator('[data-apps-toggle]').click();
       assert.equal(await page.locator('.app-grid a').getAttribute('href'),'https://nimboxsre.com');
       if(process.env.SCREENSHOT_DIR){await page.locator('[data-apps-close]').click();await page.screenshot({path:process.env.SCREENSHOT_DIR+'/dock-desktop.png'});}
