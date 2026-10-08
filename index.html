@@ -486,6 +486,32 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
  .mail-back{display:block}.mail-toolbar{padding:12px 18px}.mail-toolbar>span{display:none}.mail-letter{padding:20px}.mail-letter h2{font-size:24px}
 }
 
+
+/* Mobile panel: contact stays visible; secondary controls live in a popover. */
+.panel-options{position:relative;flex:none}.panel-menu{display:flex;align-items:center;gap:10px}
+.panel-menu-toggle,.panel-menu-label,.sound-label{display:none}
+@media(max-width:720px){
+ :root{--panel-h:56px}
+ .panel{gap:8px;padding-inline:12px;background:#080d13f2}
+ .panel .tasks{display:none}
+ .panel .brand{min-height:44px;margin-right:auto;padding:6px 0;font-size:16px;gap:8px;white-space:nowrap}
+ .panel .brand svg{width:24px;height:24px;flex:none}
+ .panel .panel-contact{min-height:44px;padding:9px 14px;border-radius:10px;font:600 13px var(--f-body);background:#24d29b15;border-color:#24d29b55}
+ .panel-menu-toggle{display:grid;place-items:center;width:44px;height:44px;border:1px solid #ffffff14;border-radius:10px;background:#ffffff08;color:var(--wall-ink);padding:10px;cursor:pointer}
+ .panel-menu-toggle svg{width:22px;height:22px}
+ .panel-menu-toggle:hover,.panel-menu-toggle[aria-expanded="true"]{background:#ffffff14;border-color:#24d29b55}
+ .panel-options .panel-menu{display:none;position:absolute;right:0;top:calc(100% + 12px);width:236px;padding:10px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 16px 42px #0006}
+ .panel-options.menu-open .panel-menu{display:grid;gap:6px}
+ .panel-menu-label{display:block;padding:5px 10px 7px;color:var(--muted);font:10px var(--f-mono);letter-spacing:.04em}
+ .panel-menu .mail-sound-toggle{display:flex;justify-content:flex-start;gap:12px;width:100%;height:44px;padding:10px;border-radius:8px;background:var(--surface-2)}
+ .panel-menu .mail-sound-toggle svg{flex:none;width:20px;height:20px}
+ .panel-menu .sound-label{display:inline;font:500 13px var(--f-body)}
+ .panel-menu .simplebtn{min-height:44px;width:100%;padding:10px;border-radius:8px;font:600 13px var(--f-body);text-align:left;color:#04140f}
+ .panel-menu .clock{display:none}
+ .desktop-services{top:calc(var(--panel-h) + env(safe-area-inset-top,0px) + 16px)}
+ .desktop-g33k{top:calc(var(--panel-h) + env(safe-area-inset-top,0px) + 136px)}
+}
+
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -501,12 +527,21 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       aitorOS
     </button>
     <nav class="tasks" id="tasks" aria-label="Ventanas abiertas"></nav>
+    <button class="panel-contact" type="button" data-open="correo">Contacto</button>
+    <div class="panel-options">
+      <button class="panel-menu-toggle" type="button" data-panel-menu-toggle aria-label="Más opciones de aitorOS" aria-expanded="false" aria-controls="panel-menu" title="Más opciones">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg>
+      </button>
+      <div class="panel-menu" id="panel-menu">
+        <span class="panel-menu-label">Opciones de aitorOS</span>
     <button class="mail-sound-toggle" type="button" data-mail-sound aria-label="Silenciar sonido del correo" aria-pressed="true" title="Sonido del correo activado · Pulsar para silenciar">
       <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><g class="mail-sound-waves" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M16 8a6 6 0 0 1 0 8M19 5a10 10 0 0 1 0 14"/></g><path class="mail-sound-muted" d="M17 9l5 6m0-6l-5 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <span class="sound-label">Sonido activado</span>
     </button>
-    <button class="panel-contact" type="button" data-open="correo">Contacto</button>
-    <button class="simplebtn" type="button" data-simple="on">Vista simple</button>
-    <span class="clock" id="clock"></span>
+        <button class="simplebtn" type="button" data-simple="on">Vista simple</button>
+        <span class="clock" id="clock"></span>
+      </div>
+    </div>
   </header>
 
   <nav class="icons" aria-label="Aplicaciones favoritas">
@@ -858,6 +893,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     button.classList.toggle('sound-off',!mailSoundEnabled);
     button.setAttribute('aria-pressed',String(mailSoundEnabled));
     button.setAttribute('aria-label',mailSoundEnabled?'Silenciar sonido del correo':'Activar sonido del correo');
+    $('.sound-label',button).textContent=mailSoundEnabled?'Sonido activado':'Sonido desactivado';
     button.title=mailSoundEnabled?'Sonido del correo activado · Pulsar para silenciar':'Sonido del correo desactivado · Pulsar para activar';
   }
   function unlockMailAudio(event){
@@ -1162,7 +1198,21 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     if(sec){ var y = sec.getBoundingClientRect().top + window.scrollY - ($('.simple-top').offsetHeight + 8); window.scrollTo(0, y); }
   }
 
+  var panelOptions=$('.panel-options'),panelMenuToggle=$('[data-panel-menu-toggle]');
+  function setPanelMenu(show,restoreFocus){
+    panelOptions.classList.toggle('menu-open',show);
+    panelMenuToggle.setAttribute('aria-expanded',String(show));
+    if(show) $('[data-mail-sound]',panelOptions).focus({preventScroll:true});
+    else if(restoreFocus) panelMenuToggle.focus({preventScroll:true});
+  }
+  panelOptions.addEventListener('focusout',function(e){
+    if(mobile() && !panelOptions.contains(e.relatedTarget)) setPanelMenu(false);
+  });
+  window.addEventListener('resize',function(){if(!mobile()) setPanelMenu(false);});
+
   document.addEventListener('click', function(e){
+    if(e.target.closest('[data-panel-menu-toggle]')){setPanelMenu(!panelOptions.classList.contains('menu-open'));return;}
+    if(!e.target.closest('.panel-options')) setPanelMenu(false);
     if(e.target.closest('[data-mail-sound]')){
       mailSoundEnabled=!mailSoundEnabled;
       try{localStorage.setItem('aitoros-mail-sound',mailSoundEnabled?'on':'off');}catch(err){}
@@ -1225,6 +1275,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
     }
   });
   document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && panelOptions.classList.contains('menu-open')){e.preventDefault();setPanelMenu(false,true);return;}
     if(!appsOverlay.hidden){
       if(e.key==='Escape'){e.preventDefault();setAppsOverview(false);return;}
       if(e.key==='Enter' && document.activeElement===appsSearch){
