@@ -67,6 +67,15 @@ const base=process.env.SITE_URL || 'http://127.0.0.1:4000';
       const doc=page.locator('.document-window');
       assert.equal(await doc.isVisible(),true);
       assert.equal(await doc.locator('.document-outline').isVisible(),false);
+      for(const width of [320,390,430]){
+        await page.setViewportSize({width,height:844});
+        const toolbar=doc.locator('.document-toolbar');
+        assert.ok((await toolbar.boundingBox()).height<=56);
+        assert.equal(await toolbar.evaluate(el=>el.scrollWidth<=el.clientWidth),true);
+        assert.equal(await toolbar.locator('small').isVisible(),false);
+        for(const link of await toolbar.locator('a').all()) assert.ok((await link.boundingBox()).height>=44);
+      }
+      await page.setViewportSize({width:390,height:844});
       assert.equal(await doc.locator('.document-scroll').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
       assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);
       const box=await doc.boundingBox(),dock=await page.locator('.icons').boundingBox();assert.ok(box.y+box.height<=dock.y+1);
