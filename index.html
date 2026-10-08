@@ -352,16 +352,34 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 .dock-launcher svg{width:30px;height:30px}
 .win.max{left:var(--dock-w)!important;width:calc(100% - var(--dock-w))!important}
 .apps-overlay[hidden]{display:none}
-.apps-overlay{position:fixed;inset:0;z-index:100001;display:grid;place-items:center;padding:24px;background:#06090d99;backdrop-filter:blur(10px)}
-.apps-dialog{width:min(640px,100%);max-height:calc(100dvh - 48px);overflow:auto;padding:26px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 90px #0008}
-.apps-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}
-.apps-header h2{font-size:26px;margin-top:5px}
-.app-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.app-grid .icon{color:var(--ink);padding:16px 8px;min-height:106px;border:1px solid var(--line);background:var(--surface-2);border-radius:12px;text-decoration:none}
-.app-grid .icon:hover{border-color:var(--accent);background:var(--accent-soft)}
-.app-grid .icon span{text-shadow:none;font-size:12px}
-.app-grid .icon img{width:60px;height:48px;object-fit:contain}
-.apps-footer{margin:22px 0 0;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+/* Full-screen frosted launcher, inspired by a Linux application overview. */
+.apps-overlay{position:fixed;inset:0;z-index:100001;background:linear-gradient(180deg,#eef3f4d4 0%,#b9c6caad 26%,#a2b2b8b8 100%);backdrop-filter:blur(30px) saturate(.6);-webkit-backdrop-filter:blur(30px) saturate(.6);color:#15212a;animation:overview-in .22s ease-out}
+.apps-dialog{width:100%;height:100%;display:flex;flex-direction:column;background:none;color:inherit;padding:24px clamp(32px,8vw,150px) max(24px,env(safe-area-inset-bottom));border:0;border-radius:0;box-shadow:none}
+.apps-header{position:relative;display:flex;justify-content:center;align-items:center;flex:none;padding-bottom:22px}
+.apps-search{position:relative;display:block;width:min(340px,calc(100% - 80px))}
+.apps-search svg{position:absolute;left:16px;top:calc(50% - 8px);width:16px;height:16px;pointer-events:none;opacity:.6}
+.apps-search input{display:block;width:100%;height:40px;padding:8px 36px 8px 42px;border:1px solid #52646c25;border-radius:24px;background:#ffffffb3;box-shadow:0 2px 12px #14253208;font:14px var(--f-body);color:#15212a;outline-offset:3px}
+.apps-search input::placeholder{color:#52636b}
+.apps-close{position:fixed;right:24px;top:24px;width:38px;height:38px;border-radius:50%;border:1px solid #15212a30;background:#ffffff25;color:inherit;cursor:pointer;display:grid;place-items:center}
+.apps-close:hover{background:#ffffff70}
+.apps-close svg{width:20px;height:20px}
+.apps-scroll{flex:1;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:#ffffff9c transparent;padding:16px 8px}
+.app-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(125px,1fr));gap:24px 12px;width:100%;max-width:1500px;margin:0 auto;align-content:start}
+.app-grid .icon{position:relative;color:inherit;min-width:0;min-height:132px;display:flex;flex-direction:column;justify-content:flex-start;gap:12px;padding:18px 8px 12px;background:none;border:1px solid transparent;border-radius:12px;text-decoration:none;transition:background .15s,border-color .15s,transform .15s}
+.app-grid .icon:hover,.app-grid .icon:focus-visible{border-color:#4d9eb040;background:#69c5de55;outline-color:#087f6b}
+.app-grid .icon:active{transform:scale(.96)}
+.app-grid .icon svg{width:58px;height:58px;filter:drop-shadow(0 5px 6px #14253226)}
+.app-grid .icon img{width:68px;height:58px;object-fit:contain;filter:drop-shadow(0 5px 6px #14253226)}
+.app-grid .icon span{font-family:var(--f-body);font-size:14px;font-weight:400;line-height:1.4;text-shadow:none;overflow-wrap:anywhere}
+.app-grid .icon[hidden],.apps-empty[hidden]{display:none}
+.apps-empty{text-align:center;padding:40px 16px;font-size:16px;color:inherit}
+.apps-empty small{display:block;font-size:13px;opacity:.7;margin-top:8px}
+.apps-footer{flex:none;text-align:center;margin:18px 0 0;padding-top:12px;font-size:12px;opacity:.8}
+.apps-footer p{margin:4px 0}
+.apps-results{font:11px var(--f-mono);letter-spacing:.03em}
+@keyframes overview-in{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:scale(1)}}
+:root[data-theme="dark"] .apps-overlay{background:linear-gradient(180deg,#26323ee8,#16202abe);color:#edf2f5}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) .apps-overlay{background:linear-gradient(180deg,#26323ee8,#16202abe);color:#edf2f5}}
 @media(max-width:720px){
   .icons{top:auto;left:0;right:0;bottom:0;width:auto;height:calc(var(--dock-mobile-h) + env(safe-area-inset-bottom,0px));padding:7px 8px calc(7px + env(safe-area-inset-bottom,0px));flex-direction:row;align-items:center;justify-content:center;gap:4px;border-right:0;border-top:1px solid #ffffff14}
   .dock-apps{flex:0 1 auto;flex-direction:row;overflow-x:auto;overflow-y:hidden;gap:4px;min-width:0}
@@ -373,9 +391,9 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   .win,.win.max{left:0!important;width:100%!important;height:calc(100% - var(--panel-h) - env(safe-area-inset-top,0px) - var(--dock-mobile-h) - env(safe-area-inset-bottom,0px))!important}
   .desktop-contact{bottom:calc(var(--dock-mobile-h) + 110px)}
   .wallmark{bottom:calc(var(--dock-mobile-h) + 18px)}
-  .apps-overlay{padding:12px}.apps-dialog{padding:20px;max-height:calc(100dvh - 24px);border-radius:14px}.app-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.app-grid .icon{padding:12px 4px;min-height:94px}.app-grid .icon svg{width:40px;height:40px}.app-grid .icon span{font-size:11px}
+  .apps-dialog{padding:calc(18px + env(safe-area-inset-top,0px)) 16px max(18px,env(safe-area-inset-bottom,0px))}.apps-header{padding-bottom:12px}.apps-search{width:calc(100% - 52px);margin-right:52px}.apps-close{top:calc(19px + env(safe-area-inset-top,0px));right:16px}.apps-scroll{padding:12px 0}.app-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px 6px}.app-grid .icon{padding:14px 4px 10px;min-height:115px;gap:10px}.app-grid .icon svg{width:48px;height:48px}.app-grid .icon img{width:54px;height:48px}.app-grid .icon span{font-size:12px}.apps-footer{font-size:11px;margin-top:10px}
 }
-@media(prefers-reduced-motion:reduce){.dock-apps .icon,.dock-launcher{transition:none}}
+@media(prefers-reduced-motion:reduce){.dock-apps .icon,.dock-launcher,.app-grid .icon{transition:none}.apps-overlay{animation:none}.app-grid .icon:active{transform:none}}
 </style>
 <noscript><style>#src{display:block;padding:20px;background:var(--bg);color:var(--ink);height:100%;overflow:auto}#desktop,#boot{display:none}body{overflow:auto}</style></noscript>
 <script defer data-domain="aitorroma.com" src="https://plausible.hiveagile.dev/js/script.js"></script>
@@ -453,9 +471,16 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   <div id="windows"></div>
   <div class="apps-overlay" id="apps-overview" hidden>
     <section class="apps-dialog" role="dialog" aria-modal="true" aria-labelledby="apps-title">
-      <header class="apps-header"><div><span class="eyebrow">aitorOS · Aplicaciones</span><h2 id="apps-title">¿Qué quieres abrir?</h2></div><button class="wbtn" type="button" data-apps-close aria-label="Cerrar aplicaciones">×</button></header>
-      <nav class="app-grid" aria-label="Todas las aplicaciones"></nav>
-      <p class="apps-footer">¿No sabes por dónde empezar? Abre <strong>Correo</strong> y te ayudo a encontrar tu camino.</p>
+      <h2 id="apps-title" class="sr-only">Aplicaciones de aitorOS</h2>
+      <header class="apps-header">
+        <label class="apps-search"><span class="sr-only">Buscar aplicaciones</span><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.6"/><path d="M12 12l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><input type="search" data-apps-search placeholder="Buscar aplicaciones…" autocomplete="off" spellcheck="false" aria-controls="apps-grid" aria-describedby="apps-results"></label>
+        <button class="apps-close" type="button" data-apps-close aria-label="Cerrar aplicaciones" title="Cerrar · Esc"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+      </header>
+      <div class="apps-scroll">
+        <nav class="app-grid" id="apps-grid" aria-label="Todas las aplicaciones"></nav>
+        <p class="apps-empty" hidden>No hay aplicaciones con ese nombre.<small>Prueba «correo», «proyectos» o «experiencia».</small></p>
+      </div>
+      <footer class="apps-footer"><p class="apps-results" id="apps-results" data-apps-results role="status" aria-live="polite" aria-atomic="true"></p><p>¿Por dónde empezar? Abre <strong>Correo</strong>. <span aria-hidden="true">·</span> Esc para volver al escritorio.</p></footer>
     </section>
   </div>
   <aside class="mail-notice" hidden aria-label="Mensaje de bienvenida">
@@ -709,6 +734,7 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
 
   /* ---------- dock and application overview ---------- */
   var appsOverlay=$('#apps-overview'), appsButton=$('[data-apps-toggle]');
+  var appsSearch=$('[data-apps-search]');
   var dockButtons=document.querySelectorAll('.dock-apps [data-open]');
   var overviewBackground=document.querySelectorAll('.panel,.icons,.desktop-contact,.wallmark,#windows,.mail-notice');
   document.querySelectorAll('.dock-apps .icon,.desktop-contact').forEach(function(icon){
@@ -723,6 +749,8 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       copy.setAttribute('aria-label','Cuestionario de preparación para IA');
       copy.title='Cuestionario de preparación para IA';
     }
+    var aliases={about:'perfil aitor sobre mi bienvenida',correo:'contacto email mail ayuda hablemos',blog:'articulos posts markdown',proyectos:'projects productos portfolio automatizacion infraestructura',repos:'repositorios github codigo open source',stack:'tecnologias herramientas habilidades skills',comunidades:'community comunidad podcast',experiencia:'trayectoria carrera trabajo curriculum cv',terminal:'consola shell bash linux',contacto:'cuestionario ia typebot evaluacion empresa'};
+    copy.dataset.appSearch=normalizeAppName($('span',copy).textContent+' '+(aliases[copy.dataset.open]||'nimbox sre observabilidad'));
     $('.app-grid').appendChild(copy);
   });
   function updateDock(){
@@ -736,11 +764,27 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
       button.title=name+(win?' · '+(active?'Activa':win.el.dataset.min==='1'?'Minimizada':'Abierta'):'');
     });
   }
+  function normalizeAppName(value){return value.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function filterApps(){
+    var tokens=normalizeAppName(appsSearch.value).trim().split(/\s+/).filter(Boolean),count=0;
+    $('.app-grid').querySelectorAll('.icon').forEach(function(icon){
+      icon.hidden=!tokens.every(function(token){return icon.dataset.appSearch.indexOf(token)!==-1;});
+      if(!icon.hidden) count++;
+    });
+    $('.apps-empty').hidden=count!==0;
+    $('[data-apps-results]').textContent=count+' '+(count===1?'aplicación':'aplicaciones')+(tokens.length?' encontradas':'');
+    $('.apps-scroll').scrollTop=0;
+  }
+  appsSearch.addEventListener('input',filterApps);
   function setAppsOverview(show,restoreFocus){
     appsOverlay.hidden=!show;
     appsButton.setAttribute('aria-expanded',String(show));
     overviewBackground.forEach(function(el){el.inert=show;});
-    if(show) $('[data-apps-close]').focus({preventScroll:true});
+    if(show){
+      appsSearch.value='';filterApps();
+      // On touch layouts, keep the keyboard closed until the visitor taps search.
+      (mobile()?$('[data-apps-close]'):appsSearch).focus({preventScroll:true});
+    }
     else if(restoreFocus!==false) appsButton.focus({preventScroll:true});
   }
 
@@ -910,8 +954,14 @@ body.simple #src{display:block;max-width:820px;margin:0 auto;padding-inline:20px
   document.addEventListener('keydown', function(e){
     if(!appsOverlay.hidden){
       if(e.key==='Escape'){e.preventDefault();setAppsOverview(false);return;}
+      if(e.key==='Enter' && document.activeElement===appsSearch){
+        var firstApp=$('.app-grid .icon:not([hidden])');
+        if(firstApp){e.preventDefault();firstApp.click();}
+        return;
+      }
       if(e.key==='Tab'){
-        var items=appsOverlay.querySelectorAll('button,a[href]'),first=items[0],last=items[items.length-1];
+        var items=Array.from(appsOverlay.querySelectorAll('input,button,a[href]')).filter(function(el){return !el.hidden && el.getClientRects().length;});
+        var first=items[0],last=items[items.length-1];
         if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
         else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
       }
